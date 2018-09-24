@@ -16,6 +16,42 @@ This project provides a server to automatically discover nodes within your Hetzn
 You can download prebuilt binaries from our [GitHub releases](https://github.com/promhippie/prometheus-hetzner-sd/releases), or you can use our Docker images published on [Docker Hub](https://hub.docker.com/r/promhippie/prometheus-hetzner-sd/tags/).
 
 
+## Integration
+
+### Available labels
+
+The following list of meta labels can be used to relabel your scrape results entirely. Hopefully the names are self-explaining, that's why I have skipped a description for each label.
+
+* `__meta_hetzner_name`
+* `__meta_hetzner_number`
+* `__meta_hetzner_ipv4`
+* `__meta_hetzner_product`
+* `__meta_hetzner_dc`
+* `__meta_hetzner_traffic`
+* `__meta_hetzner_flatrate`
+* `__meta_hetzner_status`
+* `__meta_hetzner_throttled`
+* `__meta_hetzner_cancelled`
+
+### Prometheus config
+
+Here you get a snippet for the Prometheus `scrape_config` that configures Prometheus to scrape `node_exporter` assuming that it is deployed on all your servers.
+
+```
+- job_name: node
+  file_sd_configs:
+  - files: [ "/etc/prometheus/hcloud.json" ]
+  relabel_configs:
+  - source_labels: [__meta_hetzner_ipv4]
+    replacement: "${1}:9100"
+    target_label: __address__
+  - source_labels: [__meta_hetzner_dc]
+    target_label: datacenter
+  - source_labels: [__meta_hetzner_name]
+    target_label: instance
+```
+
+
 ## Development
 
 Make sure you have a working Go environment, for further reference or a guide take a look at the [install instructions](http://golang.org/doc/install.html). This project requires Go >= v1.8.
