@@ -34,8 +34,3 @@ manifests:
       architecture: arm
       variant: v6
       os: linux
-  -
-    image: promhippie/prometheus-hetzner-sd:{{#if build.tag}}{{trimPrefix build.tag "v"}}-{{/if}}windows-amd64
-    platform:
-      architecture: amd64
-      os: windows
