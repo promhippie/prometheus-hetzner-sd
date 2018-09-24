@@ -40,7 +40,7 @@ Here you get a snippet for the Prometheus `scrape_config` that configures Promet
 ```
 - job_name: node
   file_sd_configs:
-  - files: [ "/etc/prometheus/hcloud.json" ]
+  - files: [ "/etc/prometheus/hetzner.json" ]
   relabel_configs:
   - source_labels: [__meta_hetzner_ipv4]
     replacement: "${1}:9100"
