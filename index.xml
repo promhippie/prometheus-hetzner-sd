@@ -17,16 +17,9 @@
       <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
       
       <guid>https://promhippie.github.io/prometheus-hetzner-sd/getting-started/</guid>
-      <description> Installation Configuration </description>
-    </item>
-    
-    <item>
-      <title>Usage</title>
-      <link>https://promhippie.github.io/prometheus-hetzner-sd/usage/</link>
-      <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://promhippie.github.io/prometheus-hetzner-sd/usage/</guid>
-      <description></description>
+      <description>Installation We won&amp;rsquo;t cover further details how to properly setup Prometheus itself, we will only cover some basic setup based on docker-compose. But if you want to run this service discovery without docker-compose you should be able to adopt that to your needs.
+First of all we need to prepare a configuration for Prometheus that includes the service discovery which simply maps to a node exporter.
+ After preparing the configuration we need to create the docker-compose.</description>
     </item>
     
     <item>
@@ -35,7 +28,8 @@
       <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
       
       <guid>https://promhippie.github.io/prometheus-hetzner-sd/building/</guid>
-      <description></description>
+      <description>As this project is built with Go you need to install Go first. The installation of Go is out of the scope of this document, please follow the official documentation. After the installation of Go you need to get the sources:
+go get -d github.com/promhippie/prometheus-hetzner-sd cd $GOPATH/src/github.com/promhippie/prometheus-hetzner-sd All required tool besides Go itself are bundled or getting automatically installed within the GOPATH. We are using retool to keep the used tools consistent and dep to manage the dependencies.</description>
     </item>
     
     <item>
