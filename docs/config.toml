@@ -1,6 +1,7 @@
 baseURL = "https://promhippie.github.io/prometheus-hetzner-sd/"
 languageCode = "en-us"
 title = "Prometheus Hetzner SD"
+pygmentsUseClasses = true
 
 [blackfriday]
   angledQuotes = true
