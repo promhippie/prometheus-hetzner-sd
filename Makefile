@@ -1,3 +1,5 @@
+SHELL := bash
+
 NAME := prometheus-hetzner-sd
 IMPORT := github.com/promhippie/$(NAME)
 DIST := dist
