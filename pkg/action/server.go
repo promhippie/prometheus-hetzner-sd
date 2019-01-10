@@ -16,6 +16,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/promhippie/prometheus-hetzner-sd/pkg/adapter"
 	"github.com/promhippie/prometheus-hetzner-sd/pkg/config"
+	"github.com/promhippie/prometheus-hetzner-sd/pkg/middleware"
 	"github.com/promhippie/prometheus-hetzner-sd/pkg/version"
 )
 
@@ -104,6 +105,10 @@ func Server(cfg *config.Config, logger log.Logger) error {
 
 func handler(cfg *config.Config, logger log.Logger) *chi.Mux {
 	mux := chi.NewRouter()
+	mux.Use(middleware.Recoverer(logger))
+	mux.Use(middleware.RealIP)
+	mux.Use(middleware.Timeout)
+	mux.Use(middleware.Cache)
 
 	prom := promhttp.HandlerFor(
 		registry,
