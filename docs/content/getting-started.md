@@ -21,6 +21,10 @@ Since our `latest` Docker tag always refers to the `master` branch of the Git re
 
 {{< gist tboerger ce77494a0c24012a95e22b3691d15b7c "tag.diff" >}}
 
+Depending on how you have launched and configured [Prometheus](https://prometheus.io) it's possible that it's running as user `nobody`, in that case you should run the service discovery as this user as well, otherwise [Prometheus](https://prometheus.io) won't be able to read the generated JSON file:
+
+{{< gist tboerger ce77494a0c24012a95e22b3691d15b7c "userid.diff" >}}
+
 Finally the service discovery should be configured fine, let's start this stack with [docker-compose](https://docs.docker.com/compose/), you just need to execute `docker-compose up` within the directory where you have stored `prometheus.yml` and `docker-compose.yml`.
 
 {{< gist tboerger ce77494a0c24012a95e22b3691d15b7c "output.log" >}}
@@ -46,6 +50,9 @@ PROMETHEUS_HETZNER_LOG_LEVEL
 
 PROMETHEUS_HETZNER_LOG_PRETTY
 : Enable pretty messages for logging, defaults to `true`
+
+PROMETHEUS_HETZNER_LOG_COLOR
+: Enable color output for logging, defaults to `false`
 
 PROMETHEUS_HETZNER_WEB_ADDRESS
 : Address to bind the metrics server, defaults to `0.0.0.0:9000`
