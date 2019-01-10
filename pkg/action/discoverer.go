@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/appscode/go-hetzner"
@@ -61,6 +62,11 @@ func (d *Discoverer) getTargets(ctx context.Context) ([]*targetgroup.Group, erro
 	requestDuration.Observe(time.Since(now).Seconds())
 
 	if err != nil {
+		level.Warn(d.logger).Log(
+			"msg", "Failed to fetch servers",
+			"err", err,
+		)
+
 		requestFailures.Inc()
 		return nil, err
 	}
@@ -87,7 +93,7 @@ func (d *Discoverer) getTargets(ctx context.Context) ([]*targetgroup.Group, erro
 				model.LabelName(numberLabel):    model.LabelValue(strconv.Itoa(int(server.ServerNumber))),
 				model.LabelName(ipLabel):        model.LabelValue(server.ServerIP),
 				model.LabelName(productLabel):   model.LabelValue(server.Product),
-				model.LabelName(dcLabel):        model.LabelValue(server.Dc),
+				model.LabelName(dcLabel):        model.LabelValue(strings.ToLower(server.Dc)),
 				model.LabelName(trafficLabel):   model.LabelValue(server.Traffic),
 				model.LabelName(flatrateLabel):  model.LabelValue(strconv.FormatBool(server.Flatrate)),
 				model.LabelName(statusLabel):    model.LabelValue(server.Status),
