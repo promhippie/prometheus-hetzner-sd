@@ -2,7 +2,6 @@ package action
 
 import (
 	"fmt"
-	"os"
 
 	"github.com/go-kit/kit/log"
 	"github.com/go-kit/kit/log/level"
@@ -35,7 +34,10 @@ var (
 )
 
 func init() {
-	registry.MustRegister(prometheus.NewProcessCollector(os.Getpid(), ""))
+	registry.MustRegister(prometheus.NewProcessCollector(prometheus.ProcessCollectorOpts{
+		Namespace: namespace,
+	}))
+
 	registry.MustRegister(prometheus.NewGoCollector())
 
 	registry.MustRegister(version.Collector(namespace))
