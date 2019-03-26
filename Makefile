@@ -98,7 +98,7 @@ release-dirs:
 
 .PHONY: release-windows
 release-windows:
-ifeq ($(CI),drone)
+ifeq ($(DRONE),true)
 	xgo -go 1.10 -dest $(DIST)/binaries -tags 'netgo $(TAGS)' -ldflags '-linkmode external -extldflags "-static" $(LDFLAGS)' -targets 'windows/*' -out $(EXECUTABLE)-$(VERSION)  ./cmd/$(NAME)
 	mv /build/* $(DIST)/binaries
 else
@@ -107,7 +107,7 @@ endif
 
 .PHONY: release-linux
 release-linux:
-ifeq ($(CI),drone)
+ifeq ($(DRONE),true)
 	xgo -go 1.10 -dest $(DIST)/binaries -tags 'netgo $(TAGS)' -ldflags '-linkmode external -extldflags "-static" $(LDFLAGS)' -targets 'linux/*' -out $(EXECUTABLE)-$(VERSION)  ./cmd/$(NAME)
 	mv /build/* $(DIST)/binaries
 else
@@ -116,7 +116,7 @@ endif
 
 .PHONY: release-darwin
 release-darwin:
-ifeq ($(CI),drone)
+ifeq ($(DRONE),true)
 	xgo -go 1.10 -dest $(DIST)/binaries -tags 'netgo $(TAGS)' -ldflags '$(LDFLAGS)' -targets 'darwin/*' -out $(EXECUTABLE)-$(VERSION)  ./cmd/$(NAME)
 	mv /build/* $(DIST)/binaries
 else
