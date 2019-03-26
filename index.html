@@ -2,7 +2,7 @@
 
 <html id="html" lang="en-us">
 	<head>
-	<meta name="generator" content="Hugo 0.46" />
+	<meta name="generator" content="Hugo 0.54.0" />
 		<meta http-equiv="content-type" content="text/html;charset=utf-8">
 		<meta name="viewport" content="width=device-width"/>
 
@@ -402,36 +402,30 @@
 
 <p>First of all we need to prepare a configuration for <a href="https://prometheus.io">Prometheus</a> that includes the service discovery which simply maps to a node exporter.</p>
 
-<script src="//gist.github.com/tboerger/ce77494a0c24012a95e22b3691d15b7c.js?file=prometheus.yml"></script>
+<script type="application/javascript" src="//gist.github.com/tboerger/ce77494a0c24012a95e22b3691d15b7c.js?file=prometheus.yml"></script>
 
 <p>After preparing the configuration we need to create the <code>docker-compose.yml</code> within the same folder, this <code>docker-compose.yml</code> starts a simple <a href="https://prometheus.io">Prometheus</a> instance together with the service discovery. Don&rsquo;t forget to update the envrionment variables with the required credentials. If you are using a different volume for the service discovery you have to make sure that the container user is allowed to write to this volume.</p>
 
-<script src="//gist.github.com/tboerger/ce77494a0c24012a95e22b3691d15b7c.js?file=docker-compose.yml"></script>
+<script type="application/javascript" src="//gist.github.com/tboerger/ce77494a0c24012a95e22b3691d15b7c.js?file=docker-compose.yml"></script>
 
 <p>Since our <code>latest</code> Docker tag always refers to the <code>master</code> branch of the Git repository you should always use some fixed version. You can see all available tags at our <a href="https://hub.docker.com/r/promhippie/prometheus-hetzner-sd/tags/">DockerHub repository</a>, there you will see that we also provide a manifest, you can easily start the exporter on various architectures without any change to the image name. You should apply a change like this to the <code>docker-compose.yml</code>:</p>
 
-<script src="//gist.github.com/tboerger/ce77494a0c24012a95e22b3691d15b7c.js?file=tag.diff"></script>
+<script type="application/javascript" src="//gist.github.com/tboerger/ce77494a0c24012a95e22b3691d15b7c.js?file=tag.diff"></script>
 
 <p>Depending on how you have launched and configured <a href="https://prometheus.io">Prometheus</a> it&rsquo;s possible that it&rsquo;s running as user <code>nobody</code>, in that case you should run the service discovery as this user as well, otherwise <a href="https://prometheus.io">Prometheus</a> won&rsquo;t be able to read the generated JSON file:</p>
 
-<script src="//gist.github.com/tboerger/ce77494a0c24012a95e22b3691d15b7c.js?file=userid.diff"></script>
+<script type="application/javascript" src="//gist.github.com/tboerger/ce77494a0c24012a95e22b3691d15b7c.js?file=userid.diff"></script>
 
 <p>Finally the service discovery should be configured fine, let&rsquo;s start this stack with <a href="https://docs.docker.com/compose/">docker-compose</a>, you just need to execute <code>docker-compose up</code> within the directory where you have stored <code>prometheus.yml</code> and <code>docker-compose.yml</code>.</p>
 
-<script src="//gist.github.com/tboerger/ce77494a0c24012a95e22b3691d15b7c.js?file=output.log"></script>
+<script type="application/javascript" src="//gist.github.com/tboerger/ce77494a0c24012a95e22b3691d15b7c.js?file=output.log"></script>
 
 <p>That&rsquo;s all, the service discovery should be up and running. You can access <a href="https://prometheus.io">Prometheus</a> at <a href="http://localhost:9090">http://localhost:9090</a>.</p>
 
 <figure>
-    
-        <img src="service-discovery.png" />
-    
-    
-    <figcaption>
-        <h4>Prometheus service discovery for Hetzner</h4>
-        
-    </figcaption>
-    
+    <img src="service-discovery.png"/> <figcaption>
+            <h4>Prometheus service discovery for Hetzner</h4>
+        </figcaption>
 </figure>
 
 <h2 id="kubernetes">Kubernetes</h2>
