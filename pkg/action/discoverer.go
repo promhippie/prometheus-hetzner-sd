@@ -16,6 +16,7 @@ import (
 
 const (
 	hetznerPrefix  = model.MetaLabelPrefix + "hetzner_"
+	projectLabel   = hetznerPrefix + "project"
 	nameLabel      = hetznerPrefix + "name"
 	numberLabel    = hetznerPrefix + "number"
 	ipLabel        = hetznerPrefix + "ipv4"
@@ -30,7 +31,7 @@ const (
 
 // Discoverer implements the Prometheus discoverer interface.
 type Discoverer struct {
-	client  *hetzner.Client
+	clients map[string]*hetzner.Client
 	logger  log.Logger
 	refresh int
 	lasts   map[string]struct{}
@@ -57,58 +58,66 @@ func (d Discoverer) Run(ctx context.Context, ch chan<- []*targetgroup.Group) {
 }
 
 func (d *Discoverer) getTargets(ctx context.Context) ([]*targetgroup.Group, error) {
-	now := time.Now()
-	servers, _, err := d.client.Server.ListServers()
-	requestDuration.Observe(time.Since(now).Seconds())
-
-	if err != nil {
-		level.Warn(d.logger).Log(
-			"msg", "Failed to fetch servers",
-			"err", err,
-		)
-
-		requestFailures.Inc()
-		return nil, err
-	}
-
-	level.Debug(d.logger).Log(
-		"msg", "Requested servers",
-		"count", len(servers),
-	)
-
 	current := make(map[string]struct{})
-	targets := make([]*targetgroup.Group, len(servers))
+	targets := make([]*targetgroup.Group, 0)
 
-	for _, server := range servers {
-		target := &targetgroup.Group{
-			Source: fmt.Sprintf("hetzner/%d", server.ServerNumber),
-			Targets: []model.LabelSet{
-				{
-					model.AddressLabel: model.LabelValue(server.ServerIP),
-				},
-			},
-			Labels: model.LabelSet{
-				model.AddressLabel:              model.LabelValue(server.ServerIP),
-				model.LabelName(nameLabel):      model.LabelValue(server.ServerName),
-				model.LabelName(numberLabel):    model.LabelValue(strconv.Itoa(int(server.ServerNumber))),
-				model.LabelName(ipLabel):        model.LabelValue(server.ServerIP),
-				model.LabelName(productLabel):   model.LabelValue(server.Product),
-				model.LabelName(dcLabel):        model.LabelValue(strings.ToLower(server.Dc)),
-				model.LabelName(trafficLabel):   model.LabelValue(server.Traffic),
-				model.LabelName(flatrateLabel):  model.LabelValue(strconv.FormatBool(server.Flatrate)),
-				model.LabelName(statusLabel):    model.LabelValue(server.Status),
-				model.LabelName(throttledLabel): model.LabelValue(strconv.FormatBool(server.Throttled)),
-				model.LabelName(cancelledLabel): model.LabelValue(strconv.FormatBool(server.Cancelled)),
-			},
+	for project, client := range d.clients {
+
+		now := time.Now()
+		servers, _, err := client.Server.ListServers()
+		requestDuration.WithLabelValues(project).Observe(time.Since(now).Seconds())
+
+		if err != nil {
+			level.Warn(d.logger).Log(
+				"msg", "Failed to fetch servers",
+				"project", project,
+				"err", err,
+			)
+
+			requestFailures.WithLabelValues(project).Inc()
+			return nil, err
 		}
 
 		level.Debug(d.logger).Log(
-			"msg", "Server added",
-			"source", target.Source,
+			"msg", "Requested servers",
+			"project", project,
+			"count", len(servers),
 		)
 
-		current[target.Source] = struct{}{}
-		targets = append(targets, target)
+		for _, server := range servers {
+			target := &targetgroup.Group{
+				Source: fmt.Sprintf("hetzner/%d", server.ServerNumber),
+				Targets: []model.LabelSet{
+					{
+						model.AddressLabel: model.LabelValue(server.ServerIP),
+					},
+				},
+				Labels: model.LabelSet{
+					model.AddressLabel:              model.LabelValue(server.ServerIP),
+					model.LabelName(projectLabel):   model.LabelValue(project),
+					model.LabelName(nameLabel):      model.LabelValue(server.ServerName),
+					model.LabelName(numberLabel):    model.LabelValue(strconv.Itoa(int(server.ServerNumber))),
+					model.LabelName(ipLabel):        model.LabelValue(server.ServerIP),
+					model.LabelName(productLabel):   model.LabelValue(server.Product),
+					model.LabelName(dcLabel):        model.LabelValue(strings.ToLower(server.Dc)),
+					model.LabelName(trafficLabel):   model.LabelValue(server.Traffic),
+					model.LabelName(flatrateLabel):  model.LabelValue(strconv.FormatBool(server.Flatrate)),
+					model.LabelName(statusLabel):    model.LabelValue(server.Status),
+					model.LabelName(throttledLabel): model.LabelValue(strconv.FormatBool(server.Throttled)),
+					model.LabelName(cancelledLabel): model.LabelValue(strconv.FormatBool(server.Cancelled)),
+				},
+			}
+
+			level.Debug(d.logger).Log(
+				"msg", "Server added",
+				"project", project,
+				"source", target.Source,
+			)
+
+			current[target.Source] = struct{}{}
+			targets = append(targets, target)
+		}
+
 	}
 
 	for k := range d.lasts {

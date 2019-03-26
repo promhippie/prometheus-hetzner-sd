@@ -34,14 +34,17 @@ func Server(cfg *config.Config, logger log.Logger) error {
 
 	{
 		ctx := context.Background()
+		clients := make(map[string]*hetzner.Client, len(cfg.Target.Credentials))
 
-		client := hetzner.NewClient(
-			cfg.Target.Username,
-			cfg.Target.Password,
-		)
+		for _, credential := range cfg.Target.Credentials {
+			clients[credential.Project] = hetzner.NewClient(
+				credential.Username,
+				credential.Password,
+			)
+		}
 
 		disc := Discoverer{
-			client:  client,
+			clients: clients,
 			logger:  logger,
 			refresh: cfg.Target.Refresh,
 			lasts:   make(map[string]struct{}),

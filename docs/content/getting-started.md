@@ -39,6 +39,13 @@ Currently we have not prepared a deployment for Kubernetes, but this is somethin
 
 ## Configuration
 
+### Envrionment variables
+
+If you prefer to configure the service with environment variables you can see the available variables below, in case you want to configure multiple accounts with a single service you are forced to use the configuration file as the environment variables are limited to a single account. As the service is pretty lightweight you can even start an instance per account and configure it entirely by the variables, it's up to you.
+
+PROMETHEUS_HETZNER_CONFIG
+: Path to Hetzner configuration file, optionally, required for muli credentials
+
 PROMETHEUS_HETZNER_USERNAME
 : Username for the Hetzner API, required for authentication
 
@@ -62,6 +69,10 @@ PROMETHEUS_HETZNER_OUTPUT_FILE
 
 PROMETHEUS_HETZNER_OUTPUT_REFRESH
 : Discovery refresh interval in seconds, defaults to `30`
+
+### Configuration file
+
+Especially if you want to configure multiple accounts within a single service discovery you got to use the configuration file. So far we support the file formats `JSON` and `YAML`, if you want to get a full example configuration just take a look at [our repository](https://github.com/promhippie/prometheus-hetzner-sd/tree/master/config), there you can always see the latest configuration format. These example configurations include all available options, they also include the default values.
 
 ## Labels
 

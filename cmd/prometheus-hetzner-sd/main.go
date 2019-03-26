@@ -21,6 +21,9 @@ var (
 
 	// ErrMissingHetznerPassword defines the error if hetzner.password is empty.
 	ErrMissingHetznerPassword = errors.New("Missing required hetzner.password")
+
+	// ErrMissingAnyCredentials defines the error if no credentials are provided.
+	ErrMissingAnyCredentials = errors.New("Missing any credentials")
 )
 
 func main() {
@@ -90,22 +93,37 @@ func main() {
 						Destination: &cfg.Target.Refresh,
 					},
 					&cli.StringFlag{
-						Name:        "hetzner.username",
-						Value:       "",
-						Usage:       "Username for the Hetzner API",
-						EnvVars:     []string{"PROMETHEUS_HETZNER_USERNAME"},
-						Destination: &cfg.Target.Username,
+						Name:    "hetzner.username",
+						Value:   "",
+						Usage:   "Username for the Hetzner API",
+						EnvVars: []string{"PROMETHEUS_HETZNER_USERNAME"},
 					},
 					&cli.StringFlag{
-						Name:        "hetzner.password",
-						Value:       "",
-						Usage:       "Password for the Hetzner API",
-						EnvVars:     []string{"PROMETHEUS_HETZNER_PASSWORD"},
-						Destination: &cfg.Target.Password,
+						Name:    "hetzner.password",
+						Value:   "",
+						Usage:   "Password for the Hetzner API",
+						EnvVars: []string{"PROMETHEUS_HETZNER_PASSWORD"},
+					},
+					&cli.StringFlag{
+						Name:    "hetzner.config",
+						Value:   "",
+						Usage:   "Path to Hetzner configuration file",
+						EnvVars: []string{"PROMETHEUS_HETZNER_CONFIG"},
 					},
 				},
 				Action: func(c *cli.Context) error {
 					logger := setupLogger(cfg)
+
+					if c.IsSet("hetzner.config") {
+						if err := readConfig(c.String("hetzner.config"), cfg); err != nil {
+							level.Error(logger).Log(
+								"msg", "Failed to read config",
+								"err", err,
+							)
+
+							return err
+						}
+					}
 
 					if cfg.Target.File == "" {
 						level.Error(logger).Log(
@@ -115,20 +133,41 @@ func main() {
 						return ErrMissingOutputFile
 					}
 
-					if cfg.Target.Username == "" {
-						level.Error(logger).Log(
-							"msg", ErrMissingHetznerUsername,
+					if c.IsSet("hetzner.username") && c.IsSet("hetzner.password") {
+						credentials := config.Credential{
+							Project:  "default",
+							Username: c.String("hetzner.username"),
+							Password: c.String("hetzner.password"),
+						}
+
+						cfg.Target.Credentials = append(
+							cfg.Target.Credentials,
+							credentials,
 						)
 
-						return ErrMissingHetznerUsername
+						if credentials.Username == "" {
+							level.Error(logger).Log(
+								"msg", ErrMissingHetznerUsername,
+							)
+
+							return ErrMissingHetznerUsername
+						}
+
+						if credentials.Password == "" {
+							level.Error(logger).Log(
+								"msg", ErrMissingHetznerPassword,
+							)
+
+							return ErrMissingHetznerPassword
+						}
 					}
 
-					if cfg.Target.Password == "" {
+					if len(cfg.Target.Credentials) == 0 {
 						level.Error(logger).Log(
-							"msg", ErrMissingHetznerPassword,
+							"msg", ErrMissingAnyCredentials,
 						)
 
-						return ErrMissingHetznerPassword
+						return ErrMissingAnyCredentials
 					}
 
 					return action.Server(cfg, logger)

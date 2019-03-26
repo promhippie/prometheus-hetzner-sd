@@ -643,12 +643,12 @@
   revision = "d3ae77c26ac8db90639677e4831a728d33c36111"
 
 [[projects]]
-  digest = "1:4d2e5a73dc1500038e504a8d78b986630e3626dc027bc030ba5c75da257cdb96"
+  branch = "v2"
+  digest = "1:2d56cd111a870bdf3ee37601877effe1fc79b8983645c147846f4769b6eb7051"
   name = "gopkg.in/yaml.v2"
   packages = ["."]
   pruneopts = "UT"
-  revision = "51d6538a90f86fe93ac480b35f37b2be17fef232"
-  version = "v2.2.2"
+  revision = "7b8349ac747c6a24702b762d2c4fd9266cf4f1d6"
 
 [[projects]]
   branch = "master"
@@ -813,6 +813,7 @@
     "github.com/prometheus/prometheus/discovery",
     "github.com/prometheus/prometheus/discovery/targetgroup",
     "gopkg.in/urfave/cli.v2",
+    "gopkg.in/yaml.v2",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1
