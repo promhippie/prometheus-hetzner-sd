@@ -1,12 +1,22 @@
 package main
 
 import (
+	"encoding/json"
+	"errors"
+	"gopkg.in/yaml.v2"
+	"io/ioutil"
 	"os"
+	"path/filepath"
 	"strings"
 
 	"github.com/go-kit/kit/log"
 	"github.com/go-kit/kit/log/level"
 	"github.com/promhippie/prometheus-hetzner-sd/pkg/config"
+)
+
+var (
+	// ErrConfigFormatInvalid defines the error if ext is unsupported.
+	ErrConfigFormatInvalid = errors.New("Config extension is not supported")
 )
 
 func setupLogger(cfg *config.Config) log.Logger {
@@ -39,4 +49,31 @@ func setupLogger(cfg *config.Config) log.Logger {
 		logger,
 		"ts", log.DefaultTimestampUTC,
 	)
+}
+
+func readConfig(file string, cfg *config.Config) error {
+	if file == "" {
+		return nil
+	}
+
+	content, err := ioutil.ReadFile(file)
+
+	if err != nil {
+		return err
+	}
+
+	switch strings.ToLower(filepath.Ext(file)) {
+	case ".yaml", ".yml":
+		if err = yaml.Unmarshal(content, cfg); err != nil {
+			return err
+		}
+	case ".json":
+		if err = json.Unmarshal(content, cfg); err != nil {
+			return err
+		}
+	default:
+		return ErrConfigFormatInvalid
+	}
+
+	return nil
 }

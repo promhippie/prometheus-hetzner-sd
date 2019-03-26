@@ -32,3 +32,4 @@ coverage.out
 
 .envrc
 hetzner.json
+config.json
