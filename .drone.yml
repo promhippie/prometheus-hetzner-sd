@@ -1,284 +1,366 @@
+---
+kind: pipeline
+name: default
+
+platform:
+  os: linux
+  arch: amd64
+
 workspace:
   base: /srv/app
   path: src/github.com/promhippie/prometheus-hetzner-sd
 
-branches:
-  - master
+steps:
+- name: app-prepare
+  image: webhippie/golang:1.10
+  pull: always
+  environment:
+    CGO_ENABLED: 0
+    GOPATH: /srv/app
+  commands:
+  - make clean
+  - make retool
+  - make sync
+  - make generate
 
-pipeline:
-  cache-restore:
-    image: plugins/s3-cache:1
-    pull: true
-    secrets: [ cache_s3_endpoint, cache_s3_access_key, cache_s3_secret_key ]
-    restore: true
-    when:
-      local: false
+- name: app-vet
+  image: webhippie/golang:1.10
+  pull: always
+  environment:
+    CGO_ENABLED: 0
+    GOPATH: /srv/app
+  commands:
+  - make vet
+  depends_on:
+  - app-prepare
 
-  app-prepare:
-    image: webhippie/golang:1.10
-    pull: true
-    environment:
-      - CGO_ENABLED=0
-      - GOPATH=/srv/app
-      - TAGS=
-    commands:
-      - make clean
-      - make retool
-      - make sync
-      - make generate
+- name: app-check
+  image: webhippie/golang:1.10
+  pull: always
+  environment:
+    CGO_ENABLED: 0
+    GOPATH: /srv/app
+  commands:
+  - make megacheck
+  depends_on:
+  - app-prepare
 
-  app-vet:
-    image: webhippie/golang:1.10
-    pull: true
-    group: cli
-    environment:
-      - CGO_ENABLED=0
-      - GOPATH=/srv/app
-      - TAGS=
-    commands:
-      - make vet
+- name: app-lint
+  image: webhippie/golang:1.10
+  pull: always
+  environment:
+    CGO_ENABLED: 0
+    GOPATH: /srv/app
+  commands:
+  - make lint
+  depends_on:
+  - app-prepare
 
-  app-check:
-    image: webhippie/golang:1.10
-    pull: true
-    group: cli
-    environment:
-      - CGO_ENABLED=0
-      - GOPATH=/srv/app
-      - TAGS=
-    commands:
-      - make megacheck
+- name: app-test
+  image: webhippie/golang:1.10
+  pull: always
+  environment:
+    CGO_ENABLED: 0
+    GOPATH: /srv/app
+  commands:
+  - make test
+  depends_on:
+  - app-prepare
 
-  app-lint:
-    image: webhippie/golang:1.10
-    pull: true
-    group: cli
-    environment:
-      - CGO_ENABLED=0
-      - GOPATH=/srv/app
-      - TAGS=
-    commands:
-      - make lint
+- name: app-build
+  image: webhippie/golang:1.10
+  pull: always
+  environment:
+    CGO_ENABLED: 0
+    GOPATH: /srv/app
+  commands:
+  - make build
+  depends_on:
+  - app-prepare
 
-  app-test:
-    image: webhippie/golang:1.10
-    pull: true
-    group: cli
-    environment:
-      - CGO_ENABLED=0
-      - GOPATH=/srv/app
-      - TAGS=
-    commands:
-      - make test
-
-  app-build:
-    image: webhippie/golang:1.10
-    pull: true
-    group: cli
-    environment:
-      - CGO_ENABLED=0
-      - GOPATH=/srv/app
-      - TAGS=
-    commands:
-      - make build
-
-  app-windows:
-    image: karalabe/xgo-1.10:latest
-    pull: true
+- name: app-windows
+  image: karalabe/xgo-1.10:latest
+  pull: always
+  environment:
+    CGO_ENABLED: 0
+    GOPATH: /srv/app
+  commands:
+  - make release-dirs release-windows
+  settings:
     group: release
-    environment:
-      - CGO_ENABLED=0
-      - GOPATH=/srv/app
-      - TAGS=
-    commands:
-      - make release-dirs release-windows
-    when:
-      event: [ push, tag ]
+  when:
+    event:
+    - push
+    - tag
+  depends_on:
+  - app-vet
+  - app-check
+  - app-lint
+  - app-test
+  - app-build
 
-  app-linux:
-    image: karalabe/xgo-1.10:latest
-    pull: true
+- name: app-linux
+  image: karalabe/xgo-1.10:latest
+  pull: always
+  environment:
+    CGO_ENABLED: 0
+    GOPATH: /srv/app
+  commands:
+  - make release-dirs release-linux
+  settings:
     group: release
-    environment:
-      - CGO_ENABLED=0
-      - GOPATH=/srv/app
-      - TAGS=
-    commands:
-      - make release-dirs release-linux
-    when:
-      event: [ push, tag ]
+  when:
+    event:
+    - push
+    - tag
+  depends_on:
+  - app-vet
+  - app-check
+  - app-lint
+  - app-test
+  - app-build
 
-  app-darwin:
-    image: karalabe/xgo-1.10:latest
-    pull: true
+- name: app-darwin
+  image: karalabe/xgo-1.10:latest
+  pull: always
+  environment:
+    CGO_ENABLED: 0
+    GOPATH: /srv/app
+  commands:
+  - make release-dirs release-darwin
+  settings:
     group: release
-    environment:
-      - CGO_ENABLED=0
-      - GOPATH=/srv/app
-      - TAGS=
-    commands:
-      - make release-dirs release-darwin
-    when:
-      event: [ push, tag ]
+  when:
+    event:
+    - push
+    - tag
+  depends_on:
+  - app-vet
+  - app-check
+  - app-lint
+  - app-test
+  - app-build
 
-  app-finish:
-    image: webhippie/golang:1.10
-    pull: true
-    environment:
-      - CGO_ENABLED=0
-      - GOPATH=/srv/app
-      - TAGS=
-    commands:
-      - make release-copy release-check
-    when:
-      event: [ push, tag ]
+- name: app-finish
+  image: webhippie/golang:1.10
+  pull: always
+  environment:
+    CGO_ENABLED: 0
+    GOPATH: /srv/app
+  commands:
+  - make release-copy release-check
+  when:
+    event:
+    - push
+    - tag
+  depends_on:
+  - app-windows
+  - app-linux
+  - app-darwin
 
-  app-gpgsign:
-    image: plugins/gpgsign:1
-    pull: true
-    secrets: [ gpgsign_key, gpgsign_passphrase ]
+- name: app-gpgsign
+  pull: always
+  image: plugins/gpgsign:1
+  settings:
+    key:
+      from_secret: gpgsign_key
+    passphrase:
+      from_secret: gpgsign_passphrase
     detach_sign: true
-    files:
-      - dist/release/*
     excludes:
-      - dist/release/*.sha256
-    when:
-      event: [ push, tag ]
+    - "dist/release/*.sha256"
+    files:
+    - "dist/release/*"
+  when:
+    event:
+    - push
+    - tag
 
-  docker-amd64:
-    image: plugins/docker:17.05
-    pull: true
-    group: docker
-    secrets: [ docker_username, docker_password ]
-    repo: promhippie/prometheus-hetzner-sd
-    dockerfile: docker/Dockerfile.linux.amd64
+- name: docker-amd64
+  pull: always
+  image: plugins/docker:17.05
+  settings:
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
     auto_tag: true
     auto_tag_suffix: linux-amd64
-    when:
-      event: [ push, tag ]
-
-  docker-i386:
-    image: plugins/docker:17.05
-    pull: true
-    group: docker
-    secrets: [ docker_username, docker_password ]
+    dockerfile: docker/Dockerfile.linux.amd64
     repo: promhippie/prometheus-hetzner-sd
-    dockerfile: docker/Dockerfile.linux.i386
+  when:
+    event:
+    - push
+    - tag
+  depends_on:
+  - app-gpgsign
+
+- name: docker-i386
+  pull: always
+  image: plugins/docker:17.05
+  settings:
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
     auto_tag: true
     auto_tag_suffix: linux-i386
-    when:
-      event: [ push, tag ]
-
-  docker-arm64v8:
-    image: plugins/docker:17.05
-    pull: true
-    group: docker
-    secrets: [ docker_username, docker_password ]
+    dockerfile: docker/Dockerfile.linux.i386
     repo: promhippie/prometheus-hetzner-sd
-    dockerfile: docker/Dockerfile.linux.arm64v8
+  when:
+    event:
+    - push
+    - tag
+  depends_on:
+  - app-gpgsign
+
+- name: docker-arm64v8
+  pull: always
+  image: plugins/docker:17.05
+  settings:
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
     auto_tag: true
     auto_tag_suffix: linux-arm64v8
-    when:
-      event: [ push, tag ]
-
-  docker-arm32v7:
-    image: plugins/docker:17.05
-    pull: true
-    group: docker
-    secrets: [ docker_username, docker_password ]
+    dockerfile: docker/Dockerfile.linux.arm64v8
     repo: promhippie/prometheus-hetzner-sd
-    dockerfile: docker/Dockerfile.linux.arm32v7
+  when:
+    event:
+    - push
+    - tag
+  depends_on:
+  - app-gpgsign
+
+- name: docker-arm32v7
+  pull: always
+  image: plugins/docker:17.05
+  settings:
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
     auto_tag: true
     auto_tag_suffix: linux-arm32v7
-    when:
-      event: [ push, tag ]
-
-  docker-arm32v6:
-    image: plugins/docker:17.05
-    pull: true
-    group: docker
-    secrets: [ docker_username, docker_password ]
+    dockerfile: docker/Dockerfile.linux.arm32v7
     repo: promhippie/prometheus-hetzner-sd
-    dockerfile: docker/Dockerfile.linux.arm32v6
+  when:
+    event:
+    - push
+    - tag
+  depends_on:
+  - app-gpgsign
+
+- name: docker-arm32v6
+  pull: always
+  image: plugins/docker:17.05
+  settings:
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
     auto_tag: true
     auto_tag_suffix: linux-arm32v6
-    when:
-      event: [ push, tag ]
+    dockerfile: docker/Dockerfile.linux.arm32v6
+    repo: promhippie/prometheus-hetzner-sd
+  when:
+    event:
+    - push
+    - tag
+  depends_on:
+  - app-gpgsign
 
-  docker-manifests:
-    image: plugins/manifest:1
-    pull: true
-    secrets: [ docker_username, docker_password ]
-    spec: manifest.tmpl
+- name: docker-manifests
+  pull: always
+  image: plugins/manifest:1
+  settings:
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
     auto_tag: true
     ignore_missing: true
-    when:
-      event: [ push, tag ]
+    spec: manifest.tmpl
+  when:
+    event:
+    - push
+    - tag
+  depends_on:
+  - docker-amd64
+  - docker-i386
+  - docker-arm64v8
+  - docker-arm32v7
+  - docker-arm32v6
 
-  docker-microbadger:
-    image: plugins/webhook:1
-    pull: true
-    secrets:
-      - source: microbadger_token
-        target: plugin_urls
-    when:
-      event: [ push, tag ]
+- name: docker-microbadger
+  pull: always
+  image: plugins/webhook:1
+  settings:
+    urls:
+      from_secret: microbadger_token
+  when:
+    event:
+    - push
+    - tag
 
-  cache-rebuild:
-    image: plugins/s3-cache:1
-    pull: true
-    secrets: [ cache_s3_endpoint, cache_s3_access_key, cache_s3_secret_key ]
-    rebuild: true
-    mount:
-      - _tools
-      - vendor
-    when:
-      local: false
-      event: [ push ]
+- name: docs-build
+  pull: always
+  image: webhippie/hugo:latest
+  commands:
+  - make docs
+  when:
+    event:
+    - push
 
-  cache-flush:
-    image: plugins/s3-cache:1
-    pull: true
-    secrets: [ cache_s3_endpoint, cache_s3_access_key, cache_s3_secret_key ]
-    flush: true
-    flush_age: 14
-    when:
-      local: false
-      event: [ push ]
-
-  docs-build:
-    image: webhippie/hugo:latest
-    pull: true
-    commands:
-      - make docs
-    when:
-      local: false
-      event: [ push ]
-
-  docs-publish:
-    image: plugins/gh-pages:1
-    pull: true
-    secrets: [ github_username, github_password ]
+- name: docs-publish
+  pull: always
+  image: plugins/gh-pages:1
+  settings:
+    username:
+      from_secret: github_username
+    password:
+      from_secret: github_password
     pages_directory: docs/public/
     temporary_base: tmp/
-    when:
-      local: false
-      event: [ push ]
+  when:
+    event:
+    - push
 
-  github-release:
-    image: plugins/github-release:1
-    pull: true
-    secrets: [ github_token ]
+- name: github-release
+  pull: always
+  image: plugins/github-release:1
+  settings:
+    token:
+      from_secret: github_token
     files:
-      - dist/release/*
-    when:
-      event: [ tag ]
+    - "dist/release/*"
+  when:
+    event:
+    - tag
 
-  notify-matrix:
-    image: plugins/matrix:1
-    pull: true
-    secrets: [ matrix_roomid, matrix_username, matrix_password ]
-    when:
-      local: false
-      event: [ push, tag ]
-      status: [ changed, failure ]
+- name: notify-matrix
+  pull: always
+  image: plugins/matrix:1
+  settings:
+    username:
+      from_secret: matrix_username
+    password:
+      from_secret: matrix_password
+    roomid:
+      from_secret: matrix_roomid
+  when:
+    event:
+    - push
+    - tag
+    status:
+    - changed
+    - failure
+
+trigger:
+  ref:
+  - refs/heads/master
+  - "refs/tags/**"
+  - "refs/pull/**"
+
+...
