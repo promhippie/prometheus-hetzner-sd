@@ -434,7 +434,14 @@
 
 <h2 id="configuration">Configuration</h2>
 
+<h3 id="envrionment-variables">Envrionment variables</h3>
+
+<p>If you prefer to configure the service with environment variables you can see the available variables below, in case you want to configure multiple accounts with a single service you are forced to use the configuration file as the environment variables are limited to a single account. As the service is pretty lightweight you can even start an instance per account and configure it entirely by the variables, it&rsquo;s up to you.</p>
+
 <dl>
+<dt>PROMETHEUS_HETZNER_CONFIG<br /></dt>
+<dd>Path to Hetzner configuration file, optionally, required for muli credentials<br />
+<br /></dd>
 <dt>PROMETHEUS_HETZNER_USERNAME<br /></dt>
 <dd>Username for the Hetzner API, required for authentication<br />
 <br /></dd>
@@ -460,6 +467,10 @@
 <dd>Discovery refresh interval in seconds, defaults to <code>30</code><br />
 <br /></dd>
 </dl>
+
+<h3 id="configuration-file">Configuration file</h3>
+
+<p>Especially if you want to configure multiple accounts within a single service discovery you got to use the configuration file. So far we support the file formats <code>JSON</code> and <code>YAML</code>, if you want to get a full example configuration just take a look at <a href="https://github.com/promhippie/prometheus-hetzner-sd/tree/master/config">our repository</a>, there you can always see the latest configuration format. These example configurations include all available options, they also include the default values.</p>
 
 <h2 id="labels">Labels</h2>
 
