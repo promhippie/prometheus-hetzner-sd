@@ -9,6 +9,7 @@
 ### Added
 
 * Support multiple credentials and config file
+* Add simple healthcheck command
 
 ## [0.2.0] - 2019-01-11
 
