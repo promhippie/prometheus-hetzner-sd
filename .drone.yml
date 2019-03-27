@@ -283,7 +283,7 @@ steps:
   pull: always
   image: plugins/github-release:1
   settings:
-    token:
+    api_key:
       from_secret: github_token
     files:
     - "dist/release/*"
