@@ -1,9 +1,8 @@
-package main
+package command
 
 import (
 	"encoding/json"
 	"errors"
-	"gopkg.in/yaml.v2"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -12,11 +11,12 @@ import (
 	"github.com/go-kit/kit/log"
 	"github.com/go-kit/kit/log/level"
 	"github.com/promhippie/prometheus-hetzner-sd/pkg/config"
+	"gopkg.in/yaml.v2"
 )
 
 var (
 	// ErrConfigFormatInvalid defines the error if ext is unsupported.
-	ErrConfigFormatInvalid = errors.New("Config extension is not supported")
+	ErrConfigFormatInvalid = errors.New("config extension is not supported")
 )
 
 func setupLogger(cfg *config.Config) log.Logger {

@@ -44,7 +44,7 @@ Currently we have not prepared a deployment for Kubernetes, but this is somethin
 If you prefer to configure the service with environment variables you can see the available variables below, in case you want to configure multiple accounts with a single service you are forced to use the configuration file as the environment variables are limited to a single account. As the service is pretty lightweight you can even start an instance per account and configure it entirely by the variables, it's up to you.
 
 PROMETHEUS_HETZNER_CONFIG
-: Path to Hetzner configuration file, optionally, required for muli credentials
+: Path to Hetzner configuration file, optionally, required for multi credentials
 
 PROMETHEUS_HETZNER_USERNAME
 : Username for the Hetzner API, required for authentication
@@ -76,16 +76,18 @@ Especially if you want to configure multiple accounts within a single service di
 
 ## Labels
 
+* `__address__`
+* `__meta_hetzner_cancelled`
+* `__meta_hetzner_dc`
+* `__meta_hetzner_flatrate`
+* `__meta_hetzner_ipv4`
 * `__meta_hetzner_name`
 * `__meta_hetzner_number`
-* `__meta_hetzner_ipv4`
 * `__meta_hetzner_product`
-* `__meta_hetzner_dc`
-* `__meta_hetzner_traffic`
-* `__meta_hetzner_flatrate`
+* `__meta_hetzner_project`
 * `__meta_hetzner_status`
 * `__meta_hetzner_throttled`
-* `__meta_hetzner_cancelled`
+* `__meta_hetzner_traffic`
 
 ## Metrics
 
