@@ -24,10 +24,10 @@ import (
 func Server(cfg *config.Config, logger log.Logger) error {
 	level.Info(logger).Log(
 		"msg", "Launching Prometheus Hetzner SD",
-		"version", version.Version,
+		"version", version.String,
 		"revision", version.Revision,
-		"date", version.BuildDate,
-		"go", version.GoVersion,
+		"date", version.Date,
+		"go", version.Go,
 	)
 
 	var gr run.Group

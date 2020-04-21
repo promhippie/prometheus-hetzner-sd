@@ -62,7 +62,6 @@ func (d *Discoverer) getTargets(ctx context.Context) ([]*targetgroup.Group, erro
 	targets := make([]*targetgroup.Group, 0)
 
 	for project, client := range d.clients {
-
 		now := time.Now()
 		servers, _, err := client.Server.ListServers()
 		requestDuration.WithLabelValues(project).Observe(time.Since(now).Seconds())
@@ -75,7 +74,7 @@ func (d *Discoverer) getTargets(ctx context.Context) ([]*targetgroup.Group, erro
 			)
 
 			requestFailures.WithLabelValues(project).Inc()
-			return nil, err
+			continue
 		}
 
 		level.Debug(d.logger).Log(

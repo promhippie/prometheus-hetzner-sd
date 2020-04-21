@@ -1,4 +1,4 @@
-package main
+package command
 
 import (
 	"errors"
@@ -6,21 +6,7 @@ import (
 	"github.com/go-kit/kit/log/level"
 	"github.com/promhippie/prometheus-hetzner-sd/pkg/action"
 	"github.com/promhippie/prometheus-hetzner-sd/pkg/config"
-	"gopkg.in/urfave/cli.v2"
-)
-
-var (
-	// ErrMissingOutputFile defines the error if output.file is empty.
-	ErrMissingOutputFile = errors.New("Missing path for output.file")
-
-	// ErrMissingHetznerUsername defines the error if hetzner.username is empty.
-	ErrMissingHetznerUsername = errors.New("Missing required hetzner.username")
-
-	// ErrMissingHetznerPassword defines the error if hetzner.password is empty.
-	ErrMissingHetznerPassword = errors.New("Missing required hetzner.password")
-
-	// ErrMissingAnyCredentials defines the error if no credentials are provided.
-	ErrMissingAnyCredentials = errors.New("Missing any credentials")
+	"github.com/urfave/cli/v2"
 )
 
 // Server provides the sub-command to start the server.
@@ -92,10 +78,10 @@ func Server(cfg *config.Config) *cli.Command {
 
 			if cfg.Target.File == "" {
 				level.Error(logger).Log(
-					"msg", ErrMissingOutputFile,
+					"msg", "Missing path for output.file",
 				)
 
-				return ErrMissingOutputFile
+				return errors.New("missing path for output.file")
 			}
 
 			if c.IsSet("hetzner.username") && c.IsSet("hetzner.password") {
@@ -112,27 +98,27 @@ func Server(cfg *config.Config) *cli.Command {
 
 				if credentials.Username == "" {
 					level.Error(logger).Log(
-						"msg", ErrMissingHetznerUsername,
+						"msg", "Missing required hetzner.username",
 					)
 
-					return ErrMissingHetznerUsername
+					return errors.New("missing required hetzner.username")
 				}
 
 				if credentials.Password == "" {
 					level.Error(logger).Log(
-						"msg", ErrMissingHetznerPassword,
+						"msg", "Missing required hetzner.password",
 					)
 
-					return ErrMissingHetznerPassword
+					return errors.New("missing required hetzner.password")
 				}
 			}
 
 			if len(cfg.Target.Credentials) == 0 {
 				level.Error(logger).Log(
-					"msg", ErrMissingAnyCredentials,
+					"msg", "Missing any credentials",
 				)
 
-				return ErrMissingAnyCredentials
+				return errors.New("missing any credentials")
 			}
 
 			return action.Server(cfg, logger)

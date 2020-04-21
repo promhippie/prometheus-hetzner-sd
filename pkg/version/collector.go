@@ -15,6 +15,6 @@ func Collector(ns string) *prometheus.GaugeVec {
 		[]string{"version", "revision", "goversion"},
 	)
 
-	info.WithLabelValues(Version, Revision, GoVersion).Set(1)
+	info.WithLabelValues(String, Revision, Go).Set(1)
 	return info
 }

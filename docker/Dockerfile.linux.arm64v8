@@ -10,8 +10,9 @@ LABEL maintainer="Thomas Boerger <thomas@webhippie.de>" \
 
 ENTRYPOINT ["/usr/bin/prometheus-hetzner-sd"]
 CMD ["server"]
+HEALTHCHECK CMD ["/usr/bin/prometheus-hetzner-sd", "health"]
 
 COPY --from=build /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=build /etc/mime.types /etc/
 
-COPY dist/binaries/prometheus-hetzner-sd-*-linux-arm64 /usr/bin/prometheus-hetzner-sd
+COPY bin/prometheus-hetzner-sd /usr/bin/prometheus-hetzner-sd
