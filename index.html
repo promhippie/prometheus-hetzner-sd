@@ -2,7 +2,7 @@
 
 <html id="html" lang="en-us">
 	<head>
-	<meta name="generator" content="Hugo 0.54.0" />
+	<meta name="generator" content="Hugo 0.55.5" />
 		<meta http-equiv="content-type" content="text/html;charset=utf-8">
 		<meta name="viewport" content="width=device-width"/>
 
@@ -440,7 +440,7 @@
 
 <dl>
 <dt>PROMETHEUS_HETZNER_CONFIG<br /></dt>
-<dd>Path to Hetzner configuration file, optionally, required for muli credentials<br />
+<dd>Path to Hetzner configuration file, optionally, required for multi credentials<br />
 <br /></dd>
 <dt>PROMETHEUS_HETZNER_USERNAME<br /></dt>
 <dd>Username for the Hetzner API, required for authentication<br />
@@ -475,16 +475,18 @@
 <h2 id="labels">Labels</h2>
 
 <ul>
+<li><code>__address__</code><br /></li>
+<li><code>__meta_hetzner_cancelled</code><br /></li>
+<li><code>__meta_hetzner_dc</code><br /></li>
+<li><code>__meta_hetzner_flatrate</code><br /></li>
+<li><code>__meta_hetzner_ipv4</code><br /></li>
 <li><code>__meta_hetzner_name</code><br /></li>
 <li><code>__meta_hetzner_number</code><br /></li>
-<li><code>__meta_hetzner_ipv4</code><br /></li>
 <li><code>__meta_hetzner_product</code><br /></li>
-<li><code>__meta_hetzner_dc</code><br /></li>
-<li><code>__meta_hetzner_traffic</code><br /></li>
-<li><code>__meta_hetzner_flatrate</code><br /></li>
+<li><code>__meta_hetzner_project</code><br /></li>
 <li><code>__meta_hetzner_status</code><br /></li>
 <li><code>__meta_hetzner_throttled</code><br /></li>
-<li><code>__meta_hetzner_cancelled</code><br />
+<li><code>__meta_hetzner_traffic</code><br />
 <br /></li>
 </ul>
 
@@ -515,22 +517,12 @@
 
 				<p>As this project is built with Go you need to install Go first. The installation of Go is out of the scope of this document, please follow the <a href="https://golang.org/doc/install">official documentation</a>. After the installation of Go you need to get the sources:</p>
 
-<div class="highlight"><pre class="chroma"><code class="language-txt" data-lang="txt">go get -d github.com/promhippie/prometheus-hetzner-sd
-cd $GOPATH/src/github.com/promhippie/prometheus-hetzner-sd</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-txt" data-lang="txt">git clone https://github.com/promhippie/prometheus-hetzner-sd.git
+cd prometheus-hetzner-sd/</code></pre></div>
 
-<p>All required tool besides Go itself are bundled or getting automatically installed within the <code>GOPATH</code>. We are using <a href="https://github.com/twitchtv/retool">retool</a> to keep the used tools consistent and <a href="https://github.com/golang/dep">dep</a> to manage the dependencies. All commands to build this project are part of our <code>Makefile</code>.</p>
+<p>All required tool besides Go itself are bundled by Go modules, all you need is part of the <code>Makfile</code>:</p>
 
-<div class="highlight"><pre class="chroma"><code class="language-txt" data-lang="txt"># install retool
-make retool
-
-# sync dependencies
-make sync
-
-# generate code
-make generate
-
-# build binary
-make build</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-txt" data-lang="txt">make generate build</code></pre></div>
 
 <p>Finally you should have the binary within the <code>bin/</code> folder now, give it a try with <code>./bin/prometheus-hetzner-sd -h</code> to see all available options.</p>
 
