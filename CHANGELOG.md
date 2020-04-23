@@ -1,6 +1,6 @@
-# Changelog for unreleased
+# Changelog for 0.4.0
 
-The following sections list the changes for unreleased.
+The following sections list the changes for 0.4.0.
 
 ## Summary
 
