@@ -313,10 +313,10 @@ def binary(ctx, name):
             'from_secret': 'gpgsign_passphrase',
           },
           'files': [
-            'dist/release/*',
+            'dist/%s-*' % ctx.repo.name,
           ],
           'excludes': [
-            'dist/release/*.sha256',
+            'dist/*.sha256',
           ],
           'detach_sign': True,
         },
@@ -349,7 +349,7 @@ def binary(ctx, name):
             'from_secret': 'github_token',
           },
           'files': [
-            'dist/release/*',
+            'dist/%s-*' % ctx.repo.name,
           ],
           'title': ctx.build.ref.replace('refs/tags/', ''),
           'note': 'dist/CHANGELOG.md',
