@@ -402,23 +402,108 @@
 
 <p>First of all we need to prepare a configuration for <a href="https://prometheus.io">Prometheus</a> that includes the service discovery which simply maps to a node exporter.</p>
 
-<script type="application/javascript" src="//gist.github.com/tboerger/ce77494a0c24012a95e22b3691d15b7c.js?file=prometheus.yml"></script>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml">global<span class="p">:</span><span class="w">
+</span><span class="w">  </span>scrape_interval<span class="p">:</span><span class="w"> </span>1m<span class="w">
+</span><span class="w">  </span>scrape_timeout<span class="p">:</span><span class="w"> </span>10s<span class="w">
+</span><span class="w">  </span>evaluation_interval<span class="p">:</span><span class="w"> </span>1m<span class="w">
+</span><span class="w">
+</span><span class="w"></span>scrape_configs<span class="p">:</span><span class="w">
+</span><span class="w"></span>-<span class="w"> </span>job_name<span class="p">:</span><span class="w"> </span>node<span class="w">
+</span><span class="w">  </span>file_sd_configs<span class="p">:</span><span class="w">
+</span><span class="w">  </span>-<span class="w"> </span>files<span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&#34;/etc/sd/hetzner.json&#34;</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="w">  </span>relabel_configs<span class="p">:</span><span class="w">
+</span><span class="w">  </span>-<span class="w"> </span>source_labels<span class="p">:</span><span class="w"> </span><span class="p">[</span>__meta_hetzner_public_ipv4<span class="p">]</span><span class="w">
+</span><span class="w">    </span>replacement<span class="p">:</span><span class="w"> </span><span class="s2">&#34;${1}:9100&#34;</span><span class="w">
+</span><span class="w">    </span>target_label<span class="p">:</span><span class="w"> </span>__address__<span class="w">
+</span><span class="w">  </span>-<span class="w"> </span>source_labels<span class="p">:</span><span class="w"> </span><span class="p">[</span>__meta_hetzner_dc<span class="p">]</span><span class="w">
+</span><span class="w">    </span>target_label<span class="p">:</span><span class="w"> </span>datacenter<span class="w">
+</span><span class="w">  </span>-<span class="w"> </span>source_labels<span class="p">:</span><span class="w"> </span><span class="p">[</span>__meta_hetzner_name<span class="p">]</span><span class="w">
+</span><span class="w">    </span>target_label<span class="p">:</span><span class="w"> </span>instance<span class="w">
+</span><span class="w"></span>-<span class="w"> </span>job_name<span class="p">:</span><span class="w"> </span>hetzner-sd<span class="w">
+</span><span class="w">  </span>static_configs<span class="p">:</span><span class="w">
+</span><span class="w">  </span>-<span class="w"> </span>targets<span class="p">:</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>hetzner-sd<span class="p">:</span><span class="m">9000</span></code></pre></div>
 
 <p>After preparing the configuration we need to create the <code>docker-compose.yml</code> within the same folder, this <code>docker-compose.yml</code> starts a simple <a href="https://prometheus.io">Prometheus</a> instance together with the service discovery. Don&rsquo;t forget to update the envrionment variables with the required credentials. If you are using a different volume for the service discovery you have to make sure that the container user is allowed to write to this volume.</p>
 
-<script type="application/javascript" src="//gist.github.com/tboerger/ce77494a0c24012a95e22b3691d15b7c.js?file=docker-compose.yml"></script>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml">version<span class="p">:</span><span class="w"> </span><span class="s1">&#39;2&#39;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span>volumes<span class="p">:</span><span class="w">
+</span><span class="w">  </span>prometheus<span class="p">:</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span>services<span class="p">:</span><span class="w">
+</span><span class="w">  </span>prometheus<span class="p">:</span><span class="w">
+</span><span class="w">    </span>image<span class="p">:</span><span class="w"> </span>prom/prometheus<span class="p">:</span>v2.<span class="m">6.0</span><span class="w">
+</span><span class="w">    </span>restart<span class="p">:</span><span class="w"> </span>always<span class="w">
+</span><span class="w">    </span>ports<span class="p">:</span><span class="w">
+</span><span class="w">      </span>-<span class="w"> </span><span class="m">9090</span><span class="p">:</span><span class="m">9090</span><span class="w">
+</span><span class="w">    </span>volumes<span class="p">:</span><span class="w">
+</span><span class="w">      </span>-<span class="w"> </span>prometheus<span class="p">:</span>/prometheus<span class="w">
+</span><span class="w">      </span>-<span class="w"> </span>./prometheus.yml<span class="p">:</span>/etc/prometheus/prometheus.yml<span class="w">
+</span><span class="w">      </span>-<span class="w"> </span>./service-discovery<span class="p">:</span>/etc/sd<span class="w">
+</span><span class="w">
+</span><span class="w">  </span>hetzner-sd<span class="p">:</span><span class="w">
+</span><span class="w">    </span>image<span class="p">:</span><span class="w"> </span>promhippie/prometheus-hetzner-sd<span class="p">:</span>latest<span class="w">
+</span><span class="w">    </span>restart<span class="p">:</span><span class="w"> </span>always<span class="w">
+</span><span class="w">    </span>environment<span class="p">:</span><span class="w">
+</span><span class="w">      </span>-<span class="w"> </span>PROMETHEUS_HETZNER_LOG_PRETTY=<span class="kc">true</span><span class="w">
+</span><span class="w">      </span>-<span class="w"> </span>PROMETHEUS_HETZNER_OUTPUT_FILE=/etc/sd/hetzner.json<span class="w">
+</span><span class="w">      </span>-<span class="w"> </span>PROMETHEUS_HETZNER_USERNAME=octocat<span class="w">
+</span><span class="w">      </span>-<span class="w"> </span>PROMETHEUS_HETZNER_PASSWORD=p455w0rd<span class="w">
+</span><span class="w">    </span>volumes<span class="p">:</span><span class="w">
+</span><span class="w">      </span>-<span class="w"> </span>./service-discovery<span class="p">:</span>/etc/sd</code></pre></div>
 
 <p>Since our <code>latest</code> Docker tag always refers to the <code>master</code> branch of the Git repository you should always use some fixed version. You can see all available tags at our <a href="https://hub.docker.com/r/promhippie/prometheus-hetzner-sd/tags/">DockerHub repository</a>, there you will see that we also provide a manifest, you can easily start the exporter on various architectures without any change to the image name. You should apply a change like this to the <code>docker-compose.yml</code>:</p>
 
-<script type="application/javascript" src="//gist.github.com/tboerger/ce77494a0c24012a95e22b3691d15b7c.js?file=tag.diff"></script>
+<div class="highlight"><pre class="chroma"><code class="language-diff" data-lang="diff">  hetzner-sd:
+<span class="gd">-   image: promhippie/prometheus-hetzner-sd:latest
+</span><span class="gd"></span><span class="gi">+   image: promhippie/prometheus-hetzner-sd:0.2.0
+</span><span class="gi"></span>    restart: always
+    environment:
+      - PROMETHEUS_HETZNER_LOG_PRETTY=true
+      - PROMETHEUS_HETZNER_OUTPUT_FILE=/etc/sd/hetzner.json
+      - PROMETHEUS_HETZNER_USERNAME=octocat
+      - PROMETHEUS_HETZNER_PASSWORD=p455w0rd
+    volumes:
+      - ./service-discovery:/etc/sd
+</code></pre></div>
 
 <p>Depending on how you have launched and configured <a href="https://prometheus.io">Prometheus</a> it&rsquo;s possible that it&rsquo;s running as user <code>nobody</code>, in that case you should run the service discovery as this user as well, otherwise <a href="https://prometheus.io">Prometheus</a> won&rsquo;t be able to read the generated JSON file:</p>
 
-<script type="application/javascript" src="//gist.github.com/tboerger/ce77494a0c24012a95e22b3691d15b7c.js?file=userid.diff"></script>
+<div class="highlight"><pre class="chroma"><code class="language-diff" data-lang="diff">  hetzner-sd:
+    image: promhippie/prometheus-hetzner-sd:latest
+    restart: always
+<span class="gi">+   user: &#39;65534&#39;
+</span><span class="gi"></span>    environment:
+      - PROMETHEUS_HETZNER_LOG_PRETTY=true
+      - PROMETHEUS_HETZNER_OUTPUT_FILE=/etc/sd/hetzner.json
+      - PROMETHEUS_HETZNER_USERNAME=octocat
+      - PROMETHEUS_HETZNER_PASSWORD=p455w0rd
+    volumes:
+      - ./service-discovery:/etc/sd
+</code></pre></div>
 
 <p>Finally the service discovery should be configured fine, let&rsquo;s start this stack with <a href="https://docs.docker.com/compose/">docker-compose</a>, you just need to execute <code>docker-compose up</code> within the directory where you have stored <code>prometheus.yml</code> and <code>docker-compose.yml</code>.</p>
 
-<script type="application/javascript" src="//gist.github.com/tboerger/ce77494a0c24012a95e22b3691d15b7c.js?file=output.log"></script>
+<div class="highlight"><pre class="chroma"><code class="language-txt" data-lang="txt"># docker-compose up
+Creating network &#34;hetzner-sd_default&#34; with the default driver
+Creating volume &#34;hetzner-sd_prometheus&#34; with default driver
+Creating hetzner-sd_prometheus_1 ... done
+Creating hetzner-sd_hetzner-sd_1 ... done
+Attaching to hetzner-sd_prometheus_1, hetzner-sd_hetzner-sd_1
+prometheus_1  | level=info ts=2018-10-07T16:01:22.6155953Z caller=main.go:238 msg=&#34;Starting Prometheus&#34; version=&#34;(version=2.4.3, branch=HEAD, revision=167a4b4e73a8eca8df648d2d2043e21bdb9a7449)&#34;
+prometheus_1  | level=info ts=2018-10-07T16:01:22.6157307Z caller=main.go:239 build_context=&#34;(go=go1.11.1, user=root@1e42b46043e9, date=20181004-08:42:02)&#34;
+prometheus_1  | level=info ts=2018-10-07T16:01:22.6160183Z caller=main.go:240 host_details=&#34;(Linux 4.9.93-linuxkit-aufs #1 SMP Wed Jun 6 16:55:56 UTC 2018 x86_64 a0bb50ec35d5 (none))&#34;
+prometheus_1  | level=info ts=2018-10-07T16:01:22.6162848Z caller=main.go:241 fd_limits=&#34;(soft=1048576, hard=1048576)&#34;
+prometheus_1  | level=info ts=2018-10-07T16:01:22.6163093Z caller=main.go:242 vm_limits=&#34;(soft=unlimited, hard=unlimited)&#34;
+prometheus_1  | level=info ts=2018-10-07T16:01:22.6180128Z caller=main.go:554 msg=&#34;Starting TSDB ...&#34;
+prometheus_1  | level=info ts=2018-10-07T16:01:22.6182055Z caller=web.go:397 component=web msg=&#34;Start listening for connections&#34; address=0.0.0.0:9090
+prometheus_1  | level=info ts=2018-10-07T16:01:22.6256146Z caller=main.go:564 msg=&#34;TSDB started&#34;
+prometheus_1  | level=info ts=2018-10-07T16:01:22.6270596Z caller=main.go:624 msg=&#34;Loading configuration file&#34; filename=/etc/prometheus/prometheus.yml
+prometheus_1  | level=info ts=2018-10-07T16:01:22.6308837Z caller=main.go:650 msg=&#34;Completed loading of configuration file&#34; filename=/etc/prometheus/prometheus.yml
+prometheus_1  | level=info ts=2018-10-07T16:01:22.6315546Z caller=main.go:523 msg=&#34;Server is ready to receive web requests.&#34;
+hetzner-sd_1  | level=info ts=2018-10-07T16:01:22.6646358Z msg=&#34;Launching Prometheus Hetzner SD&#34; version=0.0.0-master revision=9e14c57 date=20180924 go=go1.11
+hetzner-sd_1  | level=info ts=2018-10-07T16:01:22.6648328Z msg=&#34;Starting metrics server&#34; addr=0.0.0.0:9000</code></pre></div>
 
 <p>That&rsquo;s all, the service discovery should be up and running. You can access <a href="https://prometheus.io">Prometheus</a> at <a href="http://localhost:9090">http://localhost:9090</a>.</p>
 
