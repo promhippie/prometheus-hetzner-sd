@@ -195,6 +195,21 @@ def docker(ctx, arch):
     },
     'steps': [
       {
+        'name': 'version',
+        'image': 'webhippie/golang:1.14',
+        'pull': 'always',
+        'environment': environment,
+        'commands': [
+          'go env',
+        ],
+        'volumes': [
+          {
+            'name': 'gopath',
+            'path': '/srv/app',
+          },
+        ],
+      },
+      {
         'name': 'generate',
         'image': 'webhippie/golang:1.14',
         'pull': 'always',
