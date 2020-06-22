@@ -13,16 +13,16 @@ else
 endif
 
 ifeq ($(UNAME), Darwin)
-	GOBUILD ?= go build -i
+	GOBUILD ?= CGO_ENABLED=0 go build -i
 else
-	GOBUILD ?= go build
+	GOBUILD ?= CGO_ENABLED=0 go build
 endif
 
 PACKAGES ?= $(shell go list ./...)
 SOURCES ?= $(shell find . -name "*.go" -type f -not -path "./node_modules/*")
 GENERATE ?= $(PACKAGES)
 
-TAGS ?=
+TAGS ?= netgo
 
 ifndef OUTPUT
 	ifneq ($(DRONE_TAG),)
@@ -48,7 +48,7 @@ ifndef SHA
 	SHA := $(shell git rev-parse --short HEAD)
 endif
 
-LDFLAGS += -s -w -X "$(IMPORT)/pkg/version.String=$(VERSION)" -X "$(IMPORT)/pkg/version.Revision=$(SHA)" -X "$(IMPORT)/pkg/version.Date=$(DATE)"
+LDFLAGS += -s -w -extldflags "-static" -X "$(IMPORT)/pkg/version.String=$(VERSION)" -X "$(IMPORT)/pkg/version.Revision=$(SHA)" -X "$(IMPORT)/pkg/version.Date=$(DATE)"
 GCFLAGS += all=-N -l
 
 .PHONY: all
