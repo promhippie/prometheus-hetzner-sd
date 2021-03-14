@@ -1,3 +1,5 @@
+include .bingo/Variables.mk
+
 SHELL := bash
 NAME := prometheus-hetzner-sd
 IMPORT := github.com/promhippie/$(NAME)
@@ -72,24 +74,24 @@ vet:
 	go vet $(PACKAGES)
 
 .PHONY: staticcheck
-staticcheck:
-	go run honnef.co/go/tools/cmd/staticcheck -tags '$(TAGS)' $(PACKAGES)
+staticcheck: $(STATICCHECK)
+	$(STATICCHECK) -tags '$(TAGS)' $(PACKAGES)
 
 .PHONY: lint
-lint:
-	for PKG in $(PACKAGES); do go run golang.org/x/lint/golint -set_exit_status $$PKG || exit 1; done;
+lint: $(GOLINT)
+	for PKG in $(PACKAGES); do $(GOLINT) -set_exit_status $$PKG || exit 1; done;
 
 .PHONY: generate
 generate:
 	go generate $(GENERATE)
 
 .PHONY: changelog
-changelog:
-	go run github.com/restic/calens >| CHANGELOG.md
+changelog: $(CALENS)
+	$(CALENS) >| CHANGELOG.md
 
 .PHONY: test
 test:
-	go run github.com/haya14busa/goverage -v -coverprofile coverage.out $(PACKAGES)
+	go test -coverprofile coverage.out $(PACKAGES)
 
 .PHONY: install
 install: $(SOURCES)
@@ -155,11 +157,7 @@ $(DIST)/$(EXECUTABLE)-$(OUTPUT)-linux-mips64le:
 
 .PHONY: release-darwin
 release-darwin: $(DIST) \
-	$(DIST)/$(EXECUTABLE)-$(OUTPUT)-darwin-386 \
 	$(DIST)/$(EXECUTABLE)-$(OUTPUT)-darwin-amd64
-
-$(DIST)/$(EXECUTABLE)-$(OUTPUT)-darwin-386:
-	GOOS=darwin GOARCH=386 $(GOBUILD) -v -tags '$(TAGS)' -ldflags '$(LDFLAGS)' -o $@ ./cmd/$(NAME)
 
 $(DIST)/$(EXECUTABLE)-$(OUTPUT)-darwin-amd64:
 	GOOS=darwin GOARCH=amd64 $(GOBUILD) -v -tags '$(TAGS)' -ldflags '$(LDFLAGS)' -o $@ ./cmd/$(NAME)
@@ -192,4 +190,4 @@ docs:
 
 .PHONY: watch
 watch:
-	go run github.com/cespare/reflex -c reflex.conf
+	$(REFLEX) -c reflex.conf

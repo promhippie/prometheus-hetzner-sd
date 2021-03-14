@@ -33,7 +33,7 @@ def testing(ctx):
     'steps': [
       {
         'name': 'generate',
-        'image': 'webhippie/golang:1.14',
+        'image': 'webhippie/golang:1.15',
         'pull': 'always',
         'commands': [
           'make generate',
@@ -47,7 +47,7 @@ def testing(ctx):
       },
       {
         'name': 'vet',
-        'image': 'webhippie/golang:1.14',
+        'image': 'webhippie/golang:1.15',
         'pull': 'always',
         'commands': [
           'make vet',
@@ -61,7 +61,7 @@ def testing(ctx):
       },
       {
         'name': 'staticcheck',
-        'image': 'webhippie/golang:1.14',
+        'image': 'webhippie/golang:1.15',
         'pull': 'always',
         'commands': [
           'make staticcheck',
@@ -75,7 +75,7 @@ def testing(ctx):
       },
       {
         'name': 'lint',
-        'image': 'webhippie/golang:1.14',
+        'image': 'webhippie/golang:1.15',
         'pull': 'always',
         'commands': [
           'make lint',
@@ -89,7 +89,7 @@ def testing(ctx):
       },
       {
         'name': 'build',
-        'image': 'webhippie/golang:1.14',
+        'image': 'webhippie/golang:1.15',
         'pull': 'always',
         'commands': [
           'make build',
@@ -103,7 +103,7 @@ def testing(ctx):
       },
       {
         'name': 'test',
-        'image': 'webhippie/golang:1.14',
+        'image': 'webhippie/golang:1.15',
         'pull': 'always',
         'commands': [
           'make test',
@@ -150,19 +150,29 @@ def docker(ctx, arch):
 
   if arch == 'amd64':
     agent = 'amd64'
-    environment = {}
+    environment = {
+      'GOARCH': 'amd64',
+    }
 
   if arch == 'arm32v6':
-    agent = 'arm'
-    environment = {}
+    agent = 'amd64'
+    environment = {
+      'GOARCH': 'arm',
+      'GOARM': '6',
+    }
 
   if arch == 'arm32v7':
-    agent = 'arm'
-    environment = {}
+    agent = 'amd64'
+    environment = {
+      'GOARCH': 'arm',
+      'GOARM': '7',
+    }
 
   if arch == 'arm64v8':
-    agent = 'arm64'
-    environment = {}
+    agent = 'amd64'
+    environment = {
+      'GOARCH': 'arm64',
+    }
 
   if ctx.build.event == 'pull_request':
     docker = {
@@ -196,7 +206,7 @@ def docker(ctx, arch):
     'steps': [
       {
         'name': 'version',
-        'image': 'webhippie/golang:1.14',
+        'image': 'webhippie/golang:1.15',
         'pull': 'always',
         'environment': environment,
         'commands': [
@@ -211,7 +221,7 @@ def docker(ctx, arch):
       },
       {
         'name': 'generate',
-        'image': 'webhippie/golang:1.14',
+        'image': 'webhippie/golang:1.15',
         'pull': 'always',
         'environment': environment,
         'commands': [
@@ -226,7 +236,7 @@ def docker(ctx, arch):
       },
       {
         'name': 'build',
-        'image': 'webhippie/golang:1.14',
+        'image': 'webhippie/golang:1.15',
         'pull': 'always',
         'environment': environment,
         'commands': [
@@ -276,7 +286,7 @@ def binary(ctx, name):
     'steps': [
       {
         'name': 'generate',
-        'image': 'webhippie/golang:1.14',
+        'image': 'webhippie/golang:1.15',
         'pull': 'always',
         'commands': [
           'make generate',
@@ -290,7 +300,7 @@ def binary(ctx, name):
       },
       {
         'name': 'build',
-        'image': 'webhippie/golang:1.14',
+        'image': 'webhippie/golang:1.15',
         'pull': 'always',
         'commands': [
           'make release-%s' % (name),
@@ -304,7 +314,7 @@ def binary(ctx, name):
       },
       {
         'name': 'finish',
-        'image': 'webhippie/golang:1.14',
+        'image': 'webhippie/golang:1.15',
         'pull': 'always',
         'commands': [
           'make release-finish',
@@ -526,7 +536,7 @@ def changelog(ctx):
       },
       {
         'name': 'generate',
-        'image': 'webhippie/golang:1.14',
+        'image': 'webhippie/golang:1.15',
         'pull': 'always',
         'commands': [
           'make changelog',
@@ -534,7 +544,7 @@ def changelog(ctx):
       },
       {
         'name': 'changes',
-        'image': 'webhippie/golang:1.14',
+        'image': 'webhippie/golang:1.15',
         'pull': 'always',
         'commands': [
           'git diff CHANGELOG.md',

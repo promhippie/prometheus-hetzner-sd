@@ -1,0 +1,21 @@
+{
+    "extends": [
+        "config:base",
+        ":automergeMinor",
+        ":automergeDigest",
+        "docker:enableMajor",
+        "docker:pinDigests"
+    ],
+    "enabledManagers": [
+        "gomod",
+        "dockerfile"
+    ],
+    "gomod": {
+        "postUpdateOptions": [
+            "gomodTidy"
+        ]
+    },
+    "labels": [
+        "renovate"
+    ]
+}
