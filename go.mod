@@ -13,7 +13,7 @@ require (
 	github.com/oklog/run v1.1.0
 	github.com/prometheus/client_golang v1.10.0
 	github.com/prometheus/common v0.21.0
-	github.com/prometheus/prometheus v1.8.2-0.20210217141258-a6be548dbc17
+	github.com/prometheus/prometheus v1.8.2
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	github.com/urfave/cli/v2 v2.3.0
 	golang.org/x/mod v0.4.1 // indirect
