@@ -1,20 +1,39 @@
 {
     "extends": [
         "config:base",
+        ":dependencyDashboard",
         ":automergeMinor",
-        ":automergeDigest",
-        "docker:enableMajor",
-        "docker:pinDigests"
+        ":automergeDigest"
     ],
     "enabledManagers": [
-        "gomod",
-        "dockerfile"
+        "dockerfile",
+        "gomod"
     ],
+    "dockerfile": {
+        "enableMajor": true,
+        "pinDigests": true
+    },
     "gomod": {
         "postUpdateOptions": [
+            "gomodUpdateImportPaths",
             "gomodTidy"
         ]
     },
+    "packageRules": [{
+        "description": "Automerge digest updates",
+        "groupName": "docker digests",
+        "matchDatasources": [
+            "docker"
+        ],
+        "matchUpdateTypes": [
+            "pin",
+            "digest",
+            "major",
+            "minor",
+            "patch"
+        ],
+        "automerge": true
+    }],
     "labels": [
         "renovate"
     ]
