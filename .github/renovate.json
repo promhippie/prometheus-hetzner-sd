@@ -32,6 +32,13 @@
             "patch"
         ],
         "automerge": true
+    }, {
+        "matchPackagePatterns": [
+            "gomod"
+        ],
+        "excludePackagePatterns": [
+            "^github.com/prometheus/prometheus"
+        ]
     }],
     "labels": [
         "renovate"
