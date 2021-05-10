@@ -10,7 +10,6 @@
         "gomod"
     ],
     "dockerfile": {
-        "enableMajor": true,
         "pinDigests": true
     },
     "gomod": {
