@@ -6,7 +6,7 @@ require (
 	github.com/appscode/go v0.0.0-20201105063637-5613f3b8169f // indirect
 	github.com/appscode/go-hetzner v0.0.0-20180411135907-c038e08b19b1
 	github.com/cpuguy83/go-md2man/v2 v2.0.0 // indirect
-	github.com/go-chi/chi v1.5.4
+	github.com/go-chi/chi/v5 v5.0.3
 	github.com/go-kit/kit v0.10.0
 	github.com/google/go-cmp v0.5.5 // indirect
 	github.com/joho/godotenv v1.3.0
