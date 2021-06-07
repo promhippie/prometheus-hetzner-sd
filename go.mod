@@ -10,8 +10,8 @@ require (
 	github.com/go-kit/kit v0.10.0
 	github.com/joho/godotenv v1.3.0
 	github.com/oklog/run v1.1.0
-	github.com/prometheus/client_golang v1.10.0
-	github.com/prometheus/common v0.25.0
+	github.com/prometheus/client_golang v1.11.0
+	github.com/prometheus/common v0.26.0
 	github.com/prometheus/prometheus v1.8.2-0.20210331101223-3cafc58827d1
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	github.com/urfave/cli/v2 v2.3.0
