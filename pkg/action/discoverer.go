@@ -14,19 +14,24 @@ import (
 	"github.com/prometheus/prometheus/discovery/targetgroup"
 )
 
-const (
-	hetznerPrefix  = model.MetaLabelPrefix + "hetzner_"
-	projectLabel   = hetznerPrefix + "project"
-	nameLabel      = hetznerPrefix + "name"
-	numberLabel    = hetznerPrefix + "number"
-	ipLabel        = hetznerPrefix + "ipv4"
-	productLabel   = hetznerPrefix + "product"
-	dcLabel        = hetznerPrefix + "dc"
-	trafficLabel   = hetznerPrefix + "traffic"
-	flatrateLabel  = hetznerPrefix + "flatrate"
-	statusLabel    = hetznerPrefix + "status"
-	throttledLabel = hetznerPrefix + "throttled"
-	cancelledLabel = hetznerPrefix + "cancelled"
+var (
+	// providerPrefix defines the general prefix for all labels.
+	providerPrefix = model.MetaLabelPrefix + "hetzner_"
+
+	// Labels defines all available labels for this provider.
+	Labels = map[string]string{
+		"cancelled": providerPrefix + "cancelled",
+		"dc":        providerPrefix + "dc",
+		"flatrate":  providerPrefix + "flatrate",
+		"ip":        providerPrefix + "ipv4",
+		"name":      providerPrefix + "name",
+		"number":    providerPrefix + "number",
+		"product":   providerPrefix + "product",
+		"project":   providerPrefix + "project",
+		"status":    providerPrefix + "status",
+		"throttled": providerPrefix + "throttled",
+		"traffic":   providerPrefix + "traffic",
+	}
 )
 
 // Discoverer implements the Prometheus discoverer interface.
@@ -92,18 +97,18 @@ func (d *Discoverer) getTargets(ctx context.Context) ([]*targetgroup.Group, erro
 					},
 				},
 				Labels: model.LabelSet{
-					model.AddressLabel:              model.LabelValue(server.ServerIP),
-					model.LabelName(projectLabel):   model.LabelValue(project),
-					model.LabelName(nameLabel):      model.LabelValue(server.ServerName),
-					model.LabelName(numberLabel):    model.LabelValue(strconv.Itoa(int(server.ServerNumber))),
-					model.LabelName(ipLabel):        model.LabelValue(server.ServerIP),
-					model.LabelName(productLabel):   model.LabelValue(server.Product),
-					model.LabelName(dcLabel):        model.LabelValue(strings.ToLower(server.Dc)),
-					model.LabelName(trafficLabel):   model.LabelValue(server.Traffic),
-					model.LabelName(flatrateLabel):  model.LabelValue(strconv.FormatBool(server.Flatrate)),
-					model.LabelName(statusLabel):    model.LabelValue(server.Status),
-					model.LabelName(throttledLabel): model.LabelValue(strconv.FormatBool(server.Throttled)),
-					model.LabelName(cancelledLabel): model.LabelValue(strconv.FormatBool(server.Cancelled)),
+					model.AddressLabel:                   model.LabelValue(server.ServerIP),
+					model.LabelName(Labels["project"]):   model.LabelValue(project),
+					model.LabelName(Labels["name"]):      model.LabelValue(server.ServerName),
+					model.LabelName(Labels["number"]):    model.LabelValue(strconv.Itoa(int(server.ServerNumber))),
+					model.LabelName(Labels["ip"]):        model.LabelValue(server.ServerIP),
+					model.LabelName(Labels["product"]):   model.LabelValue(server.Product),
+					model.LabelName(Labels["dc"]):        model.LabelValue(strings.ToLower(server.Dc)),
+					model.LabelName(Labels["traffic"]):   model.LabelValue(server.Traffic),
+					model.LabelName(Labels["flatrate"]):  model.LabelValue(strconv.FormatBool(server.Flatrate)),
+					model.LabelName(Labels["status"]):    model.LabelValue(server.Status),
+					model.LabelName(Labels["throttled"]): model.LabelValue(strconv.FormatBool(server.Throttled)),
+					model.LabelName(Labels["cancelled"]): model.LabelValue(strconv.FormatBool(server.Cancelled)),
 				},
 			}
 
