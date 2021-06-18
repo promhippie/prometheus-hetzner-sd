@@ -14,54 +14,7 @@ func Server(cfg *config.Config) *cli.Command {
 	return &cli.Command{
 		Name:  "server",
 		Usage: "Start integrated server",
-		Flags: []cli.Flag{
-			&cli.StringFlag{
-				Name:        "web.address",
-				Value:       "0.0.0.0:9000",
-				Usage:       "Address to bind the metrics server",
-				EnvVars:     []string{"PROMETHEUS_HETZNER_WEB_ADDRESS"},
-				Destination: &cfg.Server.Addr,
-			},
-			&cli.StringFlag{
-				Name:        "web.path",
-				Value:       "/metrics",
-				Usage:       "Path to bind the metrics server",
-				EnvVars:     []string{"PROMETHEUS_HETZNER_WEB_PATH"},
-				Destination: &cfg.Server.Path,
-			},
-			&cli.StringFlag{
-				Name:        "output.file",
-				Value:       "/etc/prometheus/hetzner.json",
-				Usage:       "Path to write the file_sd config",
-				EnvVars:     []string{"PROMETHEUS_HETZNER_OUTPUT_FILE"},
-				Destination: &cfg.Target.File,
-			},
-			&cli.IntFlag{
-				Name:        "output.refresh",
-				Value:       30,
-				Usage:       "Discovery refresh interval in seconds",
-				EnvVars:     []string{"PROMETHEUS_HETZNER_OUTPUT_REFRESH"},
-				Destination: &cfg.Target.Refresh,
-			},
-			&cli.StringFlag{
-				Name:    "hetzner.username",
-				Value:   "",
-				Usage:   "Username for the Hetzner API",
-				EnvVars: []string{"PROMETHEUS_HETZNER_USERNAME"},
-			},
-			&cli.StringFlag{
-				Name:    "hetzner.password",
-				Value:   "",
-				Usage:   "Password for the Hetzner API",
-				EnvVars: []string{"PROMETHEUS_HETZNER_PASSWORD"},
-			},
-			&cli.StringFlag{
-				Name:    "hetzner.config",
-				Value:   "",
-				Usage:   "Path to Hetzner configuration file",
-				EnvVars: []string{"PROMETHEUS_HETZNER_CONFIG"},
-			},
-		},
+		Flags: ServerFlags(cfg),
 		Action: func(c *cli.Context) error {
 			logger := setupLogger(cfg)
 
@@ -122,6 +75,58 @@ func Server(cfg *config.Config) *cli.Command {
 			}
 
 			return action.Server(cfg, logger)
+		},
+	}
+}
+
+// ServerFlags defines the available server flags.
+func ServerFlags(cfg *config.Config) []cli.Flag {
+	return []cli.Flag{
+		&cli.StringFlag{
+			Name:        "web.address",
+			Value:       "0.0.0.0:9000",
+			Usage:       "Address to bind the metrics server",
+			EnvVars:     []string{"PROMETHEUS_HETZNER_WEB_ADDRESS"},
+			Destination: &cfg.Server.Addr,
+		},
+		&cli.StringFlag{
+			Name:        "web.path",
+			Value:       "/metrics",
+			Usage:       "Path to bind the metrics server",
+			EnvVars:     []string{"PROMETHEUS_HETZNER_WEB_PATH"},
+			Destination: &cfg.Server.Path,
+		},
+		&cli.StringFlag{
+			Name:        "output.file",
+			Value:       "/etc/prometheus/hetzner.json",
+			Usage:       "Path to write the file_sd config",
+			EnvVars:     []string{"PROMETHEUS_HETZNER_OUTPUT_FILE"},
+			Destination: &cfg.Target.File,
+		},
+		&cli.IntFlag{
+			Name:        "output.refresh",
+			Value:       30,
+			Usage:       "Discovery refresh interval in seconds",
+			EnvVars:     []string{"PROMETHEUS_HETZNER_OUTPUT_REFRESH"},
+			Destination: &cfg.Target.Refresh,
+		},
+		&cli.StringFlag{
+			Name:    "hetzner.username",
+			Value:   "",
+			Usage:   "Username for the Hetzner API",
+			EnvVars: []string{"PROMETHEUS_HETZNER_USERNAME"},
+		},
+		&cli.StringFlag{
+			Name:    "hetzner.password",
+			Value:   "",
+			Usage:   "Password for the Hetzner API",
+			EnvVars: []string{"PROMETHEUS_HETZNER_PASSWORD"},
+		},
+		&cli.StringFlag{
+			Name:    "hetzner.config",
+			Value:   "",
+			Usage:   "Path to Hetzner configuration file",
+			EnvVars: []string{"PROMETHEUS_HETZNER_CONFIG"},
 		},
 	}
 }
