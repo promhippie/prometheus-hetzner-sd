@@ -183,6 +183,14 @@ release-finish: release-reduce release-checksum
 docs:
 	hugo -s docs/
 
+.PHONY: envvars
+envvars:
+	go run hack/generate-envvars-docs.go
+
+.PHONY: labels
+labels:
+	go run hack/generate-labels-docs.go
+
 .PHONY: watch
 watch:
 	$(REFLEX) -c reflex.conf
