@@ -22,22 +22,7 @@ func Run() error {
 				Email: "thomas@webhippie.de",
 			},
 		},
-		Flags: []cli.Flag{
-			&cli.StringFlag{
-				Name:        "log.level",
-				Value:       "info",
-				Usage:       "Only log messages with given severity",
-				EnvVars:     []string{"PROMETHEUS_HETZNER_LOG_LEVEL"},
-				Destination: &cfg.Logs.Level,
-			},
-			&cli.BoolFlag{
-				Name:        "log.pretty",
-				Value:       false,
-				Usage:       "Enable pretty messages for logging",
-				EnvVars:     []string{"PROMETHEUS_HETZNER_LOG_PRETTY"},
-				Destination: &cfg.Logs.Pretty,
-			},
-		},
+		Flags: RootFlags(cfg),
 		Commands: []*cli.Command{
 			Health(cfg),
 			Server(cfg),
@@ -57,4 +42,24 @@ func Run() error {
 	}
 
 	return app.Run(os.Args)
+}
+
+// RootFlags defines the available root flags.
+func RootFlags(cfg *config.Config) []cli.Flag {
+	return []cli.Flag{
+		&cli.StringFlag{
+			Name:        "log.level",
+			Value:       "info",
+			Usage:       "Only log messages with given severity",
+			EnvVars:     []string{"PROMETHEUS_HETZNER_LOG_LEVEL"},
+			Destination: &cfg.Logs.Level,
+		},
+		&cli.BoolFlag{
+			Name:        "log.pretty",
+			Value:       false,
+			Usage:       "Enable pretty messages for logging",
+			EnvVars:     []string{"PROMETHEUS_HETZNER_LOG_PRETTY"},
+			Destination: &cfg.Logs.Pretty,
+		},
+	}
 }
