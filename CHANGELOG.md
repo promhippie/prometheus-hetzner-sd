@@ -1,12 +1,15 @@
-# Changelog for unreleased
+# Changelog for 0.5.0
 
-The following sections list the changes for unreleased.
+The following sections list the changes for 0.5.0.
 
 ## Summary
 
  * Chg #14: Use bingo for development tooling
  * Chg #15: Update Go version and dependencies
+ * Chg #34: Improvements for automated documentation
  * Chg #16: Drop dariwn/386 release builds
+ * Chg #35: Integrate new HTTP service discovery handler
+ * Chg #36: Integrate standard web config
 
 ## Details
 
@@ -25,12 +28,36 @@ The following sections list the changes for unreleased.
 
    https://github.com/promhippie/prometheus-hetzner-sd/issues/15
 
+ * Change #34: Improvements for automated documentation
+
+   We have added some simple scripts that gets executed by Drone to keep moving documentation
+   parts like the available labels or the available environment variables always up to date. No
+   need to update the docs related to that manually anymore.
+
+   https://github.com/promhippie/prometheus-hetzner-sd/pull/34
+
  * Change #16: Drop dariwn/386 release builds
 
    We dropped the build of 386 builds on Darwin as this architecture is not supported by current Go
    versions anymore.
 
    https://github.com/promhippie/prometheus-hetzner-sd/issues/16
+
+ * Change #35: Integrate new HTTP service discovery handler
+
+   We integrated the new HTTP service discovery which have been introduced by Prometheus
+   starting with version 2.28. With this new service discovery you can deploy this service
+   whereever you want and you are not tied to the Prometheus filesystem anymore.
+
+   https://github.com/promhippie/prometheus-hetzner-sd/issues/35
+
+ * Change #36: Integrate standard web config
+
+   We integrated the new web config from the Prometheus toolkit which provides a configuration
+   for TLS support and also some basic builtin authentication. For the detailed configuration
+   you check out the documentation.
+
+   https://github.com/promhippie/prometheus-hetzner-sd/issues/36
 
 
 # Changelog for 0.4.1
