@@ -98,6 +98,55 @@ Depending on how you have launched and configured [Prometheus](https://prometheu
       - ./service-discovery:/etc/sd
 {{< / highlight >}}
 
+If you want to secure the access to the exporter or also the HTTP service discovery endpoint you can provide a web config. You just need to provide a path to the config file in order to enable the support for it, for details about the config format look at the [documentation](#web-configuration) section:
+
+{{< highlight diff >}}
+  hetzner-exporter:
+    image: promhippie/prometheus-hetzner-sd:latest
+    restart: always
+    environment:
++     - PROMETHEUS_HETZNER_WEB_CONFIG=path/to/web-config.json
+      - PROMETHEUS_HETZNER_LOG_PRETTY=true
+      - PROMETHEUS_HETZNER_OUTPUT_FILE=/etc/sd/hetzner.json
+      - PROMETHEUS_HETZNER_USERNAME=octocat
+      - PROMETHEUS_HETZNER_PASSWORD=p455w0rd
+    volumes:
+      - ./service-discovery:/etc/sd
+{{< / highlight >}}
+
+To avoid the dependency on a shared filesystem between this service discovery and the [Prometheus](https://prometheus.io) configuration directory, you are able to use the new [HTTP service discovery](https://prometheus.io/docs/prometheus/2.28/configuration/configuration/#http_sd_config) starting with [Prometheus](https://prometheus.io) >= v2.28, you just need to switch the engine for this service discovery:
+
+{{< highlight diff >}}
+  hetzner-exporter:
+    image: promhippie/prometheus-hetzner-sd:latest
+    restart: always
+    environment:
+      - PROMETHEUS_HETZNER_LOG_PRETTY=true
++     - PROMETHEUS_HETZNER_OUTPUT_ENGINE=http
+      - PROMETHEUS_HETZNER_OUTPUT_FILE=/etc/sd/hetzner.json
+      - PROMETHEUS_HETZNER_USERNAME=octocat
+      - PROMETHEUS_HETZNER_PASSWORD=p455w0rd
+    volumes:
+      - ./service-discovery:/etc/sd
+{{< / highlight >}}
+
+To use the HTTP service discovery you just need to change the [Prometheus](https://prometheus.io) configuration mentioned above a little bit:
+
+{{< highlight yaml >}}
+scrape_configs:
+- job_name: node
+  http_sd_config:
+  - url: http://hetzner-sd:9000/sd
+  relabel_configs:
+  - source_labels: [__meta_hetzner_public_ipv4]
+    replacement: "${1}:9100"
+    target_label: __address__
+  - source_labels: [__meta_hetzner_dc]
+    target_label: datacenter
+  - source_labels: [__meta_hetzner_name]
+    target_label: instance
+{{< / highlight >}}
+
 Finally the service discovery should be configured fine, let's start this stack with [docker-compose](https://docs.docker.com/compose/), you just need to execute `docker-compose up` within the directory where you have stored `prometheus.yml` and `docker-compose.yml`. That's all, the service discovery should be up and running. You can access [Prometheus](https://prometheus.io) at [http://localhost:9090](http://localhost:9090).
 
 {{< figure src="service-discovery.png" title="Prometheus service discovery for Hetzner" >}}
@@ -109,6 +158,10 @@ Finally the service discovery should be configured fine, let's start this stack 
 If you prefer to configure the service with environment variables you can see the available variables below, in case you want to configure multiple accounts with a single service you are forced to use the configuration file as the environment variables are limited to a single account. As the service is pretty lightweight you can even start an instance per account and configure it entirely by the variables, it's up to you.
 
 {{< partial "envvars.md" >}}
+
+### Web Configuration
+
+If you want to secure the service by TLS or by some basic authentication you can provide a `YAML` configuration file whch follows the [Prometheus](https://prometheus.io) toolkit format. You can see a full configration example within the [toolkit documentation](https://github.com/prometheus/exporter-toolkit/blob/master/docs/web-configuration.md).
 
 ### Configuration file
 

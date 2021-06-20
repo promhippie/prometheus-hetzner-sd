@@ -2,12 +2,14 @@
 server:
   addr: 0.0.0.0:9000
   path: /metrics
+  web_config:
 
 logs:
   level: error
   pretty: false
 
 target:
+  engine: file
   file: /etc/prometheus/hetzner.json
   refresh: 30
   credentials:

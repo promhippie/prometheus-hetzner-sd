@@ -10,6 +10,12 @@ PROMETHEUS_HETZNER_WEB_ADDRESS
 PROMETHEUS_HETZNER_WEB_PATH
 : Path to bind the metrics server, defaults to `/metrics`
 
+PROMETHEUS_HETZNER_WEB_CONFIG
+: Path to web-config file
+
+PROMETHEUS_HETZNER_OUTPUT_ENGINE
+: Enabled engine like file or http, defaults to `file`
+
 PROMETHEUS_HETZNER_OUTPUT_FILE
 : Path to write the file_sd config, defaults to `/etc/prometheus/hetzner.json`
 
