@@ -1,6 +1,6 @@
 # Prometheus Hetzner SD
 
-[![Build Status](http://cloud.drone.io/api/badges/promhippie/prometheus-hetzner-sd/status.svg)](http://cloud.drone.io/promhippie/prometheus-hetzner-sd)
+[![Build Status](http://drone.webhippie.de/api/badges/promhippie/prometheus-hetzner-sd/status.svg)](http://drone.webhippie.de/promhippie/prometheus-hetzner-sd)
 [![Join the Matrix chat at https://matrix.to/#/#webhippie:matrix.org](https://img.shields.io/badge/matrix-%23webhippie-7bc9a4.svg)](https://matrix.to/#/#webhippie:matrix.org)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/87cbb93f28be43a2a871018f106bc286)](https://www.codacy.com/app/promhippie/prometheus-hetzner-sd?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=promhippie/prometheus-hetzner-sd&amp;utm_campaign=Badge_Grade)
 [![Go Doc](https://godoc.org/github.com/promhippie/prometheus-hetzner-sd?status.svg)](http://godoc.org/github.com/promhippie/prometheus-hetzner-sd)
