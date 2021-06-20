@@ -11,6 +11,7 @@ type Credential struct {
 type Server struct {
 	Addr string `json:"addr" yaml:"addr"`
 	Path string `json:"path" yaml:"path"`
+	Web  string `json:"web_config" yaml:"web_config"`
 }
 
 // Logs defines the level and color for log configuration.
@@ -21,6 +22,7 @@ type Logs struct {
 
 // Target defines the target specific configuration.
 type Target struct {
+	Engine      string       `json:"engine" yaml:"engine"`
 	File        string       `json:"file" yaml:"file"`
 	Refresh     int          `json:"refresh" yaml:"refresh"`
 	Credentials []Credential `json:"credentials" yaml:"credentials"`

@@ -1,31 +1,32 @@
 {
-	"server": {
-		"addr": "0.0.0.0:9000",
-		"path": "/metrics"
-	},
-	"logs": {
-		"level": "error",
-		"pretty": false
-	},
-	"target": {
-		"file": "/etc/prometheus/hetzner.json",
-		"refresh": 30,
-		"credentials": [
-			{
-				"project": "example1",
-				"username": "#ws+E9WaCWqg",
-				"password": "nmkEoHQWgnzThGmbfQ6Dojwf"
-			},
-			{
-				"project": "example2",
-				"username": "#ws+bmnA3gtt",
-				"password": "xapPbhgoRwEaRAHpKMnxa7YR"
-			},
-			{
-				"project": "example3",
-				"username": "#ws+Mk6uueNd",
-				"password": "YmmvhAXAeejpxWJxTzf9kjXm"
-			}
-		]
-	}
+    "server": {
+        "addr": "0.0.0.0:9000",
+        "path": "/metrics",
+        "web_config": ""
+    },
+    "logs": {
+        "level": "error",
+        "pretty": false
+    },
+    "target": {
+        "engine": "file",
+        "file": "/etc/prometheus/hetzner.json",
+        "refresh": 30,
+        "credentials": [{
+                "project": "example1",
+                "username": "#ws+E9WaCWqg",
+                "password": "nmkEoHQWgnzThGmbfQ6Dojwf"
+            },
+            {
+                "project": "example2",
+                "username": "#ws+bmnA3gtt",
+                "password": "xapPbhgoRwEaRAHpKMnxa7YR"
+            },
+            {
+                "project": "example3",
+                "username": "#ws+Mk6uueNd",
+                "password": "YmmvhAXAeejpxWJxTzf9kjXm"
+            }
+        ]
+    }
 }
