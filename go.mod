@@ -13,6 +13,6 @@ require (
 	github.com/prometheus/common v0.35.0
 	github.com/prometheus/exporter-toolkit v0.7.1
 	github.com/prometheus/prometheus v1.8.2-0.20210331101223-3cafc58827d1
-	github.com/urfave/cli/v2 v2.10.1
+	github.com/urfave/cli/v2 v2.10.2
 	gopkg.in/yaml.v2 v2.4.0
 )
