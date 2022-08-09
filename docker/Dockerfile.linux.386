@@ -1,13 +1,9 @@
-FROM webhippie/alpine:latest@sha256:baa40209d548abe38d3a13d80356c51448e41f4363903cf51bc73583b9d2058e AS build
+FROM i386/alpine:3.16@sha256:1d96e60e5270815238e999aed0ae61d22ac6f5e5f976054b24796d0e0158b39c AS build
 RUN apk add --no-cache ca-certificates mailcap
 
 FROM scratch
 
-LABEL maintainer="Thomas Boerger <thomas@webhippie.de>" \
-  org.label-schema.name="Prometheus Hetzner SD" \
-  org.label-schema.vendor="Thomas Boerger" \
-  org.label-schema.schema-version="1.0"
-
+EXPOSE 9000
 ENTRYPOINT ["/usr/bin/prometheus-hetzner-sd"]
 CMD ["server"]
 HEALTHCHECK CMD ["/usr/bin/prometheus-hetzner-sd", "health"]
