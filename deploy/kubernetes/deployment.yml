@@ -1,0 +1,70 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: prometheus-hetzner-sd
+  labels:
+    app.kubernetes.io/name: prometheus-hetzner-sd
+    app.kubernetes.io/component: exporter
+
+spec:
+  replicas: 1
+
+  revisionHistoryLimit: 3
+  progressDeadlineSeconds: 600
+
+  strategy:
+    type: Recreate
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: prometheus-hetzner-sd
+      app.kubernetes.io/component: server
+
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: prometheus-hetzner-sd
+        app.kubernetes.io/component: server
+
+    spec:
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+
+      containers:
+        - name: server
+          image: prometheus-hetzner-sd
+          imagePullPolicy: Always
+
+          envFrom:
+            - configMapRef:
+                name: prometheus-hetzner-sd
+            - secretRef:
+                name: prometheus-hetzner-sd
+
+          ports:
+            - name: http
+              containerPort: 9000
+              protocol: TCP
+
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: http
+
+          volumeMounts:
+            - name: files
+              mountPath: /etc/prometheus-hetzner-sd
+
+      volumes:
+        - name: files
+          configMap:
+            name: prometheus-hetzner-files
+
+...

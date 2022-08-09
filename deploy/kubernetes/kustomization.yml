@@ -1,0 +1,27 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - servicemonitor.yml
+  - service.yml
+  - deployment.yml
+
+configMapGenerator:
+  - name: prometheus-hetzner-sd
+    literals:
+      - PROMETHEUS_HETZNER_OUTPUT_ENGINE=http
+      - PROMETHEUS_HETZNER_OUTPUT_FILE=/etc/prometheus/hetzner.json
+
+secretGenerator:
+  - name: prometheus-hetzner-sd
+    literals: []
+  - name: prometheus-hetzner-files
+    literals: []
+
+images:
+  - name: prometheus-hetzner-sd
+    newName: quay.io/promhippie/prometheus-hetzner-sd
+    newTag: latest
+
+...

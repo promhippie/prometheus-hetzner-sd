@@ -1,0 +1,22 @@
+---
+kind: Service
+apiVersion: v1
+
+metadata:
+  name: prometheus-hetzner-sd
+  labels:
+    app.kubernetes.io/name: prometheus-hetzner-sd
+    app.kubernetes.io/component: server
+
+spec:
+  selector:
+    app.kubernetes.io/name: prometheus-hetzner-sd
+    app.kubernetes.io/component: server
+
+  ports:
+    - name: http
+      port: 9000
+      targetPort: http
+      protocol: TCP
+
+...

@@ -1,0 +1,23 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+
+metadata:
+  name: prometheus-hetzner-sd
+  labels:
+    app.kubernetes.io/name: prometheus-hetzner-sd
+    app.kubernetes.io/component: server
+
+spec:
+  endpoints:
+    - interval: 60s
+      port: http
+      scheme: http
+      path: /metrics
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: prometheus-hetzner-sd
+      app.kubernetes.io/component: server
+
+...
