@@ -1,36 +1,23 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
-    <loc>https://promhippie.github.io/prometheus-hetzner-sd/getting-started/</loc>
-    <lastmod>2018-05-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+    <loc>https://promhippie.github.io/prometheus-hetzner-sd/usage/</loc>
+    <lastmod>2022-07-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://promhippie.github.io/prometheus-hetzner-sd/kubernetes/</loc>
+    <lastmod>2022-07-22T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://promhippie.github.io/prometheus-hetzner-sd/building/</loc>
-    <lastmod>2020-04-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2022-07-20T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://promhippie.github.io/prometheus-hetzner-sd/license/</loc>
-    <lastmod>2018-05-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://promhippie.github.io/prometheus-hetzner-sd/</loc>
-    <lastmod>2020-04-01T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
+    <lastmod>2022-07-20T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://promhippie.github.io/prometheus-hetzner-sd/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://promhippie.github.io/prometheus-hetzner-sd/</loc>
+  </url><url>
     <loc>https://promhippie.github.io/prometheus-hetzner-sd/tags/</loc>
-    <priority>0</priority>
   </url>
-  
 </urlset>
