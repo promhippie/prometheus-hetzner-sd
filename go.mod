@@ -5,14 +5,14 @@ go 1.19
 require (
 	github.com/appscode/go-hetzner v0.0.0-20180411135907-c038e08b19b1
 	github.com/go-chi/chi/v5 v5.0.7
-	github.com/go-kit/kit v0.12.0
+	github.com/go-kit/log v0.2.0
 	github.com/joho/godotenv v1.4.0
 	github.com/oklog/run v1.1.0
 	github.com/prometheus/client_golang v1.13.0
 	github.com/prometheus/common v0.37.0
 	github.com/prometheus/exporter-toolkit v0.7.1
 	github.com/prometheus/prometheus v1.8.2-0.20210331101223-3cafc58827d1
-	github.com/urfave/cli/v2 v2.11.1
+	github.com/urfave/cli/v2 v2.11.2
 	gopkg.in/yaml.v2 v2.4.0
 )
 
@@ -22,7 +22,7 @@ require (
 	github.com/cenkalti/backoff v2.2.1+incompatible // indirect
 	github.com/cespare/xxhash/v2 v2.1.2 // indirect
 	github.com/cpuguy83/go-md2man/v2 v2.0.2 // indirect
-	github.com/go-kit/log v0.2.0 // indirect
+	github.com/go-kit/kit v0.12.0 // indirect
 	github.com/go-logfmt/logfmt v0.5.1 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/google/go-querystring v1.0.0 // indirect
