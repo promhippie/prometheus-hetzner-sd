@@ -34,8 +34,8 @@ The following sections list the changes for 0.5.0.
 
  * Chg #14: Use bingo for development tooling
  * Chg #15: Update Go version and dependencies
- * Chg #34: Improvements for automated documentation
  * Chg #16: Drop dariwn/386 release builds
+ * Chg #34: Improvements for automated documentation
  * Chg #35: Integrate new HTTP service discovery handler
  * Chg #36: Integrate standard web config
 
@@ -56,6 +56,13 @@ The following sections list the changes for 0.5.0.
 
    https://github.com/promhippie/prometheus-hetzner-sd/issues/15
 
+ * Change #16: Drop dariwn/386 release builds
+
+   We dropped the build of 386 builds on Darwin as this architecture is not supported by current Go
+   versions anymore.
+
+   https://github.com/promhippie/prometheus-hetzner-sd/issues/16
+
  * Change #34: Improvements for automated documentation
 
    We have added some simple scripts that gets executed by Drone to keep moving documentation
@@ -63,13 +70,6 @@ The following sections list the changes for 0.5.0.
    need to update the docs related to that manually anymore.
 
    https://github.com/promhippie/prometheus-hetzner-sd/pull/34
-
- * Change #16: Drop dariwn/386 release builds
-
-   We dropped the build of 386 builds on Darwin as this architecture is not supported by current Go
-   versions anymore.
-
-   https://github.com/promhippie/prometheus-hetzner-sd/issues/16
 
  * Change #35: Integrate new HTTP service discovery handler
 
@@ -132,18 +132,18 @@ The following sections list the changes for 0.3.0.
 
 ## Summary
 
- * Chg #8: Define healthcheck command
- * Chg #5: Support for multiple accounts
  * Chg #4: Switch to cloud.drone.io
+ * Chg #5: Support for multiple accounts
+ * Chg #8: Define healthcheck command
 
 ## Details
 
- * Change #8: Define healthcheck command
+ * Change #4: Switch to cloud.drone.io
 
-   To check the health status of the service discovery especially within Docker we added a simple
-   subcommand which checks the healthz endpoint to show if the service is up and running.
+   We don't wanted to maintain our own Drone infrastructure anymore, since there is
+   cloud.drone.io available for free we switched the pipelines over to it.
 
-   https://github.com/promhippie/prometheus-hetzner-sd/pull/8
+   https://github.com/promhippie/prometheus-hetzner-sd/pull/4
 
  * Change #5: Support for multiple accounts
 
@@ -153,12 +153,12 @@ The following sections list the changes for 0.3.0.
 
    https://github.com/promhippie/prometheus-hetzner-sd/pull/5
 
- * Change #4: Switch to cloud.drone.io
+ * Change #8: Define healthcheck command
 
-   We don't wanted to maintain our own Drone infrastructure anymore, since there is
-   cloud.drone.io available for free we switched the pipelines over to it.
+   To check the health status of the service discovery especially within Docker we added a simple
+   subcommand which checks the healthz endpoint to show if the service is up and running.
 
-   https://github.com/promhippie/prometheus-hetzner-sd/pull/4
+   https://github.com/promhippie/prometheus-hetzner-sd/pull/8
 
 
 # Changelog for 0.2.0
