@@ -3,7 +3,6 @@ package action
 import (
 	"context"
 	"io"
-	"io/ioutil"
 	"net/http"
 	"os"
 	"os/signal"
@@ -154,7 +153,7 @@ func handler(cfg *config.Config, logger log.Logger) *chi.Mux {
 			root.Get("/sd", func(w http.ResponseWriter, r *http.Request) {
 				w.Header().Set("Content-Type", "application/json; charset=utf-8")
 
-				content, err := ioutil.ReadFile(cfg.Target.File)
+				content, err := os.ReadFile(cfg.Target.File)
 
 				if err != nil {
 					level.Info(logger).Log(

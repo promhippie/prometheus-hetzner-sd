@@ -3,7 +3,6 @@ package command
 import (
 	"encoding/json"
 	"errors"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -56,7 +55,7 @@ func readConfig(file string, cfg *config.Config) error {
 		return nil
 	}
 
-	content, err := ioutil.ReadFile(file)
+	content, err := os.ReadFile(file)
 
 	if err != nil {
 		return err

@@ -62,7 +62,7 @@ func (d Discoverer) Run(ctx context.Context, ch chan<- []*targetgroup.Group) {
 	}
 }
 
-func (d *Discoverer) getTargets(ctx context.Context) ([]*targetgroup.Group, error) {
+func (d *Discoverer) getTargets(_ context.Context) ([]*targetgroup.Group, error) {
 	current := make(map[string]struct{})
 	targets := make([]*targetgroup.Group, 0)
 
