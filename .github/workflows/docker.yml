@@ -65,6 +65,7 @@ jobs:
             promhippie/prometheus-hetzner-sd
             quay.io/promhippie/prometheus-hetzner-sd
           labels: |
+            io.artifacthub.package.readme-url=https://raw.githubusercontent.com/promhippie/prometheus-hetzner-sd/master/README.md
             org.opencontainers.image.vendor=Webhippie
             maintainer=Thomas Boerger <thomas@webhippie.de>
           tags: |
