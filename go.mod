@@ -12,7 +12,7 @@ require (
 	github.com/prometheus/common v0.43.0
 	github.com/prometheus/exporter-toolkit v0.10.0
 	github.com/prometheus/prometheus v1.8.2-0.20210220213500-8c8de46003d1
-	github.com/stretchr/testify v1.8.2
+	github.com/stretchr/testify v1.8.3
 	github.com/urfave/cli/v2 v2.25.3
 	gopkg.in/yaml.v3 v3.0.1
 )
