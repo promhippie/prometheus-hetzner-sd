@@ -2,6 +2,7 @@ package action
 
 import (
 	"context"
+	"fmt"
 	"io"
 	"net/http"
 	"os"
@@ -39,9 +40,33 @@ func Server(cfg *config.Config, logger log.Logger) error {
 		clients := make(map[string]*hetzner.Client, len(cfg.Target.Credentials))
 
 		for _, credential := range cfg.Target.Credentials {
+			username, err := config.Value(credential.Username)
+
+			if err != nil {
+				level.Error(logger).Log(
+					"msg", "Failed to read username secret",
+					"project", credential.Project,
+					"err", err,
+				)
+
+				return fmt.Errorf("failed to read username secret for %s", credential.Project)
+			}
+
+			password, err := config.Value(credential.Password)
+
+			if err != nil {
+				level.Error(logger).Log(
+					"msg", "Failed to read password secret",
+					"project", credential.Project,
+					"err", err,
+				)
+
+				return fmt.Errorf("failed to read password secret for %s", credential.Project)
+			}
+
 			clients[credential.Project] = hetzner.NewClient(
-				credential.Username,
-				credential.Password,
+				username,
+				password,
 			)
 		}
 
