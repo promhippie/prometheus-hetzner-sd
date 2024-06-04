@@ -2,7 +2,7 @@ module github.com/promhippie/prometheus-hetzner-sd
 
 go 1.21
 
-toolchain go1.22.3
+toolchain go1.22.4
 
 require (
 	github.com/appscode/go-hetzner v0.0.0-20180411135907-c038e08b19b1
