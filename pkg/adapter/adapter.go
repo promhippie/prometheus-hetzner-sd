@@ -19,12 +19,11 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"log/slog"
 	"os"
 	"path/filepath"
 	"reflect"
 
-	"github.com/go-kit/log"
-	"github.com/go-kit/log/level"
 	"github.com/prometheus/prometheus/discovery"
 	"github.com/prometheus/prometheus/discovery/targetgroup"
 )
@@ -43,7 +42,7 @@ type Adapter struct {
 	manager *discovery.Manager
 	output  string
 	name    string
-	logger  log.Logger
+	logger  *slog.Logger
 }
 
 func mapToArray(m map[string]*customSD) []customSD {
@@ -84,7 +83,7 @@ func (a *Adapter) generateTargetGroups(allTargetGroups map[string][]*targetgroup
 		a.groups = tempGroups
 		err := a.writeOutput()
 		if err != nil {
-			level.Error(log.With(a.logger, "component", "sd-adapter")).Log("err", err)
+			a.logger.With("component", "sd-adapter").Error("", "err", err)
 		}
 	}
 
@@ -138,12 +137,12 @@ func (a *Adapter) Run() {
 }
 
 // NewAdapter creates a new instance of Adapter.
-func NewAdapter(ctx context.Context, file string, name string, d discovery.Discoverer, logger log.Logger) *Adapter {
+func NewAdapter(ctx context.Context, file string, name string, d discovery.Discoverer, logger *slog.Logger) *Adapter {
 	return &Adapter{
 		ctx:     ctx,
 		disc:    d,
 		groups:  make(map[string]*customSD),
-		manager: discovery.NewManager(ctx, logger),
+		manager: discovery.NewManager(ctx, nil),
 		output:  file,
 		name:    name,
 		logger:  logger,
