@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/go-kit/log/level"
 	"github.com/promhippie/prometheus-hetzner-sd/pkg/config"
 	"github.com/urfave/cli/v2"
 )
@@ -20,8 +19,7 @@ func Health(cfg *config.Config) *cli.Command {
 
 			if c.IsSet("hetzner.config") {
 				if err := readConfig(c.String("hetzner.config"), cfg); err != nil {
-					level.Error(logger).Log(
-						"msg", "Failed to read config",
+					logger.Error("Failed to read config",
 						"err", err,
 					)
 
@@ -37,8 +35,7 @@ func Health(cfg *config.Config) *cli.Command {
 			)
 
 			if err != nil {
-				level.Error(logger).Log(
-					"msg", "Failed to request health check",
+				logger.Error("Failed to request health check",
 					"err", err,
 				)
 
@@ -48,14 +45,17 @@ func Health(cfg *config.Config) *cli.Command {
 			defer resp.Body.Close()
 
 			if resp.StatusCode != 200 {
-				level.Error(logger).Log(
-					"msg", "Health check seems to be in bad state",
+				logger.Error("Health check seems to be in bad state",
 					"err", err,
 					"code", resp.StatusCode,
 				)
 
 				return err
 			}
+
+			logger.Debug("Health check seems to be fine",
+				"code", resp.StatusCode,
+			)
 
 			return nil
 		},

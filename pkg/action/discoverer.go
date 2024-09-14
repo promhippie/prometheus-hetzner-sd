@@ -3,13 +3,12 @@ package action
 import (
 	"context"
 	"fmt"
+	"log/slog"
 	"strconv"
 	"strings"
 	"time"
 
 	"github.com/appscode/go-hetzner"
-	"github.com/go-kit/log"
-	"github.com/go-kit/log/level"
 	"github.com/prometheus/common/model"
 	"github.com/prometheus/prometheus/discovery/targetgroup"
 )
@@ -37,7 +36,7 @@ var (
 // Discoverer implements the Prometheus discoverer interface.
 type Discoverer struct {
 	clients map[string]*hetzner.Client
-	logger  log.Logger
+	logger  *slog.Logger
 	refresh int
 	lasts   map[string]struct{}
 }
@@ -72,8 +71,7 @@ func (d *Discoverer) getTargets(_ context.Context) ([]*targetgroup.Group, error)
 		requestDuration.WithLabelValues(project).Observe(time.Since(now).Seconds())
 
 		if err != nil {
-			level.Warn(d.logger).Log(
-				"msg", "Failed to fetch servers",
+			d.logger.Warn("Failed to fetch servers",
 				"project", project,
 				"err", err,
 			)
@@ -82,8 +80,7 @@ func (d *Discoverer) getTargets(_ context.Context) ([]*targetgroup.Group, error)
 			continue
 		}
 
-		level.Debug(d.logger).Log(
-			"msg", "Requested servers",
+		d.logger.Debug("Requested servers",
 			"project", project,
 			"count", len(servers),
 		)
@@ -112,8 +109,7 @@ func (d *Discoverer) getTargets(_ context.Context) ([]*targetgroup.Group, error)
 				},
 			}
 
-			level.Debug(d.logger).Log(
-				"msg", "Server added",
+			d.logger.Debug("Server added",
 				"project", project,
 				"source", target.Source,
 			)
@@ -126,8 +122,7 @@ func (d *Discoverer) getTargets(_ context.Context) ([]*targetgroup.Group, error)
 
 	for k := range d.lasts {
 		if _, ok := current[k]; !ok {
-			level.Debug(d.logger).Log(
-				"msg", "Server deleted",
+			d.logger.Debug("Server deleted",
 				"source", k,
 			)
 

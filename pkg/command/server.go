@@ -3,7 +3,6 @@ package command
 import (
 	"errors"
 
-	"github.com/go-kit/log/level"
 	"github.com/promhippie/prometheus-hetzner-sd/pkg/action"
 	"github.com/promhippie/prometheus-hetzner-sd/pkg/config"
 	"github.com/urfave/cli/v2"
@@ -20,8 +19,7 @@ func Server(cfg *config.Config) *cli.Command {
 
 			if c.IsSet("hetzner.config") {
 				if err := readConfig(c.String("hetzner.config"), cfg); err != nil {
-					level.Error(logger).Log(
-						"msg", "Failed to read config",
+					logger.Error("Failed to read config",
 						"err", err,
 					)
 
@@ -30,10 +28,7 @@ func Server(cfg *config.Config) *cli.Command {
 			}
 
 			if cfg.Target.File == "" {
-				level.Error(logger).Log(
-					"msg", "Missing path for output.file",
-				)
-
+				logger.Error("Missing path for output.file")
 				return errors.New("missing path for output.file")
 			}
 
@@ -50,27 +45,18 @@ func Server(cfg *config.Config) *cli.Command {
 				)
 
 				if credentials.Username == "" {
-					level.Error(logger).Log(
-						"msg", "Missing required hetzner.username",
-					)
-
+					logger.Error("Missing required hetzner.username")
 					return errors.New("missing required hetzner.username")
 				}
 
 				if credentials.Password == "" {
-					level.Error(logger).Log(
-						"msg", "Missing required hetzner.password",
-					)
-
+					logger.Error("Missing required hetzner.password")
 					return errors.New("missing required hetzner.password")
 				}
 			}
 
 			if len(cfg.Target.Credentials) == 0 {
-				level.Error(logger).Log(
-					"msg", "Missing any credentials",
-				)
-
+				logger.Error("Missing any credentials")
 				return errors.New("missing any credentials")
 			}
 
