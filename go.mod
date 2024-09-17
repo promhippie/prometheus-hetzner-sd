@@ -5,10 +5,9 @@ go 1.23.0
 require (
 	github.com/appscode/go-hetzner v0.0.0-20180411135907-c038e08b19b1
 	github.com/go-chi/chi/v5 v5.1.0
-	github.com/go-kit/log v0.2.1
 	github.com/joho/godotenv v1.5.1
 	github.com/oklog/run v1.1.0
-	github.com/prometheus/client_golang v1.20.3
+	github.com/prometheus/client_golang v1.20.4
 	github.com/prometheus/common v0.59.1
 	github.com/prometheus/exporter-toolkit v0.13.0
 	github.com/prometheus/prometheus v1.8.2-0.20210220213500-8c8de46003d1
@@ -26,6 +25,7 @@ require (
 	github.com/cpuguy83/go-md2man/v2 v2.0.4 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/go-kit/kit v0.13.0 // indirect
+	github.com/go-kit/log v0.2.1 // indirect
 	github.com/go-logfmt/logfmt v0.6.0 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/jpillora/backoff v1.0.0 // indirect
