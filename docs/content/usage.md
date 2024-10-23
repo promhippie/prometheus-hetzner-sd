@@ -42,7 +42,7 @@ scrape_configs:
 After preparing the configuration we need to create the `docker-compose.yml`
 within the same folder, this `docker-compose.yml` starts a simple
 [Prometheus][prometheus] instance together with the service discovery. Don't
-forget to update the envrionment variables with the required credentials. If you
+forget to update the environment variables with the required credentials. If you
 are using a different volume for the service discovery you have to make sure
 that the container user is allowed to write to this volume.
 
@@ -183,7 +183,7 @@ running. You can access [Prometheus][prometheus] at
 
 ## Configuration
 
-### Envrionment variables
+### Environment variables
 
 If you prefer to configure the service with environment variables you can see
 the available variables below, in case you want to configure multiple accounts
@@ -197,8 +197,8 @@ by the variables, it's up to you.
 ### Web Configuration
 
 If you want to secure the service by TLS or by some basic authentication you can
-provide a `YAML` configuration file whch follows the [Prometheus][prometheus]
-toolkit format. You can see a full configration example within the
+provide a `YAML` configuration file which follows the [Prometheus][prometheus]
+toolkit format. You can see a full configuration example within the
 [toolkit documentation][toolkit].
 
 ### Configuration file
