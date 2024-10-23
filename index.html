@@ -2,7 +2,7 @@
 
 <html id="html" lang="en-us">
 	<head>
-	<meta name="generator" content="Hugo 0.136.2">
+	<meta name="generator" content="Hugo 0.136.4">
 		<meta http-equiv="content-type" content="text/html;charset=utf-8">
 		<meta name="viewport" content="width=device-width"/>
 
@@ -437,7 +437,7 @@ that includes the service discovery which simply maps to a node exporter.</p>
 <p>After preparing the configuration we need to create the <code>docker-compose.yml</code>
 within the same folder, this <code>docker-compose.yml</code> starts a simple
 <a href="https://prometheus.io">Prometheus</a> instance together with the service discovery. Don&rsquo;t
-forget to update the envrionment variables with the required credentials. If you
+forget to update the environment variables with the required credentials. If you
 are using a different volume for the service discovery you have to make sure
 that the container user is allowed to write to this volume.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2&#39;</span><span class="w">
@@ -558,7 +558,7 @@ running. You can access <a href="https://prometheus.io">Prometheus</a> at
     </figcaption>
 </figure>
 <h2 id="configuration">Configuration</h2>
-<h3 id="envrionment-variables">Envrionment variables</h3>
+<h3 id="environment-variables">Environment variables</h3>
 <p>If you prefer to configure the service with environment variables you can see
 the available variables below, in case you want to configure multiple accounts
 with a single service you are forced to use the configuration file as the
@@ -591,8 +591,8 @@ by the variables, it&rsquo;s up to you.</p>
 </dl>
 <h3 id="web-configuration">Web Configuration</h3>
 <p>If you want to secure the service by TLS or by some basic authentication you can
-provide a <code>YAML</code> configuration file whch follows the <a href="https://prometheus.io">Prometheus</a>
-toolkit format. You can see a full configration example within the
+provide a <code>YAML</code> configuration file which follows the <a href="https://prometheus.io">Prometheus</a>
+toolkit format. You can see a full configuration example within the
 <a href="https://github.com/prometheus/exporter-toolkit/blob/master/docs/web-configuration.md">toolkit documentation</a>.</p>
 <h3 id="configuration-file">Configuration file</h3>
 <p>Especially if you want to configure multiple accounts within a single service
@@ -739,7 +739,7 @@ the sources:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">git clone https://github.com/promhippie/prometheus-hetzner-sd.git
 </span></span><span class="line"><span class="cl">cd prometheus-hetzner-sd/</span></span></code></pre></div>
 <p>All required tool besides Go itself are bundled, all you need is part of the
-<code>Makfile</code>:</p>
+<code>Makefile</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">make generate build</span></span></code></pre></div>
 <p>Finally you should have the binary within the <code>bin/</code> folder now, give it a try
 with <code>./bin/prometheus-hetzner-sd -h</code> to see all available options.</p>
