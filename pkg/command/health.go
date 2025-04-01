@@ -5,7 +5,7 @@ import (
 	"net/http"
 
 	"github.com/promhippie/prometheus-hetzner-sd/pkg/config"
-	"github.com/urfave/cli/v2"
+	"github.com/urfave/cli/v3"
 )
 
 // Health provides the sub-command to perform a health check.

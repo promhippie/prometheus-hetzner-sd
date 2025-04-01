@@ -5,7 +5,7 @@ import (
 
 	"github.com/promhippie/prometheus-hetzner-sd/pkg/action"
 	"github.com/promhippie/prometheus-hetzner-sd/pkg/config"
-	"github.com/urfave/cli/v2"
+	"github.com/urfave/cli/v3"
 )
 
 // Server provides the sub-command to start the server.

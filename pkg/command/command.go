@@ -5,7 +5,7 @@ import (
 
 	"github.com/promhippie/prometheus-hetzner-sd/pkg/config"
 	"github.com/promhippie/prometheus-hetzner-sd/pkg/version"
-	"github.com/urfave/cli/v2"
+	"github.com/urfave/cli/v3"
 )
 
 // Run parses the command line arguments and executes the program.
