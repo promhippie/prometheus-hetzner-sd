@@ -1,6 +1,7 @@
 package command
 
 import (
+	"context"
 	"os"
 
 	"github.com/promhippie/prometheus-hetzner-sd/pkg/config"
@@ -12,15 +13,12 @@ import (
 func Run() error {
 	cfg := config.Load()
 
-	app := &cli.App{
+	app := &cli.Command{
 		Name:    "prometheus-hetzner-sd",
 		Version: version.String,
 		Usage:   "Prometheus Hetzner SD",
-		Authors: []*cli.Author{
-			{
-				Name:  "Thomas Boerger",
-				Email: "thomas@webhippie.de",
-			},
+		Authors: []any{
+			"Thomas Boerger <thomas@webhippie.de>",
 		},
 		Flags: RootFlags(cfg),
 		Commands: []*cli.Command{
@@ -41,7 +39,7 @@ func Run() error {
 		Usage:   "Print the current version of that tool",
 	}
 
-	return app.Run(os.Args)
+	return app.Run(context.Background(), os.Args)
 }
 
 // RootFlags defines the available root flags.
@@ -51,14 +49,14 @@ func RootFlags(cfg *config.Config) []cli.Flag {
 			Name:        "log.level",
 			Value:       "info",
 			Usage:       "Only log messages with given severity",
-			EnvVars:     []string{"PROMETHEUS_HETZNER_LOG_LEVEL"},
+			Sources:     cli.EnvVars("PROMETHEUS_HETZNER_LOG_LEVEL"),
 			Destination: &cfg.Logs.Level,
 		},
 		&cli.BoolFlag{
 			Name:        "log.pretty",
 			Value:       false,
 			Usage:       "Enable pretty messages for logging",
-			EnvVars:     []string{"PROMETHEUS_HETZNER_LOG_PRETTY"},
+			Sources:     cli.EnvVars("PROMETHEUS_HETZNER_LOG_PRETTY"),
 			Destination: &cfg.Logs.Pretty,
 		},
 	}
