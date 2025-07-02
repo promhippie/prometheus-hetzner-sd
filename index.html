@@ -461,6 +461,7 @@ that the container user is allowed to write to this volume.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">always</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">PROMETHEUS_HETZNER_LOG_PRETTY=true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">PROMETHEUS_HETZNER_OUTPUT_ENGINE=file</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">PROMETHEUS_HETZNER_OUTPUT_FILE=/etc/sd/hetzner.json</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">PROMETHEUS_HETZNER_USERNAME=octocat</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">PROMETHEUS_HETZNER_PASSWORD=p455w0rd</span><span class="w">
@@ -474,10 +475,11 @@ architectures without any change to the image name. You should apply a change
 like this to the <code>docker-compose.yml</code> file:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff"><span class="line"><span class="cl">  hetzner-sd:
 </span></span><span class="line"><span class="cl"><span class="gd">-   image: promhippie/prometheus-hetzner-sd:latest
-</span></span></span><span class="line"><span class="cl"><span class="gd"></span><span class="gi">+   image: promhippie/prometheus-hetzner-sd:0.5.0
+</span></span></span><span class="line"><span class="cl"><span class="gd"></span><span class="gi">+   image: promhippie/prometheus-hetzner-sd:x.x.x
 </span></span></span><span class="line"><span class="cl"><span class="gi"></span>    restart: always
 </span></span><span class="line"><span class="cl">    environment:
 </span></span><span class="line"><span class="cl">      - PROMETHEUS_HETZNER_LOG_PRETTY=true
+</span></span><span class="line"><span class="cl">      - PROMETHEUS_HETZNER_OUTPUT_ENGINE=file
 </span></span><span class="line"><span class="cl">      - PROMETHEUS_HETZNER_OUTPUT_FILE=/etc/sd/hetzner.json
 </span></span><span class="line"><span class="cl">      - PROMETHEUS_HETZNER_USERNAME=octocat
 </span></span><span class="line"><span class="cl">      - PROMETHEUS_HETZNER_PASSWORD=p455w0rd
@@ -494,6 +496,7 @@ be able to read the generated JSON file:</p>
 </span></span><span class="line"><span class="cl"><span class="gi">+   user: &#39;65534&#39;
 </span></span></span><span class="line"><span class="cl"><span class="gi"></span>    environment:
 </span></span><span class="line"><span class="cl">      - PROMETHEUS_HETZNER_LOG_PRETTY=true
+</span></span><span class="line"><span class="cl">      - PROMETHEUS_HETZNER_OUTPUT_ENGINE=file
 </span></span><span class="line"><span class="cl">      - PROMETHEUS_HETZNER_OUTPUT_FILE=/etc/sd/hetzner.json
 </span></span><span class="line"><span class="cl">      - PROMETHEUS_HETZNER_USERNAME=octocat
 </span></span><span class="line"><span class="cl">      - PROMETHEUS_HETZNER_PASSWORD=p455w0rd
@@ -510,6 +513,7 @@ config format look at the <a href="#web-configuration">documentation</a> section
 </span></span><span class="line"><span class="cl">    environment:
 </span></span><span class="line"><span class="cl"><span class="gi">+     - PROMETHEUS_HETZNER_WEB_CONFIG=path/to/web-config.json
 </span></span></span><span class="line"><span class="cl"><span class="gi"></span>      - PROMETHEUS_HETZNER_LOG_PRETTY=true
+</span></span><span class="line"><span class="cl">      - PROMETHEUS_HETZNER_OUTPUT_ENGINE=file
 </span></span><span class="line"><span class="cl">      - PROMETHEUS_HETZNER_OUTPUT_FILE=/etc/sd/hetzner.json
 </span></span><span class="line"><span class="cl">      - PROMETHEUS_HETZNER_USERNAME=octocat
 </span></span><span class="line"><span class="cl">      - PROMETHEUS_HETZNER_PASSWORD=p455w0rd
@@ -526,7 +530,8 @@ service discovery:</p>
 </span></span><span class="line"><span class="cl">    restart: always
 </span></span><span class="line"><span class="cl">    environment:
 </span></span><span class="line"><span class="cl">      - PROMETHEUS_HETZNER_LOG_PRETTY=true
-</span></span><span class="line"><span class="cl"><span class="gi">+     - PROMETHEUS_HETZNER_OUTPUT_ENGINE=http
+</span></span><span class="line"><span class="cl"><span class="gd">-     - PROMETHEUS_HETZNER_OUTPUT_ENGINE=file
+</span></span></span><span class="line"><span class="cl"><span class="gd"></span><span class="gi">+     - PROMETHEUS_HETZNER_OUTPUT_ENGINE=http
 </span></span></span><span class="line"><span class="cl"><span class="gi"></span>      - PROMETHEUS_HETZNER_OUTPUT_FILE=/etc/sd/hetzner.json
 </span></span><span class="line"><span class="cl">      - PROMETHEUS_HETZNER_USERNAME=octocat
 </span></span><span class="line"><span class="cl">      - PROMETHEUS_HETZNER_PASSWORD=p455w0rd
@@ -732,18 +737,16 @@ your Prometheus configuration:</p>
 					</small>
 				</h1>
 
-				<p>As this project is built with Go you need to install Go first. The installation
-of Go is out of the scope of this document, please follow the
-<a href="https://golang.org/doc/install">official documentation</a>. After the installation of Go you need to get
-the sources:</p>
+				<p>As this project is built with Go you need to install Go first. If you are not
+familiar with <a href="https://nixos.org/">Nix</a> it is up to you to have a working environment for Go
+(&gt;= 1.24.0) as the setup won&rsquo;t we covered within this guide. Please follow the
+official install instructions for <a href="http://golang.org/doc/install.html">Go</a>. Beside that we are using
+<a href="https://taskfile.dev/installation/">go-task</a> to define all commands to build this project.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">git clone https://github.com/promhippie/prometheus-hetzner-sd.git
-</span></span><span class="line"><span class="cl">cd prometheus-hetzner-sd/</span></span></code></pre></div>
-<p>All required tool besides Go itself are bundled, all you need is part of the
-<code>Makefile</code>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">make generate build</span></span></code></pre></div>
-<p>Finally you should have the binary within the <code>bin/</code> folder now, give it a try
-with <code>./bin/prometheus-hetzner-sd -h</code> to see all available options.</p>
-
+</span></span><span class="line"><span class="cl">cd prometheus-hetzner-sd
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">task generate build
+</span></span><span class="line"><span class="cl">./bin/prometheus-hetzner-sd -h</span></span></code></pre></div>
 			</section>
 		
 			<section id="license">
