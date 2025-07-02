@@ -12,7 +12,8 @@
         "engine": "file",
         "file": "/etc/prometheus/hetzner.json",
         "refresh": 30,
-        "credentials": [{
+        "credentials": [
+            {
                 "project": "example1",
                 "username": "#ws+E9WaCWqg",
                 "password": "nmkEoHQWgnzThGmbfQ6Dojwf"

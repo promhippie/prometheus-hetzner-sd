@@ -1,0 +1,115 @@
+# yaml-language-server: $schema=https://goreleaser.com/static/schema.json
+version: 2
+
+builds:
+  - id: server
+    main: ./cmd/prometheus-hetzner-sd
+    binary: prometheus-hetzner-sd
+    env:
+      - CGO_ENABLED=0
+    ldflags:
+      - -s -w -extldflags "-static" -X "github.com/promhippie/prometheus-hetzner-sd/pkg/version.String={{.Version}}" -X "github.com/promhippie/prometheus-hetzner-sd/pkg/version.Revision={{.Commit}}" -X "github.com/promhippie/prometheus-hetzner-sd/pkg/version.Date={{.Date}}"
+    tags:
+      - netgo
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - "386"
+      - arm64
+      - arm
+    ignore:
+      - goos: darwin
+        goarch: "386"
+      - goos: windows
+        goarch: arm
+
+archives:
+  - id: server
+    ids:
+      - server
+    name_template: "prometheus-hetzner-sd-{{ .Version }}-{{ .Os }}-{{ .Arch }}{{ with .Arm }}v{{ . }}{{ end }}{{ with .Mips }}-{{ . }}{{ end }}"
+    format_overrides:
+      - goos: windows
+        formats:
+          - zip
+    files:
+      - LICENSE
+      - CHANGELOG.md
+      - src: cmd/prometheus-hetzner-sd/README.md
+        dst: README.md
+
+nfpms:
+  - id: server
+    ids:
+      - server
+    package_name: prometheus-hetzner-sd
+    file_name_template: "prometheus-hetzner-sd-{{ .Version }}-{{ .Os }}-{{ .Arch }}{{ with .Arm }}v{{ . }}{{ end }}{{ with .Mips }}-{{ . }}{{ end }}"
+    vendor: Webhippie
+    homepage: https://promhippie.github.io/prometheus-hetzner-sd/
+    maintainer: Thomas Boerger <thomas@webhippie.de>
+    description: |-
+      Prometheus service discovery for Hetzner
+    license: Apache 2.0
+    formats:
+      - deb
+      - rpm
+    contents:
+      - src: packaging/systemd/server.service
+        dst: /usr/lib/systemd/system/prometheus-hetzner-sd.service
+      - src: packaging/systemd/server.env
+        dst: /etc/sysconfig/prometheus-hetzner-sd
+        packager: rpm
+      - src: packaging/systemd/server.env
+        dst: /etc/default/prometheus-hetzner-sd
+        packager: deb
+      - src: packaging/config/config.yaml
+        dst: /etc/prometheus-hetzner-sd/config.yaml
+        type: config|noreplace
+      - dst: /var/lib/prometheus-hetzner-sd
+        type: dir
+    scripts:
+      preinstall: packaging/scripts/preinstall.sh
+      postinstall: packaging/scripts/postinstall.sh
+      preremove: packaging/scripts/preremove.sh
+      postremove: packaging/scripts/postremove.sh
+
+signs:
+  - id: archives
+    signature: "${artifact}.asc"
+    cmd: gpg2
+    artifacts: archive
+    args:
+      - --batch
+      - --armor
+      - --local-user
+      - B8BB213D9E131E46D2EBE22E44E93172C6FDE7E6
+      - --output
+      - ${signature}
+      - --detach-sign
+      - ${artifact}
+  - id: packages
+    signature: "${artifact}.asc"
+    cmd: gpg2
+    artifacts: package
+    args:
+      - --batch
+      - --armor
+      - --local-user
+      - B8BB213D9E131E46D2EBE22E44E93172C6FDE7E6
+      - --output
+      - ${signature}
+      - --detach-sign
+      - ${artifact}
+
+snapshot:
+  version_template: testing
+
+changelog:
+  disable: true
+
+checksum:
+  disable: false
+  split: true

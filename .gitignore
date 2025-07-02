@@ -1,9 +1,14 @@
-.direnv
-.devenv
+.direnv/
+.devenv/
+.task/
+
+.envrc
 coverage.out
 
 /bin
 /dist
+
+.pre-commit-config.yaml
 
 hetzner.json
 config.json
