@@ -68,6 +68,7 @@ services:
     restart: always
     environment:
       - PROMETHEUS_HETZNER_LOG_PRETTY=true
+      - PROMETHEUS_HETZNER_OUTPUT_ENGINE=file
       - PROMETHEUS_HETZNER_OUTPUT_FILE=/etc/sd/hetzner.json
       - PROMETHEUS_HETZNER_USERNAME=octocat
       - PROMETHEUS_HETZNER_PASSWORD=p455w0rd
@@ -85,10 +86,11 @@ like this to the `docker-compose.yml` file:
 {{< highlight diff >}}
   hetzner-sd:
 -   image: promhippie/prometheus-hetzner-sd:latest
-+   image: promhippie/prometheus-hetzner-sd:0.5.0
++   image: promhippie/prometheus-hetzner-sd:x.x.x
     restart: always
     environment:
       - PROMETHEUS_HETZNER_LOG_PRETTY=true
+      - PROMETHEUS_HETZNER_OUTPUT_ENGINE=file
       - PROMETHEUS_HETZNER_OUTPUT_FILE=/etc/sd/hetzner.json
       - PROMETHEUS_HETZNER_USERNAME=octocat
       - PROMETHEUS_HETZNER_PASSWORD=p455w0rd
@@ -108,6 +110,7 @@ be able to read the generated JSON file:
 +   user: '65534'
     environment:
       - PROMETHEUS_HETZNER_LOG_PRETTY=true
+      - PROMETHEUS_HETZNER_OUTPUT_ENGINE=file
       - PROMETHEUS_HETZNER_OUTPUT_FILE=/etc/sd/hetzner.json
       - PROMETHEUS_HETZNER_USERNAME=octocat
       - PROMETHEUS_HETZNER_PASSWORD=p455w0rd
@@ -127,6 +130,7 @@ config format look at the [documentation](#web-configuration) section:
     environment:
 +     - PROMETHEUS_HETZNER_WEB_CONFIG=path/to/web-config.json
       - PROMETHEUS_HETZNER_LOG_PRETTY=true
+      - PROMETHEUS_HETZNER_OUTPUT_ENGINE=file
       - PROMETHEUS_HETZNER_OUTPUT_FILE=/etc/sd/hetzner.json
       - PROMETHEUS_HETZNER_USERNAME=octocat
       - PROMETHEUS_HETZNER_PASSWORD=p455w0rd
@@ -146,6 +150,7 @@ service discovery:
     restart: always
     environment:
       - PROMETHEUS_HETZNER_LOG_PRETTY=true
+-     - PROMETHEUS_HETZNER_OUTPUT_ENGINE=file
 +     - PROMETHEUS_HETZNER_OUTPUT_ENGINE=http
       - PROMETHEUS_HETZNER_OUTPUT_FILE=/etc/sd/hetzner.json
       - PROMETHEUS_HETZNER_USERNAME=octocat

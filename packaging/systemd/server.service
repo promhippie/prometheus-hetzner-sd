@@ -1,0 +1,20 @@
+[Unit]
+Description=Prometheus Hetzner SD
+Documentation=https://promhippie.github.io/prometheus-hetzner-sd/
+
+Requires=network.target
+After=network.target
+
+[Service]
+Type=simple
+User=prometheus-hetzner-sd
+Group=prometheus-hetzner-sd
+EnvironmentFile=-/etc/default/prometheus-hetzner-sd
+EnvironmentFile=-/etc/sysconfig/prometheus-hetzner-sd
+ExecStart=/usr/bin/prometheus-hetzner-sd server $PROMETHEUS_HETZNER_ARGS
+WorkingDirectory=/var/lib/prometheus-hetzner-sd
+Restart=always
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

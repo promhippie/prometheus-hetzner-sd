@@ -1,23 +1,7 @@
-# Changelog for unreleased
-
-The following sections list the changes for unreleased.
-
-## Summary
-
- * Chg #270: Switch to official logging library
-
-## Details
-
- * Change #270: Switch to official logging library
-
-   Since there have been a structured logger part of the Go standard library we
-   thought it's time to replace the library with that. Be aware that log messages
-   should change a little bit.
-
-   https://github.com/promhippie/prometheus-hetzner-sd/issues/270
+# Changelog
 
 
-# Changelog for 1.0.0
+## 1.0.0
 
 The following sections list the changes for 1.0.0.
 
@@ -45,7 +29,7 @@ The following sections list the changes for 1.0.0.
    https://github.com/promhippie/prometheus-hetzner-sd/issues/205
 
 
-# Changelog for 0.6.0
+## 0.6.0
 
 The following sections list the changes for 0.6.0.
 
@@ -74,7 +58,7 @@ The following sections list the changes for 0.6.0.
    https://github.com/promhippie/prometheus-hetzner-sd/pull/121
 
 
-# Changelog for 0.5.0
+## 0.5.0
 
 The following sections list the changes for 0.5.0.
 
@@ -139,7 +123,7 @@ The following sections list the changes for 0.5.0.
    https://github.com/promhippie/prometheus-hetzner-sd/issues/36
 
 
-# Changelog for 0.4.1
+## 0.4.1
 
 The following sections list the changes for 0.4.1.
 
@@ -159,7 +143,7 @@ The following sections list the changes for 0.4.1.
    https://github.com/promhippie/prometheus-hetzner-sd/issues/11
 
 
-# Changelog for 0.4.0
+## 0.4.0
 
 The following sections list the changes for 0.4.0.
 
@@ -178,7 +162,7 @@ The following sections list the changes for 0.4.0.
    https://github.com/promhippie/prometheus-hetzner-sd/pull/10
 
 
-# Changelog for 0.3.0
+## 0.3.0
 
 The following sections list the changes for 0.3.0.
 
@@ -215,7 +199,7 @@ The following sections list the changes for 0.3.0.
    https://github.com/promhippie/prometheus-hetzner-sd/pull/8
 
 
-# Changelog for 0.2.0
+## 0.2.0
 
 The following sections list the changes for 0.2.0.
 
@@ -273,7 +257,7 @@ The following sections list the changes for 0.2.0.
    https://github.com/promhippie/prometheus-hetzner-sd/pull/3
 
 
-# Changelog for 0.1.0
+## 0.1.0
 
 The following sections list the changes for 0.1.0.
 

@@ -1,0 +1,17 @@
+---
+server:
+  addr: 0.0.0.0:9000
+  path: /metrics
+  web_config: ~
+
+logs:
+  level: error
+  pretty: false
+
+target:
+  engine: http
+  file: /var/lib/prometheus-hetzner-sd/output.json
+  refresh: 30
+  credentials: []
+
+...

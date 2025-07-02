@@ -99,6 +99,7 @@ func (a *Adapter) writeOutput() error {
 	if err != nil {
 		return err
 	}
+	//nolint:errcheck
 	defer tmpfile.Close()
 
 	_, err = tmpfile.Write(b)
@@ -131,6 +132,7 @@ func (a *Adapter) runCustomSD(ctx context.Context) {
 
 // Run starts a Discovery Manager and the custom service discovery implementation.
 func (a *Adapter) Run() {
+	//nolint:errcheck
 	go a.manager.Run()
 	a.manager.StartCustomProvider(a.ctx, a.name, a.disc)
 	go a.runCustomSD(a.ctx)
