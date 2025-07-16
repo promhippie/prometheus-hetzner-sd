@@ -57,7 +57,7 @@ tasks:
   build:snapshot:
     desc: Generate a snapshot with goreleaser
     cmds:
-      - goreleaser release --clean --snapshot
+      - goreleaser release --clean --snapshot --skip=announce,publish,validate,sign
 
   build:server:
     desc: Build server component

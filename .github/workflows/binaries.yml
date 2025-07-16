@@ -41,6 +41,7 @@ jobs:
           install-only: true
 
       - name: Setup signing
+        if: github.event_name != 'pull_request'
         uses: crazy-max/ghaction-import-gpg@v6
         with:
           gpg_private_key: ${{ secrets.GNUPG_KEY }}
