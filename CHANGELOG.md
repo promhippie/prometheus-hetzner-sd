@@ -1,5 +1,20 @@
 # Changelog
 
+## [2.1.1](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.1.0...v2.1.1) (2025-07-21)
+
+
+### Bugfixes
+
+* use correct name for systemd service ([07d3d53](https://github.com/promhippie/prometheus-hetzner-sd/commit/07d3d53cb173bd26c9392d4e82addb8944a0f3dc))
+
+
+### Miscellaneous
+
+* **deps:** update docker digests ([2080f78](https://github.com/promhippie/prometheus-hetzner-sd/commit/2080f789c1a4237a6ca4715533fb6ac8b35866dd))
+* **deps:** update golang:1.24.5-alpine3.21 docker digest to 6edc205 ([4e14ce6](https://github.com/promhippie/prometheus-hetzner-sd/commit/4e14ce663b7613d10c0a6e8b1fdeb7ca843c7d07))
+* **deps:** update golang:1.24.5-alpine3.21 docker digest to 72ff633 ([ab5900e](https://github.com/promhippie/prometheus-hetzner-sd/commit/ab5900ea90c9556c8ba95f08c7bd6029420a0277))
+* **flake:** updated lockfile [skip ci] ([d696d0e](https://github.com/promhippie/prometheus-hetzner-sd/commit/d696d0e3fc506593834169d98752e5f87ca2e97c))
+
 ## [2.1.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.0.0...v2.1.0) (2025-07-14)
 
 
