@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.2.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.1.1...v2.2.0) (2025-07-28)
+
+
+### Features
+
+* **deps:** update module github.com/golangci/golangci-lint/v2 to v2.3.0 ([4111a63](https://github.com/promhippie/prometheus-hetzner-sd/commit/4111a63008f08bb5ed415b206e40ce1b444d4092))
+
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([a60956c](https://github.com/promhippie/prometheus-hetzner-sd/commit/a60956c973dab1eaa963b3652cd7cfa445582593))
+
 ## [2.1.1](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.1.0...v2.1.1) (2025-07-21)
 
 
