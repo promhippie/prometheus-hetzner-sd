@@ -1,5 +1,20 @@
 # Changelog
 
+## [2.2.1](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.2.0...v2.2.1) (2025-08-11)
+
+
+### Bugfixes
+
+* **deps:** update golang docker tag to v1.24.6 ([f7215e9](https://github.com/promhippie/prometheus-hetzner-sd/commit/f7215e98f3d9bbf5c94db75f8e247d8d313fcf94))
+* **deps:** update module github.com/golangci/golangci-lint/v2 to v2.3.1 ([6cbae57](https://github.com/promhippie/prometheus-hetzner-sd/commit/6cbae57e2bda384f4ee146dc62eee6ed9a73ff21))
+* **deps:** update module github.com/prometheus/client_golang to v1.23.0 ([1db4833](https://github.com/promhippie/prometheus-hetzner-sd/commit/1db4833ec983a341e2418bd2794e948f1733ffd6))
+
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([adef7fd](https://github.com/promhippie/prometheus-hetzner-sd/commit/adef7fd8bb85ba333ec4550548813bd73237ab35))
+* **flake:** updated lockfile [skip ci] ([24fcf23](https://github.com/promhippie/prometheus-hetzner-sd/commit/24fcf2343e3f35c7d8d8cd8a9f2048ea6673d170))
+
 ## [2.2.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.1.1...v2.2.0) (2025-07-28)
 
 
