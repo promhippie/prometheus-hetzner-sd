@@ -1,5 +1,23 @@
 # Changelog
 
+## [2.2.2](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.2.1...v2.2.2) (2025-08-18)
+
+
+### Bugfixes
+
+* correctly hand over goos/goarch to build task ([6b44203](https://github.com/promhippie/prometheus-hetzner-sd/commit/6b4420336499553009d3b544338cc84fee854223))
+* **deps:** update golang docker tag to v1.25.0 ([6052100](https://github.com/promhippie/prometheus-hetzner-sd/commit/6052100c22908ac2ea8ff680988371a91e125ef6))
+* **deps:** update golang:1.25.0-alpine3.21 docker digest to a92c1ab ([0b444ab](https://github.com/promhippie/prometheus-hetzner-sd/commit/0b444ab918f880ffbf742b799ab2356951d8966f))
+* **deps:** update golang:1.25.0-alpine3.21 docker digest to c8e1680 ([02eea79](https://github.com/promhippie/prometheus-hetzner-sd/commit/02eea7953044479e54ee858ae26a5efdb49d1889))
+* **deps:** update module github.com/golangci/golangci-lint/v2 to v2.4.0 ([2a112b3](https://github.com/promhippie/prometheus-hetzner-sd/commit/2a112b3fd73dbc7916eb1bc9e289bb791015534d))
+* **deps:** update module github.com/urfave/cli/v3 to v3.3.9 ([3e5299c](https://github.com/promhippie/prometheus-hetzner-sd/commit/3e5299c5328a220d6da95f88bc127a9f35e46d55))
+* **deps:** update module github.com/urfave/cli/v3 to v3.4.1 ([32cd064](https://github.com/promhippie/prometheus-hetzner-sd/commit/32cd06451a6e0b448c67109b3e485eed39ea638a))
+
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([5e8589e](https://github.com/promhippie/prometheus-hetzner-sd/commit/5e8589e4efbe17e03f0946f9c3f0582f43ce977d))
+
 ## [2.2.1](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.2.0...v2.2.1) (2025-08-11)
 
 
