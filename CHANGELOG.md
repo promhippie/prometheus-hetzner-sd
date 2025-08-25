@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.2.3](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.2.2...v2.2.3) (2025-08-25)
+
+
+### Bugfixes
+
+* **deps:** update module github.com/stretchr/testify to v1.11.0 ([527472b](https://github.com/promhippie/prometheus-hetzner-sd/commit/527472bac62f128ff4d34ea107267527ea3516b4))
+
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([5a0f521](https://github.com/promhippie/prometheus-hetzner-sd/commit/5a0f521b3964ac6eb7d4e1deec3d6b76bf2800e4))
+
 ## [2.2.2](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.2.1...v2.2.2) (2025-08-18)
 
 
