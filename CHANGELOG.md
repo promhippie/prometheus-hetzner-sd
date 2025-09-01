@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.2.4](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.2.3...v2.2.4) (2025-09-01)
+
+
+### Bugfixes
+
+* **deps:** update module github.com/go-chi/chi/v5 to v5.2.3 ([0adc3de](https://github.com/promhippie/prometheus-hetzner-sd/commit/0adc3decb9bc0eb274dd9c596e56186ee996337c))
+* **deps:** update module github.com/mgechev/revive to v1.12.0 ([6b92ab2](https://github.com/promhippie/prometheus-hetzner-sd/commit/6b92ab27d71cb196b6267cb0fb18165185df05ee))
+* **deps:** update module github.com/stretchr/testify to v1.11.1 ([fb2f390](https://github.com/promhippie/prometheus-hetzner-sd/commit/fb2f3905168bd8c9c3436cc75dfaae20155b3f2e))
+
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([6a130ad](https://github.com/promhippie/prometheus-hetzner-sd/commit/6a130ad0e500db94dd7d2f19e13795f490ed7202))
+
 ## [2.2.3](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.2.2...v2.2.3) (2025-08-25)
 
 
