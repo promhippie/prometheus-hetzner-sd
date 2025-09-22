@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.2.6](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.2.5...v2.2.6) (2025-09-22)
+
+
+### Bugfixes
+
+* **deps:** update module github.com/golangci/golangci-lint/v2 to v2.5.0 ([8f64b01](https://github.com/promhippie/prometheus-hetzner-sd/commit/8f64b01e1e66cb6ee2a9edffbe8fd3515ad5cf0f))
+
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([ea0727e](https://github.com/promhippie/prometheus-hetzner-sd/commit/ea0727e35bd05d1f0f64fce80ba09c8c44d310f1))
+* move from baltorepo to cloudsmith ([d7c515c](https://github.com/promhippie/prometheus-hetzner-sd/commit/d7c515c48d54167febe04f0893b15bf669b5e09e))
+
 ## [2.2.5](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.2.4...v2.2.5) (2025-09-08)
 
 
