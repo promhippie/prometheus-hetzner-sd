@@ -1,5 +1,24 @@
 # Changelog
 
+## [2.2.7](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.2.6...v2.2.7) (2025-10-13)
+
+
+### Bugfixes
+
+* **deps:** update alpine:3.22 docker digest to 4b7ce07 ([440b0a6](https://github.com/promhippie/prometheus-hetzner-sd/commit/440b0a6b323d29aca059280e588f19e07e3bffd3))
+* **deps:** update golang docker tag to v1.25.2 ([b7ace27](https://github.com/promhippie/prometheus-hetzner-sd/commit/b7ace27bcb41f108c541e7115fd1fdafed9a29e3))
+* **deps:** update golang:1.25.2-alpine3.21 docker digest to 0134653 ([a3ac76a](https://github.com/promhippie/prometheus-hetzner-sd/commit/a3ac76ab347b4326ea8dde5205a6d9d9948a5948))
+* **deps:** update golang:1.25.2-alpine3.21 docker digest to 0ae17b3 ([412ab60](https://github.com/promhippie/prometheus-hetzner-sd/commit/412ab601e25a7a88d50d2126e65241b5cb207eb7))
+* **deps:** update golang:1.25.2-alpine3.21 docker digest to 7300a8d ([d72dd36](https://github.com/promhippie/prometheus-hetzner-sd/commit/d72dd36dd215f8147905859826512371d2f417e1))
+* **deps:** update module github.com/prometheus/common to v0.67.1 ([57e194f](https://github.com/promhippie/prometheus-hetzner-sd/commit/57e194f94f08fed5c65fa42eff784ec76662d612))
+
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([ecea41d](https://github.com/promhippie/prometheus-hetzner-sd/commit/ecea41dd8ebade17261f6c95d26c9f4e07276e88))
+* **flake:** updated lockfile [skip ci] ([dad666f](https://github.com/promhippie/prometheus-hetzner-sd/commit/dad666fa742cfca4bba2d5a3e56f19a9eeabcece))
+* **flake:** updated lockfile [skip ci] ([3d451ae](https://github.com/promhippie/prometheus-hetzner-sd/commit/3d451ae0f026286a3d171c299efcd2304c63e2d3))
+
 ## [2.2.6](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.2.5...v2.2.6) (2025-09-22)
 
 
