@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.2.8](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.2.7...v2.2.8) (2025-10-20)
+
+
+### Bugfixes
+
+* **deps:** update golang docker tag to v1.25.3 ([b275417](https://github.com/promhippie/prometheus-hetzner-sd/commit/b275417b4202cc37168e2dce61f04c26ad6d78e1))
+* **deps:** update golang:1.25.3-alpine3.21 docker digest to 0c9f3e0 ([15a84b6](https://github.com/promhippie/prometheus-hetzner-sd/commit/15a84b61985643524bffd0f5fc6d3fb91e26560a))
+
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([8747edb](https://github.com/promhippie/prometheus-hetzner-sd/commit/8747edbf048630360e457b472b31df0a34695345))
+
 ## [2.2.7](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.2.6...v2.2.7) (2025-10-13)
 
 
