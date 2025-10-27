@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.2.9](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.2.8...v2.2.9) (2025-10-27)
+
+
+### Bugfixes
+
+* **deps:** update module github.com/prometheus/exporter-toolkit to v0.15.0 ([54b3df3](https://github.com/promhippie/prometheus-hetzner-sd/commit/54b3df3161412a2310d9166c77e7cf758fb8e7e9))
+* **deps:** update module github.com/urfave/cli/v3 to v3.5.0 ([0968d4e](https://github.com/promhippie/prometheus-hetzner-sd/commit/0968d4e772a661b1cd87ba3936f8002cfa37fa67))
+
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([0cea682](https://github.com/promhippie/prometheus-hetzner-sd/commit/0cea682253318f1d6f4534e6527eee15c36fa4b9))
+
 ## [2.2.8](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.2.7...v2.2.8) (2025-10-20)
 
 
