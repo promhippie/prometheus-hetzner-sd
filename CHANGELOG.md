@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.2.10](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.2.9...v2.2.10) (2025-11-03)
+
+
+### Bugfixes
+
+* **deps:** update module github.com/golangci/golangci-lint/v2 to v2.6.0 ([ada768f](https://github.com/promhippie/prometheus-hetzner-sd/commit/ada768fb469a2f15e7e1d6c4c18a5ec37fc89ce3))
+* **deps:** update module github.com/prometheus/common to v0.67.2 ([c668eba](https://github.com/promhippie/prometheus-hetzner-sd/commit/c668eba71884520d2e9bf03494ff0de55eaf62f4))
+
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([26f4f62](https://github.com/promhippie/prometheus-hetzner-sd/commit/26f4f6287d4e29d8ca3fe5fae9575b930c6da618))
+
 ## [2.2.9](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.2.8...v2.2.9) (2025-10-27)
 
 
