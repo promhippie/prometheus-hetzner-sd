@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.2.12](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.2.11...v2.2.12) (2025-11-17)
+
+
+### Bugfixes
+
+* **deps:** update module github.com/golangci/golangci-lint/v2 to v2.6.2 ([dd00cee](https://github.com/promhippie/prometheus-hetzner-sd/commit/dd00ceea1957cd2c1ad3abfc128b8f128c88c9f7))
+* **deps:** update module github.com/urfave/cli/v3 to v3.6.1 ([f3dc5b4](https://github.com/promhippie/prometheus-hetzner-sd/commit/f3dc5b4169aec05acd5abccc5d8407a72287f984))
+
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([012262d](https://github.com/promhippie/prometheus-hetzner-sd/commit/012262d2f343d318ecb724370b90379c482e0bd0))
+
 ## [2.2.11](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.2.10...v2.2.11) (2025-11-10)
 
 
