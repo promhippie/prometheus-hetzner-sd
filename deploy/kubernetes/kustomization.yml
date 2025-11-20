@@ -22,6 +22,6 @@ secretGenerator:
 images:
   - name: prometheus-hetzner-sd
     newName: quay.io/promhippie/prometheus-hetzner-sd
-    newTag: latest@sha256:a388f014e7730bdf34dd61b71e8f3781ee811c664b57557ce5465ddc7e300304
+    newTag: latest@sha256:fd1abac11dfb8636578cb3999b819283e41da3180470d0033e8855dce2cd08ed
 
 ...
