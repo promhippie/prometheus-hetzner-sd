@@ -1,5 +1,32 @@
 # Changelog
 
+## [2.2.13](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.2.12...v2.2.13) (2025-11-24)
+
+
+### Bugfixes
+
+* **deps:** pin quay.io/promhippie/prometheus-hetzner-sd docker tag to b40223b ([5bbcd73](https://github.com/promhippie/prometheus-hetzner-sd/commit/5bbcd73ba639909f03e6ce008fc6ee72440a3907))
+* **deps:** update module github.com/prometheus/common to v0.67.3 ([1b71d34](https://github.com/promhippie/prometheus-hetzner-sd/commit/1b71d34576274bc9905e1bb1ddb6f8ea5ead3a2e))
+* **deps:** update quay.io/promhippie/prometheus-hetzner-sd:latest docker digest to 2e02bda ([f9c97b9](https://github.com/promhippie/prometheus-hetzner-sd/commit/f9c97b99186751b2f5011c4a210792964e179602))
+* **deps:** update quay.io/promhippie/prometheus-hetzner-sd:latest docker digest to 3327c9a ([d2ce462](https://github.com/promhippie/prometheus-hetzner-sd/commit/d2ce462b6856d7129d9ce2eefe277a8d30eeb82b))
+* **deps:** update quay.io/promhippie/prometheus-hetzner-sd:latest docker digest to 4c4ce85 ([8949ee9](https://github.com/promhippie/prometheus-hetzner-sd/commit/8949ee9551fdf8b45afa16477f386c73f2702347))
+* **deps:** update quay.io/promhippie/prometheus-hetzner-sd:latest docker digest to 6a6ae4b ([1900c27](https://github.com/promhippie/prometheus-hetzner-sd/commit/1900c2708ceefcff1095261d972a34bf57f716c5))
+* **deps:** update quay.io/promhippie/prometheus-hetzner-sd:latest docker digest to 763c73e ([4126388](https://github.com/promhippie/prometheus-hetzner-sd/commit/412638895ba2d451e69c50863e7c2db64183ea43))
+* **deps:** update quay.io/promhippie/prometheus-hetzner-sd:latest docker digest to 8cf8d2f ([c2510d1](https://github.com/promhippie/prometheus-hetzner-sd/commit/c2510d1fb13657dc7cc05f3b36961da41e40062c))
+* **deps:** update quay.io/promhippie/prometheus-hetzner-sd:latest docker digest to 8e92ec8 ([0888bc6](https://github.com/promhippie/prometheus-hetzner-sd/commit/0888bc6f51d2a69f276655691962bb03d6260a5d))
+* **deps:** update quay.io/promhippie/prometheus-hetzner-sd:latest docker digest to 9b46174 ([cb72a72](https://github.com/promhippie/prometheus-hetzner-sd/commit/cb72a720a77b296594d8b6b194a8d15eb50c03a1))
+* **deps:** update quay.io/promhippie/prometheus-hetzner-sd:latest docker digest to a388f01 ([8e2b5df](https://github.com/promhippie/prometheus-hetzner-sd/commit/8e2b5df7cd7d5e6c4a892056cf660989da7605db))
+* **deps:** update quay.io/promhippie/prometheus-hetzner-sd:latest docker digest to c21d3da ([f0a0e1a](https://github.com/promhippie/prometheus-hetzner-sd/commit/f0a0e1ab52c0162b2257aad15683cdef5b3173b1))
+* **deps:** update quay.io/promhippie/prometheus-hetzner-sd:latest docker digest to db0eccb ([61b0e95](https://github.com/promhippie/prometheus-hetzner-sd/commit/61b0e9571446831c8e0fc82f86672e45fd7251ed))
+* **deps:** update quay.io/promhippie/prometheus-hetzner-sd:latest docker digest to df9086d ([ef45ea4](https://github.com/promhippie/prometheus-hetzner-sd/commit/ef45ea478e8ab295abf30350566eccb1418607f4))
+* **deps:** update quay.io/promhippie/prometheus-hetzner-sd:latest docker digest to fd1abac ([4dfee35](https://github.com/promhippie/prometheus-hetzner-sd/commit/4dfee35c8bdc0e5eec2a6c46074de2875350ec76))
+
+
+### Miscellaneous
+
+* **deps:** bump golang.org/x/crypto from 0.44.0 to 0.45.0 ([4ea6ee5](https://github.com/promhippie/prometheus-hetzner-sd/commit/4ea6ee57d9b8510a6c9eaba425582e68b6596b87))
+* **flake:** updated lockfile [skip ci] ([4772794](https://github.com/promhippie/prometheus-hetzner-sd/commit/47727948e8943cc715776f618f0c91a351d2a457))
+
 ## [2.2.12](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.2.11...v2.2.12) (2025-11-17)
 
 
