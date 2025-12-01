@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.2.14](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.2.13...v2.2.14) (2025-12-01)
+
+
+### Bugfixes
+
+* **deps:** update quay.io/promhippie/prometheus-hetzner-sd:latest docker digest to 236c423 ([9b099b8](https://github.com/promhippie/prometheus-hetzner-sd/commit/9b099b8051181ddf4580c2aa67f3d7de6103a78c))
+* **patch:** update module github.com/prometheus/common to v0.67.4 ([fd47eb2](https://github.com/promhippie/prometheus-hetzner-sd/commit/fd47eb28f31a557054713b5a5516443313a47f96))
+
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([a50fccd](https://github.com/promhippie/prometheus-hetzner-sd/commit/a50fccde61067b36e1daa52e27bcc918a47d3555))
+
 ## [2.2.13](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.2.12...v2.2.13) (2025-11-24)
 
 
