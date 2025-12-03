@@ -53,6 +53,7 @@ jobs:
         run: task envvars
 
       - name: Source rebase
+        if: github.event_name != 'pull_request'
         run: git pull --autostash --rebase
 
       - name: Commit changes
@@ -104,6 +105,7 @@ jobs:
         run: task labels
 
       - name: Source rebase
+        if: github.event_name != 'pull_request'
         run: git pull --autostash --rebase
 
       - name: Commit changes
