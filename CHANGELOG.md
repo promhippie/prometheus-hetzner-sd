@@ -1,5 +1,24 @@
 # Changelog
 
+## [2.3.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.2.14...v2.3.0) (2025-12-08)
+
+
+### Features
+
+* **minor:** update alpine docker tag to v3.23 ([#395](https://github.com/promhippie/prometheus-hetzner-sd/issues/395)) ([827f87a](https://github.com/promhippie/prometheus-hetzner-sd/commit/827f87a8bad7a4cc406bf5f58fb663e1284d2b7a))
+
+
+### Bugfixes
+
+* **patch:** update golang docker tag to v1.25.5 ([#394](https://github.com/promhippie/prometheus-hetzner-sd/issues/394)) ([9b8e67e](https://github.com/promhippie/prometheus-hetzner-sd/commit/9b8e67e195e99776e182dc21413520de37c0272f))
+
+
+### Miscellaneous
+
+* drop issue and pull request template ([39a2314](https://github.com/promhippie/prometheus-hetzner-sd/commit/39a23142dcc0b132558411c7943dc28148fcd3dd))
+* **flake:** updated lockfile [skip ci] ([8cf0330](https://github.com/promhippie/prometheus-hetzner-sd/commit/8cf0330cb09efae3dd53fa2536399f81b7f67d69))
+* just format some yaml comment ([0330f5c](https://github.com/promhippie/prometheus-hetzner-sd/commit/0330f5c4922a2248243d3b92ac71428a7e198d37))
+
 ## [2.2.14](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.2.13...v2.2.14) (2025-12-01)
 
 
