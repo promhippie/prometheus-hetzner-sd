@@ -2,7 +2,7 @@
 
 <html id="html" lang="en-us">
 	<head>
-	<meta name="generator" content="Hugo 0.152.2">
+	<meta name="generator" content="Hugo 0.153.0">
 		<meta http-equiv="content-type" content="text/html;charset=utf-8">
 		<meta name="viewport" content="width=device-width"/>
 
@@ -418,8 +418,8 @@ that includes the service discovery which simply maps to a node exporter.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">scrape_timeout</span><span class="p">:</span><span class="w"> </span><span class="l">10s</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">evaluation_interval</span><span class="p">:</span><span class="w"> </span><span class="l">1m</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">scrape_configs</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="l">node</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">scrape_configs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl">- <span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="l">node</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">file_sd_configs</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">files</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&#34;/etc/sd/hetzner.json&#34;</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">relabel_configs</span><span class="p">:</span><span class="w">
@@ -430,7 +430,7 @@ that includes the service discovery which simply maps to a node exporter.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">target_label</span><span class="p">:</span><span class="w"> </span><span class="l">datacenter</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">source_labels</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">__meta_hetzner_name]</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">target_label</span><span class="p">:</span><span class="w"> </span><span class="l">instance</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="l">hetzner-sd</span><span class="w">
+</span></span></span><span class="line"><span class="cl">- <span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="l">hetzner-sd</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">static_configs</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">targets</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">hetzner-sd:9000</span></span></span></code></pre></div>
@@ -442,10 +442,10 @@ are using a different volume for the service discovery you have to make sure
 that the container user is allowed to write to this volume.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">volumes</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">prometheus</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">services</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">prometheus</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">prom/prometheus:latest</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">always</span><span class="w">
@@ -475,8 +475,8 @@ architectures without any change to the image name. You should apply a change
 like this to the <code>docker-compose.yml</code> file:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff"><span class="line"><span class="cl">  hetzner-sd:
 </span></span><span class="line"><span class="cl"><span class="gd">-   image: promhippie/prometheus-hetzner-sd:latest
-</span></span></span><span class="line"><span class="cl"><span class="gd"></span><span class="gi">+   image: promhippie/prometheus-hetzner-sd:x.x.x
-</span></span></span><span class="line"><span class="cl"><span class="gi"></span>    restart: always
+</span></span></span><span class="line"><span class="cl"><span class="gi">+   image: promhippie/prometheus-hetzner-sd:x.x.x
+</span></span></span><span class="line"><span class="cl">    restart: always
 </span></span><span class="line"><span class="cl">    environment:
 </span></span><span class="line"><span class="cl">      - PROMETHEUS_HETZNER_LOG_PRETTY=true
 </span></span><span class="line"><span class="cl">      - PROMETHEUS_HETZNER_OUTPUT_ENGINE=file
@@ -494,7 +494,7 @@ be able to read the generated JSON file:</p>
 </span></span><span class="line"><span class="cl">    image: promhippie/prometheus-hetzner-sd:latest
 </span></span><span class="line"><span class="cl">    restart: always
 </span></span><span class="line"><span class="cl"><span class="gi">+   user: &#39;65534&#39;
-</span></span></span><span class="line"><span class="cl"><span class="gi"></span>    environment:
+</span></span></span><span class="line"><span class="cl">    environment:
 </span></span><span class="line"><span class="cl">      - PROMETHEUS_HETZNER_LOG_PRETTY=true
 </span></span><span class="line"><span class="cl">      - PROMETHEUS_HETZNER_OUTPUT_ENGINE=file
 </span></span><span class="line"><span class="cl">      - PROMETHEUS_HETZNER_OUTPUT_FILE=/etc/sd/hetzner.json
@@ -512,7 +512,7 @@ config format look at the <a href="#web-configuration">documentation</a> section
 </span></span><span class="line"><span class="cl">    restart: always
 </span></span><span class="line"><span class="cl">    environment:
 </span></span><span class="line"><span class="cl"><span class="gi">+     - PROMETHEUS_HETZNER_WEB_CONFIG=path/to/web-config.json
-</span></span></span><span class="line"><span class="cl"><span class="gi"></span>      - PROMETHEUS_HETZNER_LOG_PRETTY=true
+</span></span></span><span class="line"><span class="cl">      - PROMETHEUS_HETZNER_LOG_PRETTY=true
 </span></span><span class="line"><span class="cl">      - PROMETHEUS_HETZNER_OUTPUT_ENGINE=file
 </span></span><span class="line"><span class="cl">      - PROMETHEUS_HETZNER_OUTPUT_FILE=/etc/sd/hetzner.json
 </span></span><span class="line"><span class="cl">      - PROMETHEUS_HETZNER_USERNAME=octocat
@@ -531,8 +531,8 @@ service discovery:</p>
 </span></span><span class="line"><span class="cl">    environment:
 </span></span><span class="line"><span class="cl">      - PROMETHEUS_HETZNER_LOG_PRETTY=true
 </span></span><span class="line"><span class="cl"><span class="gd">-     - PROMETHEUS_HETZNER_OUTPUT_ENGINE=file
-</span></span></span><span class="line"><span class="cl"><span class="gd"></span><span class="gi">+     - PROMETHEUS_HETZNER_OUTPUT_ENGINE=http
-</span></span></span><span class="line"><span class="cl"><span class="gi"></span>      - PROMETHEUS_HETZNER_OUTPUT_FILE=/etc/sd/hetzner.json
+</span></span></span><span class="line"><span class="cl"><span class="gi">+     - PROMETHEUS_HETZNER_OUTPUT_ENGINE=http
+</span></span></span><span class="line"><span class="cl">      - PROMETHEUS_HETZNER_OUTPUT_FILE=/etc/sd/hetzner.json
 </span></span><span class="line"><span class="cl">      - PROMETHEUS_HETZNER_USERNAME=octocat
 </span></span><span class="line"><span class="cl">      - PROMETHEUS_HETZNER_PASSWORD=p455w0rd
 </span></span><span class="line"><span class="cl">    volumes:
@@ -541,7 +541,7 @@ service discovery:</p>
 <p>To use the HTTP service discovery you just need to change the
 <a href="https://prometheus.io">Prometheus</a> configuration mentioned above a little bit:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">scrape_configs</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="l">node</span><span class="w">
+</span></span></span><span class="line"><span class="cl">- <span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="l">node</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">http_sd_configs</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">http://hetzner-sd:9000/sd</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">relabel_configs</span><span class="p">:</span><span class="w">
@@ -653,18 +653,18 @@ get it installed and working please read the upstream documentation. After the
 installation of <a href="https://github.com/kubernetes-sigs/kustomize">Kustomize</a> you just need to prepare a
 <code>kustomization.yml</code> wherever you like similar to this:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">kustomize.config.k8s.io/v1beta1</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Kustomization</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">prometheus-hetzner-sd</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Kustomization</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">prometheus-hetzner-sd</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">resources</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">resources</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">github.com/promhippie/prometheus-hetzner-sd//deploy/kubernetes?ref=master</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">configMapGenerator</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">configMapGenerator</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">prometheus-hetzner-sd</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">behavior</span><span class="p">:</span><span class="w"> </span><span class="l">merge</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">literals</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">secretGenerator</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">secretGenerator</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">prometheus-hetzner-sd</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">behavior</span><span class="p">:</span><span class="w"> </span><span class="l">merge</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">literals</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span></span></span></code></pre></div>
@@ -682,7 +682,7 @@ are providing a ServiceMonitor.</p>
 scrape targets using the HTTP engine, just add a block similar to this one to
 your Prometheus configuration:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">scrape_configs</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="l">node</span><span class="w">
+</span></span></span><span class="line"><span class="cl">- <span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="l">node</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">http_sd_configs</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">http://hetzner-sd.prometheus-hetzner-sd.svc.cluster.local:9000/sd</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">relabel_configs</span><span class="p">:</span><span class="w">
@@ -710,7 +710,7 @@ annotations or the service monitor.</p>
 scrape targets using the HTTP engine, just add a block similar to this one to
 your Prometheus configuration:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">scrape_configs</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="l">node</span><span class="w">
+</span></span></span><span class="line"><span class="cl">- <span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="l">node</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">http_sd_configs</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">http://hetzner-sd.prometheus-hetzner-sd.svc.cluster.local:9000/sd</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">relabel_configs</span><span class="p">:</span><span class="w">
