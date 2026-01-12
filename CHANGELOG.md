@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.3.2](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.3.1...v2.3.2) (2026-01-12)
+
+### Bugfixes
+
+* **patch:** update module github.com/prometheus/common to v0.67.5 ([#412](https://github.com/promhippie/prometheus-hetzner-sd/issues/412)) ([acfa12d](https://github.com/promhippie/prometheus-hetzner-sd/commit/acfa12d9b3afa1835a79d3b5f713c178c0e563fe))
+* **patch:** update module github.com/prometheus/exporter-toolkit to v0.15.1 ([#411](https://github.com/promhippie/prometheus-hetzner-sd/issues/411)) ([c260dce](https://github.com/promhippie/prometheus-hetzner-sd/commit/c260dce034fdc76f1107e8657fe91148ccb3b2ec))
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([316743e](https://github.com/promhippie/prometheus-hetzner-sd/commit/316743e0bb1698c5da86552302a255525fb1648b))
+* **flake:** updated lockfile [skip ci] ([1b6e386](https://github.com/promhippie/prometheus-hetzner-sd/commit/1b6e386763076e0cd9a9735673932aeaedd4f306))
+* **flake:** updated lockfile [skip ci] ([df8a8c7](https://github.com/promhippie/prometheus-hetzner-sd/commit/df8a8c71a136301b4055873b8a210dea650ea436))
+
 ## [2.3.1](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.3.0...v2.3.1) (2025-12-22)
 
 
