@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.3.3](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.3.2...v2.3.3) (2026-01-19)
+
+### Bugfixes
+
+* **patch:** update module github.com/go-chi/chi/v5 to v5.2.4 ([#416](https://github.com/promhippie/prometheus-hetzner-sd/issues/416)) ([55537a8](https://github.com/promhippie/prometheus-hetzner-sd/commit/55537a8bbc8b83ce19a343a4151e3c325e34a777))
+* **patch:** update module github.com/urfave/cli/v3 to v3.6.2 ([#418](https://github.com/promhippie/prometheus-hetzner-sd/issues/418)) ([5e8c500](https://github.com/promhippie/prometheus-hetzner-sd/commit/5e8c5004966d19c6ec851d652ad3f1a125475468))
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([8c56bc0](https://github.com/promhippie/prometheus-hetzner-sd/commit/8c56bc058180544a854f45ee8bfc9be25732d11a))
+
 ## [2.3.2](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.3.1...v2.3.2) (2026-01-12)
 
 ### Bugfixes
