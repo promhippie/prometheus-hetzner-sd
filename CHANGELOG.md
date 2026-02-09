@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.3.5](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.3.4...v2.3.5) (2026-02-09)
+
+### Bugfixes
+
+* **patch:** update module github.com/go-chi/chi/v5 to v5.2.5 ([#421](https://github.com/promhippie/prometheus-hetzner-sd/issues/421)) ([6c13190](https://github.com/promhippie/prometheus-hetzner-sd/commit/6c13190566eca03827f474b9a28ef3236ebc36eb))
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([3929885](https://github.com/promhippie/prometheus-hetzner-sd/commit/392988515b77affa817b5e6a20bfd2b8ade613b6))
+
 ## [2.3.4](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.3.3...v2.3.4) (2026-02-02)
 
 ### Bugfixes
