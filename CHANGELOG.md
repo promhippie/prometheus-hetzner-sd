@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.4.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.3.5...v2.4.0) (2026-03-02)
+
+### Features
+
+* **minor:** update module github.com/urfave/cli/v3 to v3.7.0 ([#423](https://github.com/promhippie/prometheus-hetzner-sd/issues/423)) ([8f07853](https://github.com/promhippie/prometheus-hetzner-sd/commit/8f078537bec6daee930e3a2de20eff51c7c87f5e))
+
+### Miscellaneous
+
+* enable skip-package-name-collision-with-go-std for revive ([b3dfd66](https://github.com/promhippie/prometheus-hetzner-sd/commit/b3dfd66500870127ae28138806c317f7e4326b72))
+* **flake:** updated lockfile [skip ci] ([8da0068](https://github.com/promhippie/prometheus-hetzner-sd/commit/8da0068a6e72a69c58abbb33b165667ed3dc9d39))
+* **flake:** updated lockfile [skip ci] ([28a483b](https://github.com/promhippie/prometheus-hetzner-sd/commit/28a483b95f5e06f62e3b3a0e4291288dda08bbfb))
+* **flake:** updated lockfile [skip ci] ([1aa8708](https://github.com/promhippie/prometheus-hetzner-sd/commit/1aa870868a1478782327486f5d7b9b17c54a801f))
+* replace nixfmt package ([679c071](https://github.com/promhippie/prometheus-hetzner-sd/commit/679c07137b3209b58e42d2c34217b9a73a259e7c))
+
 ## [2.3.5](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.3.4...v2.3.5) (2026-02-09)
 
 ### Bugfixes
