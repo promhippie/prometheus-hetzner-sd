@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.6.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.5.0...v2.6.0) (2026-04-06)
+
+### Features
+
+* **minor:** update module github.com/prometheus/exporter-toolkit to v0.16.0 ([#433](https://github.com/promhippie/prometheus-hetzner-sd/issues/433)) ([8f989b8](https://github.com/promhippie/prometheus-hetzner-sd/commit/8f989b874927d785e707de67db130e88a6f2d7ba))
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([eed5a51](https://github.com/promhippie/prometheus-hetzner-sd/commit/eed5a519a181f49ac2e8cfc341432277baca8890))
+
 ## [2.5.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.4.0...v2.5.0) (2026-03-30)
 
 ### Features
