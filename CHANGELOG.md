@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.6.1](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.6.0...v2.6.1) (2026-04-20)
+
+### Bugfixes
+
+* **deps:** update alpine:3.23 docker digest to 5b10f43 ([#436](https://github.com/promhippie/prometheus-hetzner-sd/issues/436)) ([6412489](https://github.com/promhippie/prometheus-hetzner-sd/commit/641248944ed5f84d8bbab7acc02b011a728ec520))
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([de75194](https://github.com/promhippie/prometheus-hetzner-sd/commit/de751942bb754a5ba3c3ae6430ef1ab440ba1393))
+* **flake:** updated lockfile [skip ci] ([ddd1bf2](https://github.com/promhippie/prometheus-hetzner-sd/commit/ddd1bf271846237b8e30cb8e66a65de9d01ea7b6))
+
 ## [2.6.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.5.0...v2.6.0) (2026-04-06)
 
 ### Features
