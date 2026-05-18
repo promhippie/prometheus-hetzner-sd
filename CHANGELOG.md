@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.7.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.6.1...v2.7.0) (2026-05-18)
+
+### Features
+
+* **minor:** update module github.com/urfave/cli/v3 to v3.9.0 ([#442](https://github.com/promhippie/prometheus-hetzner-sd/issues/442)) ([ec4dcb5](https://github.com/promhippie/prometheus-hetzner-sd/commit/ec4dcb51a2b6a141e14b3dd19e767c63a59d74ce))
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([2a88bb2](https://github.com/promhippie/prometheus-hetzner-sd/commit/2a88bb2b8ffe42e122749c1a0532f868d82b2d01))
+* **flake:** updated lockfile [skip ci] ([cbf3a10](https://github.com/promhippie/prometheus-hetzner-sd/commit/cbf3a102c3f8a13e95afb2a233250e5d623829ee))
+* **flake:** updated lockfile [skip ci] ([b3461bd](https://github.com/promhippie/prometheus-hetzner-sd/commit/b3461bdbd230ee19b2a65d5aabe69c03eaa7382b))
+* **flake:** updated lockfile [skip ci] ([32ec897](https://github.com/promhippie/prometheus-hetzner-sd/commit/32ec897af36bb221cff6ebee2e0d3cd5a1ab31ce))
+
 ## [2.6.1](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.6.0...v2.6.1) (2026-04-20)
 
 ### Bugfixes
