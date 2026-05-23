@@ -1,6 +1,6 @@
 module github.com/promhippie/prometheus-hetzner-sd
 
-go 1.25.0
+go 1.26.0
 
 require (
 	github.com/appscode/go-hetzner v0.0.0-20180411135907-c038e08b19b1
