@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.8.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.7.0...v2.8.0) (2026-05-25)
+
+### Features
+
+* **minor:** update module github.com/go-chi/chi/v5 to v5.3.0 ([#443](https://github.com/promhippie/prometheus-hetzner-sd/issues/443)) ([8b05d6f](https://github.com/promhippie/prometheus-hetzner-sd/commit/8b05d6f85ab10702f81c24aaf627d83f52b809f2))
+* upgrade required go version to 1.26 ([3f8b286](https://github.com/promhippie/prometheus-hetzner-sd/commit/3f8b28603c6b01084ea4a409c179a9c915fb2757))
+
+### Bugfixes
+
+* **deps:** pin golang docker tag to 91eda97 ([#444](https://github.com/promhippie/prometheus-hetzner-sd/issues/444)) ([6e15088](https://github.com/promhippie/prometheus-hetzner-sd/commit/6e15088af394db97bd2de5320ff6f36ea235f77d))
+* enforce 1.26.3 for docker image ([8c32712](https://github.com/promhippie/prometheus-hetzner-sd/commit/8c32712a63192e8fb7dd52df23892e89062b99a6))
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([ca487ad](https://github.com/promhippie/prometheus-hetzner-sd/commit/ca487ad70d08cddd1aeda36d171ef3276b889a80))
+* switch flake input to 25.11 release ([a9cf8de](https://github.com/promhippie/prometheus-hetzner-sd/commit/a9cf8de9157abd5ab0de05a060c2afd19306ba35))
+
 ## [2.7.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.6.1...v2.7.0) (2026-05-18)
 
 ### Features
