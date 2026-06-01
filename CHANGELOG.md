@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.9.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.8.0...v2.9.0) (2026-06-01)
+
+### Features
+
+* **minor:** update module github.com/prometheus/common to v0.68.0 ([#445](https://github.com/promhippie/prometheus-hetzner-sd/issues/445)) ([0594d57](https://github.com/promhippie/prometheus-hetzner-sd/commit/0594d576e00216d03028f4eb8121133a5023a31f))
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([d8d7a60](https://github.com/promhippie/prometheus-hetzner-sd/commit/d8d7a602ba59a8b330e515dc19d8f5fccd7b73e7))
+
 ## [2.8.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.7.0...v2.8.0) (2026-05-25)
 
 ### Features
