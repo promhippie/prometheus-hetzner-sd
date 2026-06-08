@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.9.1](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.9.0...v2.9.1) (2026-06-08)
+
+### Bugfixes
+
+* **patch:** update golang docker tag to v1.26.4 ([#446](https://github.com/promhippie/prometheus-hetzner-sd/issues/446)) ([905c041](https://github.com/promhippie/prometheus-hetzner-sd/commit/905c041f48326ff2ce54ef4ec2679b8a3f375173))
+* **patch:** update module github.com/prometheus/common to v0.68.1 ([#447](https://github.com/promhippie/prometheus-hetzner-sd/issues/447)) ([9706a2e](https://github.com/promhippie/prometheus-hetzner-sd/commit/9706a2e50cb1216e300cd816166d32b7207ad0e6))
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([6a46a4c](https://github.com/promhippie/prometheus-hetzner-sd/commit/6a46a4cd4e7e19b6bc92e38b8fc1dcbcabda5b97))
+
 ## [2.9.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.8.0...v2.9.0) (2026-06-01)
 
 ### Features
