@@ -1,5 +1,25 @@
 # Changelog
 
+## [2.10.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.9.1...v2.10.0) (2026-06-15)
+
+### Features
+
+* **minor:** update alpine docker tag to v3.24 ([#448](https://github.com/promhippie/prometheus-hetzner-sd/issues/448)) ([9ca2b58](https://github.com/promhippie/prometheus-hetzner-sd/commit/9ca2b581659d56fcc826fd43fbd567d93604ef4d))
+* **minor:** update module github.com/urfave/cli/v3 to v3.10.0 ([#455](https://github.com/promhippie/prometheus-hetzner-sd/issues/455)) ([9401b06](https://github.com/promhippie/prometheus-hetzner-sd/commit/9401b06291e109c6b98ea1f18f0ba8d2bd32ef2e))
+
+### Bugfixes
+
+* **deps:** update docker digests ([b899b50](https://github.com/promhippie/prometheus-hetzner-sd/commit/b899b507c26eb57f03ee09757643bb180282d1e9))
+* **deps:** update docker digests ([c9a9daa](https://github.com/promhippie/prometheus-hetzner-sd/commit/c9a9daac59758fa6cbba632fb3661ce68dc80faa))
+* **deps:** update docker digests ([acbc574](https://github.com/promhippie/prometheus-hetzner-sd/commit/acbc5742282996cf484333300d44920bce8bbe2c))
+* **deps:** update docker digests ([#449](https://github.com/promhippie/prometheus-hetzner-sd/issues/449)) ([1ab59c1](https://github.com/promhippie/prometheus-hetzner-sd/commit/1ab59c10105582d531811cdd783a7f4bca57407a))
+* **deps:** update docker digests ([#454](https://github.com/promhippie/prometheus-hetzner-sd/issues/454)) ([244cc11](https://github.com/promhippie/prometheus-hetzner-sd/commit/244cc11a97bc30bd74ccccdb08f265de6c5081af))
+* **patch:** update module github.com/urfave/cli/v3 to v3.9.1 ([#451](https://github.com/promhippie/prometheus-hetzner-sd/issues/451)) ([7f1e61e](https://github.com/promhippie/prometheus-hetzner-sd/commit/7f1e61e0ede6f4be46a748e7976a5f6e8878c289))
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([357a50f](https://github.com/promhippie/prometheus-hetzner-sd/commit/357a50facac4a34459c71e87ea501f468cba44aa))
+
 ## [2.9.1](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.9.0...v2.9.1) (2026-06-08)
 
 ### Bugfixes
