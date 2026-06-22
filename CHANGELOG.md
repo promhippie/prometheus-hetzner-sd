@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.11.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.10.0...v2.11.0) (2026-06-22)
+
+### Features
+
+* **minor:** update module github.com/prometheus/common to v0.69.0 ([#458](https://github.com/promhippie/prometheus-hetzner-sd/issues/458)) ([7b4ce63](https://github.com/promhippie/prometheus-hetzner-sd/commit/7b4ce639739827ef8c3f20624fab3c7082a09534))
+
+### Bugfixes
+
+* **deps:** update docker digests ([#456](https://github.com/promhippie/prometheus-hetzner-sd/issues/456)) ([3f08f69](https://github.com/promhippie/prometheus-hetzner-sd/commit/3f08f69caae1666ed35356f82be9eb780eda94ad))
+* **deps:** update docker digests ([#457](https://github.com/promhippie/prometheus-hetzner-sd/issues/457)) ([6cf184f](https://github.com/promhippie/prometheus-hetzner-sd/commit/6cf184fb9cae3eefaf52cf6cdde81a377983c8da))
+* **deps:** update docker digests ([#459](https://github.com/promhippie/prometheus-hetzner-sd/issues/459)) ([4ed4c98](https://github.com/promhippie/prometheus-hetzner-sd/commit/4ed4c98d6b9d869425756ee74bd97542ba8aa622))
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([d186ec8](https://github.com/promhippie/prometheus-hetzner-sd/commit/d186ec80ea19b93bd96a33a52bca1dff19c0233d))
+
 ## [2.10.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.9.1...v2.10.0) (2026-06-15)
 
 ### Features
