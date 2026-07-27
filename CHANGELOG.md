@@ -1,5 +1,7 @@
 # Changelog
 
+## [2.14.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.13.0...v2.14.0) (2026-07-27)
+
 ## [2.13.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.12.0...v2.13.0) (2026-07-13)
 
 ## [2.12.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.11.1...v2.12.0) (2026-07-06)
