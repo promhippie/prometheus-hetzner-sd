@@ -73,7 +73,16 @@ func Server(cfg *config.Config, logger *slog.Logger) error {
 			lasts:   make(map[string]struct{}),
 		}
 
-		a := adapter.NewAdapter(ctx, cfg.Target.File, "hetzner-sd", disc, logger)
+		a, err := adapter.NewAdapter(ctx, cfg.Target.File, "hetzner-sd", disc, logger, registry)
+
+		if err != nil {
+			logger.Error("Failed to create adapter",
+				"err", err,
+			)
+
+			return err
+		}
+
 		a.Run()
 	}
 

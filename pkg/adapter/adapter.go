@@ -24,6 +24,7 @@ import (
 	"path/filepath"
 	"reflect"
 
+	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/prometheus/discovery"
 	"github.com/prometheus/prometheus/discovery/targetgroup"
 )
@@ -139,14 +140,20 @@ func (a *Adapter) Run() {
 }
 
 // NewAdapter creates a new instance of Adapter.
-func NewAdapter(ctx context.Context, file string, name string, d discovery.Discoverer, logger *slog.Logger) *Adapter {
+func NewAdapter(ctx context.Context, file string, name string, d discovery.Discoverer, logger *slog.Logger, reg prometheus.Registerer) (*Adapter, error) {
+	sdMetrics, err := discovery.CreateAndRegisterSDMetrics(reg)
+
+	if err != nil {
+		return nil, fmt.Errorf("failed to register service discovery metrics: %w", err)
+	}
+
 	return &Adapter{
 		ctx:     ctx,
 		disc:    d,
 		groups:  make(map[string]*customSD),
-		manager: discovery.NewManager(ctx, nil),
+		manager: discovery.NewManager(ctx, logger, reg, sdMetrics),
 		output:  file,
 		name:    name,
 		logger:  logger,
-	}
+	}, nil
 }
