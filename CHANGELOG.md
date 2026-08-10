@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.15.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.14.0...v2.15.0) (2026-08-10)
+
+### Features
+
+* **minor:** update dependency github:cloudsmith-io/cloudsmith-cli to v1.21.0 ([#476](https://github.com/promhippie/prometheus-hetzner-sd/issues/476)) ([841d93e](https://github.com/promhippie/prometheus-hetzner-sd/commit/841d93e77526a52493da8fa298fb129ee9ce7ab9))
+* **minor:** update dependency golangci-lint to v2.12.2 ([#477](https://github.com/promhippie/prometheus-hetzner-sd/issues/477)) ([36b93c2](https://github.com/promhippie/prometheus-hetzner-sd/commit/36b93c2649b02da346454a68d33fd8ad79aa4f68))
+* restructure repo and build processes ([a5cd71d](https://github.com/promhippie/prometheus-hetzner-sd/commit/a5cd71d818b6326ebbdf17860100fb7d6ad07a54))
+* upgrade prometheus library and change adapter call ([9ff7502](https://github.com/promhippie/prometheus-hetzner-sd/commit/9ff750299409e20c483ba4f7d68186552ea896bc))
+
+### Bugfixes
+
+* **patch:** update dependency cosign to v3.1.3 ([#478](https://github.com/promhippie/prometheus-hetzner-sd/issues/478)) ([03503aa](https://github.com/promhippie/prometheus-hetzner-sd/commit/03503aa21078e2ce88e61b2e7d4e8a0c33b5b40d))
+
 ## [2.14.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.13.0...v2.14.0) (2026-07-27)
 
 ## [2.13.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.12.0...v2.13.0) (2026-07-13)
