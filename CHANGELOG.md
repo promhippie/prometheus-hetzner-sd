@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.16.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.15.0...v2.16.0) (2026-08-17)
+
+### Features
+
+* **minor:** update dependency github:cloudsmith-io/cloudsmith-cli to v1.22.0 ([#481](https://github.com/promhippie/prometheus-hetzner-sd/issues/481)) ([d5b60ea](https://github.com/promhippie/prometheus-hetzner-sd/commit/d5b60ea873d63cce7082db91ac590321e8795420))
+* **minor:** update dependency github:cloudsmith-io/cloudsmith-cli to v1.23.0 ([#485](https://github.com/promhippie/prometheus-hetzner-sd/issues/485)) ([ae0b6c0](https://github.com/promhippie/prometheus-hetzner-sd/commit/ae0b6c01a76bbbf704da9d953e7b994ee293c16d))
+* **minor:** update dependency hugo-extended to v0.165.0 ([#482](https://github.com/promhippie/prometheus-hetzner-sd/issues/482)) ([7854835](https://github.com/promhippie/prometheus-hetzner-sd/commit/78548357d5c63632728482d3148423be43f563c2))
+* **minor:** update module github.com/urfave/cli/v3 to v3.11.0 ([#486](https://github.com/promhippie/prometheus-hetzner-sd/issues/486)) ([d21e66b](https://github.com/promhippie/prometheus-hetzner-sd/commit/d21e66b2127b94ae93693dcda8bf9b9b9826fd73))
+
+### Bugfixes
+
+* **deps:** update golang:1.26.6-alpine docker digest to 3889b42 ([#487](https://github.com/promhippie/prometheus-hetzner-sd/issues/487)) ([7a07c3a](https://github.com/promhippie/prometheus-hetzner-sd/commit/7a07c3a43299edfe65453ecd261d4839747770ae))
+* **patch:** update dependency go to v1.26.6 ([#483](https://github.com/promhippie/prometheus-hetzner-sd/issues/483)) ([23956a4](https://github.com/promhippie/prometheus-hetzner-sd/commit/23956a425a7d9a36049bebf89136b055e11dddac))
+* **patch:** update dependency pre-commit to v4.6.2 ([#480](https://github.com/promhippie/prometheus-hetzner-sd/issues/480)) ([ca6d1fd](https://github.com/promhippie/prometheus-hetzner-sd/commit/ca6d1fdfe6decb18b919e75266d08a88f30476af))
+* **patch:** update golang docker tag to v1.26.6 ([#484](https://github.com/promhippie/prometheus-hetzner-sd/issues/484)) ([c384a6c](https://github.com/promhippie/prometheus-hetzner-sd/commit/c384a6c602434c6f936e0a762cab50058bf613e2))
+
 ## [2.15.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.14.0...v2.15.0) (2026-08-10)
 
 ### Features
