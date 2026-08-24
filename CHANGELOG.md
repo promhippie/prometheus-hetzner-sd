@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.17.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.16.0...v2.17.0) (2026-08-24)
+
+### Features
+
+* **minor:** update dependency github:cloudsmith-io/cloudsmith-cli to v1.24.0 ([#489](https://github.com/promhippie/prometheus-hetzner-sd/issues/489)) ([4faed8d](https://github.com/promhippie/prometheus-hetzner-sd/commit/4faed8d0ee6cc7411a5af28b465a735dba96d732))
+* **minor:** update dependency golangci-lint to v2.13.0 ([#494](https://github.com/promhippie/prometheus-hetzner-sd/issues/494)) ([4f1ab1f](https://github.com/promhippie/prometheus-hetzner-sd/commit/4f1ab1f57a1a919abc394575e93328ff4ae42c3b))
+* **minor:** update dependency task to v3.53.1 ([#490](https://github.com/promhippie/prometheus-hetzner-sd/issues/490)) ([378d3f7](https://github.com/promhippie/prometheus-hetzner-sd/commit/378d3f79da8e1a7b17853a8fdd5e90b20185e137))
+* **minor:** update golang docker tag to v1.27.0 ([#493](https://github.com/promhippie/prometheus-hetzner-sd/issues/493)) ([bc446cc](https://github.com/promhippie/prometheus-hetzner-sd/commit/bc446ccddf5341e06078a4da9fe5d0e835c9e36e))
+* **minor:** update module github.com/stretchr/testify to v1.12.0 ([#488](https://github.com/promhippie/prometheus-hetzner-sd/issues/488)) ([84b22db](https://github.com/promhippie/prometheus-hetzner-sd/commit/84b22db211102eb153ddfd91626c6ce4c7a64767))
+
+### Bugfixes
+
+* **patch:** update dependency golangci-lint to v2.13.1 ([#496](https://github.com/promhippie/prometheus-hetzner-sd/issues/496)) ([18796ff](https://github.com/promhippie/prometheus-hetzner-sd/commit/18796ffa3636e29e289f6e1434adad792774b6a1))
+* **patch:** update module github.com/go-chi/chi/v5 to v5.3.2 ([#495](https://github.com/promhippie/prometheus-hetzner-sd/issues/495)) ([30055ae](https://github.com/promhippie/prometheus-hetzner-sd/commit/30055ae1e1ff1eadcbe8dee35278a056c5309e4c))
+* **patch:** update module github.com/stretchr/testify to v1.12.1 ([#491](https://github.com/promhippie/prometheus-hetzner-sd/issues/491)) ([a30cd1c](https://github.com/promhippie/prometheus-hetzner-sd/commit/a30cd1c169f59b1de14e260d4e6234cdd8e7b538))
+
 ## [2.16.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.15.0...v2.16.0) (2026-08-17)
 
 ### Features
