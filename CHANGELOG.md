@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.18.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.17.0...v2.18.0) (2026-08-31)
+
+### Features
+
+* **minor:** update dependency github:cloudsmith-io/cloudsmith-cli to v1.25.0 ([#499](https://github.com/promhippie/prometheus-hetzner-sd/issues/499)) ([3a5ae86](https://github.com/promhippie/prometheus-hetzner-sd/commit/3a5ae868e79fe1f208a6a48241a7e22ec0e7852b))
+* **minor:** update dependency github:cloudsmith-io/cloudsmith-cli to v1.26.0 ([#501](https://github.com/promhippie/prometheus-hetzner-sd/issues/501)) ([aff71b4](https://github.com/promhippie/prometheus-hetzner-sd/commit/aff71b499705aa0fa708f7b504d0912ec11d26d0))
+* **minor:** update dependency go to v1.27.0 ([#492](https://github.com/promhippie/prometheus-hetzner-sd/issues/492)) ([896ecf6](https://github.com/promhippie/prometheus-hetzner-sd/commit/896ecf6bbfac347f82c7debc73a626a621254c21))
+* **minor:** update dependency goreleaser to v2.18.0 ([#497](https://github.com/promhippie/prometheus-hetzner-sd/issues/497)) ([6ce025b](https://github.com/promhippie/prometheus-hetzner-sd/commit/6ce025b9db1f77cb1d008d4609eb4c0d179de455))
+* **minor:** update module github.com/prometheus/exporter-toolkit to v0.19.0 ([#500](https://github.com/promhippie/prometheus-hetzner-sd/issues/500)) ([35404e8](https://github.com/promhippie/prometheus-hetzner-sd/commit/35404e8a000c9b0ba4056d03df9db00644cc999b))
+
+### Bugfixes
+
+* **patch:** update dependency golangci-lint to v2.13.2 ([#502](https://github.com/promhippie/prometheus-hetzner-sd/issues/502)) ([d3375bc](https://github.com/promhippie/prometheus-hetzner-sd/commit/d3375bcc3e9369f39694ea97bad55263efa22750))
+
 ## [2.17.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.16.0...v2.17.0) (2026-08-24)
 
 ### Features
