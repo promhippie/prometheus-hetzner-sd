@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.19.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.18.0...v2.19.0) (2026-09-07)
+
+### Features
+
+* **minor:** update module github.com/prometheus/common to v0.71.0 ([#503](https://github.com/promhippie/prometheus-hetzner-sd/issues/503)) ([b1bfab0](https://github.com/promhippie/prometheus-hetzner-sd/commit/b1bfab0e2666b72fdcdcb1fafc774ae4baa839a6))
+
+### Bugfixes
+
+* **deps:** update golang:1.27.1-alpine docker digest to cf6fca6 ([#507](https://github.com/promhippie/prometheus-hetzner-sd/issues/507)) ([7003045](https://github.com/promhippie/prometheus-hetzner-sd/commit/700304507ead3d4ac2f0650c26dce748c2d8584c))
+* **patch:** update dependency go to v1.27.1 ([#505](https://github.com/promhippie/prometheus-hetzner-sd/issues/505)) ([e858282](https://github.com/promhippie/prometheus-hetzner-sd/commit/e858282968a28da7946dcd9fbf83f971b0a44c63))
+* **patch:** update dependency goreleaser to v2.18.1 ([#508](https://github.com/promhippie/prometheus-hetzner-sd/issues/508)) ([93eb32a](https://github.com/promhippie/prometheus-hetzner-sd/commit/93eb32ad9b5a131f797fcd586cb47558270de085))
+* **patch:** update golang docker tag to v1.27.1 ([#506](https://github.com/promhippie/prometheus-hetzner-sd/issues/506)) ([a95c01b](https://github.com/promhippie/prometheus-hetzner-sd/commit/a95c01bd96b1caa3629b05b0f51c59408fe9a8c0))
+
 ## [2.18.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.17.0...v2.18.0) (2026-08-31)
 
 ### Features
