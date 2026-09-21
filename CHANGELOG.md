@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.20.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.19.0...v2.20.0) (2026-09-21)
+
+### Features
+
+* **minor:** update module github.com/urfave/cli/v3 to v3.12.0 ([#512](https://github.com/promhippie/prometheus-hetzner-sd/issues/512)) ([fe01fad](https://github.com/promhippie/prometheus-hetzner-sd/commit/fe01fad60d618345125da5f58ac46d3c3f5f8c07))
+* **minor:** update module github.com/urfave/cli/v3 to v3.13.0 ([#517](https://github.com/promhippie/prometheus-hetzner-sd/issues/517)) ([4455b41](https://github.com/promhippie/prometheus-hetzner-sd/commit/4455b419f3e80de2f13cef0325ba0218324ff0dd))
+
+### Bugfixes
+
+* **deps:** update alpine:3.24 docker digest to 294b683 ([#516](https://github.com/promhippie/prometheus-hetzner-sd/issues/516)) ([ba8c577](https://github.com/promhippie/prometheus-hetzner-sd/commit/ba8c577b1783066aa37c274d5048275ffbe0ae1a))
+* **deps:** update docker digests ([#514](https://github.com/promhippie/prometheus-hetzner-sd/issues/514)) ([0aaac9c](https://github.com/promhippie/prometheus-hetzner-sd/commit/0aaac9c95fc3e5985152fab0c64dae80234c3c61))
+* **deps:** update docker digests ([#515](https://github.com/promhippie/prometheus-hetzner-sd/issues/515)) ([28f65f8](https://github.com/promhippie/prometheus-hetzner-sd/commit/28f65f87e1eb678610da69910717ce2432fc0f4a))
+
 ## [2.19.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.18.0...v2.19.0) (2026-09-07)
 
 ### Features
