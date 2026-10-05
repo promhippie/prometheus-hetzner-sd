@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.22.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.21.0...v2.22.0) (2026-10-05)
+
+### Features
+
+* **minor:** update module github.com/prometheus/common to v0.72.0 ([#522](https://github.com/promhippie/prometheus-hetzner-sd/issues/522)) ([986140f](https://github.com/promhippie/prometheus-hetzner-sd/commit/986140f68db14ea67424fba0901d25c2d6579679))
+* **minor:** update module github.com/urfave/cli/v3 to v3.14.0 ([#527](https://github.com/promhippie/prometheus-hetzner-sd/issues/527)) ([47de8e5](https://github.com/promhippie/prometheus-hetzner-sd/commit/47de8e5fd69584e6d9a60cd95637b22ad09e9ba2))
+
 ## [2.21.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.20.0...v2.21.0) (2026-09-28)
 
 ### Features
