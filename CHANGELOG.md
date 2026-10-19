@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.24.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.23.0...v2.24.0) (2026-10-19)
+
+### Features
+
+* **minor:** update module github.com/go-chi/chi/v5 to v5.5.0 ([#539](https://github.com/promhippie/prometheus-hetzner-sd/issues/539)) ([ae72af8](https://github.com/promhippie/prometheus-hetzner-sd/commit/ae72af87304217f90e7d4e8037d70548fc994e19))
+
 ## [2.23.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.22.0...v2.23.0) (2026-10-12)
 
 ### Features
