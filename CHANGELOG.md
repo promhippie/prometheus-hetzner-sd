@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.24.1](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.24.0...v2.24.1) (2026-10-26)
+
+### Bugfixes
+
+* **deps:** update alpine:3.24 docker digest to 71e9b7b ([#549](https://github.com/promhippie/prometheus-hetzner-sd/issues/549)) ([079f1a1](https://github.com/promhippie/prometheus-hetzner-sd/commit/079f1a10939e35a158034c8974cfdc148395378a))
+* **deps:** update alpine:3.24 docker digest to be26560 ([#553](https://github.com/promhippie/prometheus-hetzner-sd/issues/553)) ([8b92c69](https://github.com/promhippie/prometheus-hetzner-sd/commit/8b92c6944f3cfb01b8a367a4379ca3a5f636222d))
+* **deps:** update docker digests ([#548](https://github.com/promhippie/prometheus-hetzner-sd/issues/548)) ([fcd3b39](https://github.com/promhippie/prometheus-hetzner-sd/commit/fcd3b39c7a933f8cde8be6073610c420c1d9c4dd))
+* **deps:** update golang:1.27.3-alpine docker digest to b8c9b82 ([#550](https://github.com/promhippie/prometheus-hetzner-sd/issues/550)) ([55e3aa2](https://github.com/promhippie/prometheus-hetzner-sd/commit/55e3aa2021d45acbae6783242669cdc864f1708a))
+* **patch:** update golang docker tag to v1.27.3 ([#545](https://github.com/promhippie/prometheus-hetzner-sd/issues/545)) ([dfa4071](https://github.com/promhippie/prometheus-hetzner-sd/commit/dfa40712a0743cc1b16a6a9c3df9aec8919f0375))
+
 ## [2.24.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.23.0...v2.24.0) (2026-10-19)
 
 ### Features
