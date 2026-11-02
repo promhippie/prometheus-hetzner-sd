@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.25.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.24.1...v2.25.0) (2026-11-02)
+
+### Features
+
+* **minor:** update module github.com/prometheus/common to v0.73.0 ([#557](https://github.com/promhippie/prometheus-hetzner-sd/issues/557)) ([152d1e7](https://github.com/promhippie/prometheus-hetzner-sd/commit/152d1e7de9672694f755319d2bfd735adc23d4ce))
+
+### Bugfixes
+
+* **deps:** update golang:1.27.3-alpine docker digest to d200d2d ([#554](https://github.com/promhippie/prometheus-hetzner-sd/issues/554)) ([1dfa759](https://github.com/promhippie/prometheus-hetzner-sd/commit/1dfa759e8d0611f7e6e07dce95b486625b00a692))
+* **patch:** update module github.com/prometheus/common to v0.73.1 ([#559](https://github.com/promhippie/prometheus-hetzner-sd/issues/559)) ([5705e6c](https://github.com/promhippie/prometheus-hetzner-sd/commit/5705e6c5197ba676f402f2d854285ad7bd27e2f8))
+
 ## [2.24.1](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.24.0...v2.24.1) (2026-10-26)
 
 ### Bugfixes
