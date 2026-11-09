@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.25.1](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.25.0...v2.25.1) (2026-11-09)
+
+### Bugfixes
+
+* **deps:** update alpine:3.24 docker digest to f59abe6 ([#564](https://github.com/promhippie/prometheus-hetzner-sd/issues/564)) ([99fb1e5](https://github.com/promhippie/prometheus-hetzner-sd/commit/99fb1e513d58d7937ecf8c2a3bca11baa2387218))
+* **deps:** update docker digests ([#563](https://github.com/promhippie/prometheus-hetzner-sd/issues/563)) ([ab26fae](https://github.com/promhippie/prometheus-hetzner-sd/commit/ab26fae0d3379a4610b6365b960295877d130d35))
+* **deps:** update golang:1.27.3-alpine docker digest to fa48812 ([#562](https://github.com/promhippie/prometheus-hetzner-sd/issues/562)) ([94f531e](https://github.com/promhippie/prometheus-hetzner-sd/commit/94f531e27df9230ba86f19a0d4bbdd0cb118d66b))
+
 ## [2.25.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.24.1...v2.25.0) (2026-11-02)
 
 ### Features
