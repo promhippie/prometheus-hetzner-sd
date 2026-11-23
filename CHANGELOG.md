@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.27.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.26.0...v2.27.0) (2026-11-23)
+
+### Features
+
+* **minor:** update module github.com/prometheus/exporter-toolkit to v0.21.0 ([#578](https://github.com/promhippie/prometheus-hetzner-sd/issues/578)) ([ccd88c9](https://github.com/promhippie/prometheus-hetzner-sd/commit/ccd88c9b328361638a27ddd93681f1506368be95))
+* switch to plain hugo and resolve deprecations ([e78a491](https://github.com/promhippie/prometheus-hetzner-sd/commit/e78a49163f15002395bbc4e8182619c49cf5c461))
+
+### Bugfixes
+
+* **deps:** update golang:1.27.4-alpine docker digest to 70bd7dd ([#573](https://github.com/promhippie/prometheus-hetzner-sd/issues/573)) ([814ead7](https://github.com/promhippie/prometheus-hetzner-sd/commit/814ead754d56862f5c9001a65dd97679692e7b27))
+
 ## [2.26.0](https://github.com/promhippie/prometheus-hetzner-sd/compare/v2.25.1...v2.26.0) (2026-11-16)
 
 ### Features
